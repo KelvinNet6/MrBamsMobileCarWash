@@ -640,7 +640,7 @@ li.dropdown:hover .dropdown-content {
 
 @media screen and (max-width: 768px) {
   .reviews-container {
-      
+      animation: none; 
       flex-wrap: wrap;
       justify-content: space-around;
   }
