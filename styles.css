@@ -1,0 +1,759 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #333;
+}
+
+header {
+  position: relative; 
+  background-image: url('2-copy.jpg');
+  background-size: cover;
+  background-position: center;
+  color: rgb(181, 228, 248);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+  height: 420px;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); 
+  z-index: -1;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.header-content span{
+  color: rgb(233, 239, 238);
+}
+header .logo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+header nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: rgb(195, 237, 255);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #ff6347;
+}
+
+li.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.arrow {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+li.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+li.dropdown:hover .arrow {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  width: 100%;
+  margin-top: 150px; 
+  position: absolute;
+  margin-left: 450px; 
+}
+
+header p {
+  font-size: 1.1rem;
+  text-align: center;
+  width: 100%;
+  margin-top: 270px; 
+  position: absolute;
+  color: rgb(255, 255, 255);
+  margin-left: 450px;
+}
+
+@media (max-width: 768px) {
+
+  header h1 {
+    font-size: 2rem;
+    position: relative; 
+    margin-top: 0; 
+    margin-left: 0; 
+    text-align: center; 
+  }
+
+  header p {
+    font-size: 1rem;
+    position: relative;
+    margin-top: 10px; 
+    margin-left: 0;
+    text-align: center; 
+    width: 100%; 
+  }
+
+  header nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; 
+  width: 250px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  color: white;
+  padding-top: 60px;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+}
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  display: block;
+}
+
+.sidebar ul li a:hover {
+  background-color: #575757;
+}
+
+li.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:rgba(0, 0, 0, 0.5);
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+li.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.menu-toggle {
+  font-size: 30px;
+  cursor: pointer;
+  display: none; 
+  position: fixed;
+  top: 20px; 
+  left: 20px; 
+  z-index: 1001; 
+}
+
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+    position: relative; 
+    margin-top: 0; 
+    margin-left: 0; 
+    text-align: center; 
+  }
+
+  header p {
+    font-size: 1rem;
+    position: relative;
+    margin-top: 10px; 
+    margin-left: 0;
+    text-align: center; 
+    width: 100%; 
+  }
+
+  /* Mobile menu */
+  header nav ul {
+    display: none;
+  }
+
+  header nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 30px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px; 
+    left: 20px;
+    z-index: 1001;
+  }
+
+  .sidebar {
+    left: 0; 
+  }
+
+  .sidebar ul li a {
+    font-size: 1.5rem;
+  }
+
+  .about-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .container-left,
+  .container-right {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .container-right {
+    background-color: #98adb1;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;  
+  height: 300px; 
+  overflow: hidden; 
+}
+
+.mySlides {
+  display: none; 
+}
+
+.mySlides img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover;
+  border-radius: 10px; 
+}
+
+@media (max-width: 768px) {
+  .slideshow-container {
+    height: 200px; 
+  }
+
+  .mySlides img {
+    width: 100%;  
+    height: 100%; 
+    object-fit: cover;
+  }
+}
+/* About Section */
+.about-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 50px;
+  gap: 20px; 
+}
+
+.container-left,
+.container-right {
+  width: 48%; 
+  padding: 20px;
+}
+
+.container-right {
+  background-color: #98adb1;
+  border-radius: 10px;
+}
+
+.container-right h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.container-right p {
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #333;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9em;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #ff6347; 
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column; 
+    align-items: center; 
+    padding: 20px;
+  }
+
+  .container-left,
+  .container-right {
+    width: 100%; 
+    margin-bottom: 20px; 
+    padding: 10px;
+  }
+
+  .btn {
+    width: 30%; 
+    text-align: center; 
+  }
+
+  .container-right {
+    background-color: #98adb1;
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
+
+/* Services Section */
+.services-section {
+  padding: 50px 0;
+  background-color: #333;
+  text-align: center;
+}
+
+.services-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #ddd;
+}
+
+/* Flex container for services */
+.services-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 0 auto;
+  max-width: 1200px; /* Optional: Limits the width on large screens */
+}
+
+/* Service Card */
+.service-card {
+  background-color: #98adb1;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 20px; /* Add margin to space cards out */
+}
+
+/* Service Card Image */
+.service-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.service-card .service-content {
+  padding: 20px;
+}
+
+.service-card h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+.service-card .btn {
+  text-decoration: none;
+  padding: 10px 30px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.service-card .btn:hover {
+  background-color: #0056b3;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile view adjustments for service cards */
+@media (max-width: 768px) {
+  .services-container {
+    justify-content: center;
+  }
+
+  .service-card {
+    width: 100%; /* Service cards take up the full width on mobile */
+  }
+}
+
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.mySlides {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+
+.mySlides img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.service-content {
+  padding: 20px;
+}
+
+.social-media-section {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+}
+
+#background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.social-media-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  max-width: 400px;
+  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.social-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.social-icon i {
+  display: inline-block;
+  line-height: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .social-media-container {
+      width: 90%;
+      max-width: 350px;
+  }
+
+  .social-icon {
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+  }
+}
+
+.reviews-section {
+  padding: 50px 20px;
+  background-color: #333;
+  text-align: center;
+  position: relative;
+  overflow: hidden; 
+}
+
+.reviews-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ddd;
+}
+
+.reviews-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  padding: 20px 0;
+  justify-content: flex-start;
+  animation: scrollReviews 30s linear infinite; 
+}
+
+@keyframes scrollReviews {
+  0% {
+      transform: translateX(0); 
+  }
+  100% {
+      transform: translateX(-100%); 
+  }
+}
+
+.review-card {
+  background-color: #e3f3f4;
+  border-radius: 10px;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 300px;
+  transition: transform 0.3s ease;
+}
+
+.review-profile img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ccc;
+}
+
+.review-content h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+.review-content p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .reviews-container {
+      animation: none; 
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+
+  .review-card {
+      width: 250px;
+      min-height: 280px;
+  }
+}
+
+/* Footer Styling */
+footer {
+  background-color: #383838;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Footer Text */
+footer p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Subscription Section */
+.subscription-section {
+  margin-top: 30px;
+}
+
+.subscription-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.subscription-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.email-input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 250px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.subscribe-btn {
+  padding: 10px 20px;
+  background-color: #ff5733;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe-btn:hover {
+  background-color: #c53e1e;
+}
+
+/* Social Media Icons */
+.footer-social {
+  margin-top: 20px;
+}
+
+.footer-social a {
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: #ff5733; /* Hover color for icons */
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .footer-social {
+      margin-top: 15px;
+  }
+  
+  .footer-social a {
+      font-size: 1.2rem;
+      margin: 0 10px;
+  }
+
+  .subscription-form {
+      flex-direction: column;
+      gap: 15px;
+  }
+
+  .email-input {
+      width: 80%;
+      font-size: 1.1rem;
+  }
+
+  .subscribe-btn {
+      width: 80%;
+      font-size: 1.1rem;
+  }
+}
