@@ -228,23 +228,23 @@ li.dropdown:hover .dropdown-content {
   z-index: 1001; 
 }
 
-
 @media (max-width: 768px) {
+  /* Header Adjustments */
   header h1 {
     font-size: 2rem;
-    position: relative; 
-    margin-top: 0; 
-    margin-left: 0; 
-    text-align: center; 
+    position: relative;
+    margin-top: 0;
+    margin-left: 0;
+    text-align: center;
   }
 
   header p {
     font-size: 1rem;
     position: relative;
-    margin-top: 10px; 
+    margin-top: 10px;
     margin-left: 0;
-    text-align: center; 
-    width: 100%; 
+    text-align: center;
+    width: 100%;
   }
 
   /* Mobile menu */
@@ -262,13 +262,13 @@ li.dropdown:hover .dropdown-content {
     font-size: 30px;
     cursor: pointer;
     position: fixed;
-    top: 20px; 
+    top: 20px;
     left: 20px;
     z-index: 1001;
   }
 
   .sidebar {
-    left: 0; 
+    left: 0;
   }
 
   .sidebar ul li a {
@@ -293,10 +293,12 @@ li.dropdown:hover .dropdown-content {
     border-radius: 10px;
   }
 
+  /* Logo Adjustments for Mobile */
   .logo {
-    font-size: 1rem;
+    font-size: 1.2rem !important; /* Logo size adjusted to 1.2rem on mobile */
   }
 }
+
 
 .slideshow-container {
   position: relative;
