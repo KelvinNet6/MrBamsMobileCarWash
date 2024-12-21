@@ -49,11 +49,7 @@ header .logo {
   font-weight: bold;
   margin-left: 20px;
 }
-@media (max-width: 768px) {
-  header .logo {
-    font-size: 1.2rem; /* Adjust this size as needed for smaller screens */
-  }
-}
+
 header nav ul {
   list-style-type: none;
   margin: 0;
@@ -155,6 +151,10 @@ header p {
   header nav ul li {
     display: block;
     margin: 10px 0;
+  }
+
+  header .logo {
+    font-size: 1.2rem !important;
   }
 }
 
