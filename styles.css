@@ -152,6 +152,9 @@ header p {
     display: block;
     margin: 10px 0;
   }
+   .logo {
+    font-size: 1.2rem;
+  }
 }
 
 .sidebar {
