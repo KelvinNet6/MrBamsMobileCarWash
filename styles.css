@@ -1,17 +1,4 @@
-/* General Reset and Styling */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #333;
-}
-
-.header {
+ .header {
     position: relative;
     height: 60vh;
     background: url('video-placeholder.jpg') no-repeat center center/cover;
