@@ -279,15 +279,19 @@
     };
 </script>
 
-
-
 <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const sidebar = document.getElementById('sidebar');
-
-    menuToggle.addEventListener('click', () => {
-        sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
-    });
+  
+  const sidebar = document.querySelector('.sidebar');
+  const menuToggle = document.querySelector('.menu-toggle');
+    
+  menuToggle.addEventListener('click', () => {
+    
+    if (sidebar.style.left === '-250px' || sidebar.style.left === '') {
+      sidebar.style.left = '0'; 
+    } else {
+      sidebar.style.left = '-250px'; 
+    }
+  });
 </script>
     <script src="script.js"></script>
 </body>
