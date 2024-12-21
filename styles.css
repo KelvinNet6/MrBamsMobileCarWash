@@ -265,7 +265,7 @@ li.dropdown:hover .dropdown-content {
   }
 
   .sidebar {
-    left: 0; 
+    left: -250px; 
   }
 
   .sidebar ul li a {
