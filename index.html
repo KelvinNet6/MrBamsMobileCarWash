@@ -280,10 +280,10 @@
 </script>
 
 <script>
-  
- const sidebar = document.querySelector('.sidebar');
+const sidebar = document.querySelector('.sidebar');
 const menuToggle = document.querySelector('.menu-toggle');
-    
+const sidebarLinks = document.querySelectorAll('.sidebar ul li a'); 
+
 window.addEventListener('load', () => {
   sidebar.style.left = '-250px'; 
 });
@@ -295,6 +295,13 @@ menuToggle.addEventListener('click', () => {
     sidebar.style.left = '-250px'; 
   }
 });
+
+sidebarLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    sidebar.style.left = '-250px'; 
+  });
+});
+
 </script>
     <script src="script.js"></script>
 </body>
