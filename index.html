@@ -281,17 +281,20 @@
 
 <script>
   
-  const sidebar = document.querySelector('.sidebar');
-  const menuToggle = document.querySelector('.menu-toggle');
+ const sidebar = document.querySelector('.sidebar');
+const menuToggle = document.querySelector('.menu-toggle');
     
-  menuToggle.addEventListener('click', () => {
-    
-    if (sidebar.style.left === '-250px' || sidebar.style.left === '') {
-      sidebar.style.left = '0'; 
-    } else {
-      sidebar.style.left = '-250px'; 
-    }
-  });
+window.addEventListener('load', () => {
+  sidebar.style.left = '-250px'; 
+});
+
+menuToggle.addEventListener('click', () => {
+  if (sidebar.style.left === '-250px' || sidebar.style.left === '') {
+    sidebar.style.left = '0'; 
+  } else {
+    sidebar.style.left = '-250px'; 
+  }
+});
 </script>
     <script src="script.js"></script>
 </body>
