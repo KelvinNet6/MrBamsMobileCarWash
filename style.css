@@ -295,29 +295,33 @@ footer p {
   color: #ff5733; /* Hover color for icons */
 }
 
-/* Mobile Responsiveness */
-@media screen and (max-width: 768px) {
-  .footer-social {
-      margin-top: 15px;
-  }
-  
-  .footer-social a {
-      font-size: 1.2rem;
-      margin: 0 10px;
+@media (max-width: 768px) {
+  /* Adjustments for the about-section to ensure it fits on smaller screens */
+  .about-section {
+    flex-direction: column; 
+    align-items: center; 
+    padding: 15px; /* Reduced padding for better fit */
+    gap: 15px; /* Reduces space between items */
   }
 
-  .subscription-form {
-      flex-direction: column;
-      gap: 15px;
+  .container-left,
+  .container-right {
+    width: 100%; /* Full width on mobile */
+    margin-bottom: 15px; /* Space between the left and right containers */
+    padding: 10px; /* Adjusted padding */
   }
 
-  .email-input {
-      width: 80%;
-      font-size: 1.1rem;
+  .container-right {
+    background-color: #98adb1;
+    padding: 15px; /* Adjusted padding */
+    border-radius: 10px;
   }
 
-  .subscribe-btn {
-      width: 80%;
-      font-size: 1.1rem;
+  /* Button adjustment for mobile */
+  .btn {
+    width: 70%; /* Adjusted button width to fit better on smaller screens */
+    text-align: center;
+    padding: 10px 20px; /* Ensure proper padding */
   }
 }
+
