@@ -195,16 +195,17 @@ body {
     }
 
     .success-heading {
-        font-size: 2em;   /* Adjust font size for mobile */
+        font-size: 1.5rem;   /* Adjust font size for mobile */
         margin-top: 0;     /* Remove margin-top */
         z-index: 0;        /* Let the heading appear normally */
-        text-align: left;  /* Align heading to the left */
+        text-align: center;  /* Align heading to the left */
     }
 
-    .success-paragraph p {
-        margin-top: 20px; /* Reduce top margin for the paragraph */
-        text-align: left; /* Align paragraph to the left */
-    }
+    .success-heading + p {
+    font-size: 1rem !important; /* Force smaller font size for the paragraph */
+    text-align: center !important; /* Center the paragraph */
+    padding: 0 20px !important; /* Add padding to prevent text from touching the sides */
+  }
 
     /* General mobile adjustments for the header */
     .header h1 {
