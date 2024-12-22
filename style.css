@@ -168,49 +168,45 @@ body {
     border-radius: 5px;
     z-index: 1;
     margin-top: 20px;
-    text-align: left; /* Align heading to the left */
+    text-align: left; 
 }
 
 .success-paragraph p {
     font-size: 1.2em;
     color: #eceaea;
     margin-top: 40px;
-    text-align: left; /* Align paragraph to the left */
+    text-align: left; 
 }
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
-    /* Adjusting CEO Section */
     .ceo-section .team-member {
-        width: 100%; /* Full width for each team member on mobile */
-        margin: 0 auto 20px; /* Center the team member and add bottom margin */
+        width: 100%; 
+        margin: 0 auto 20px; 
     }
 
     .team-container {
-        flex-direction: column; /* Stack the profiles vertically */
-        justify-content: flex-start; /* Align items to the left */
+        flex-direction: column; 
+        justify-content: flex-start;
     }
-
-    /* Adjusting the Success Section */
+    
     .success-paragraph {
         position: relative;
         padding-top: 50px;
     }
 
     .success-heading {
-        font-size: 1.5rem;   /* Adjust font size for mobile */
-        margin-top: 0;     /* Remove margin-top */
-        z-index: 0;        /* Let the heading appear normally */
-        text-align: center;  /* Align heading to the left */
+        font-size: 1.5rem;   
+        margin-top: 0;  
+        z-index: 0;       
+        text-align: center;  
     }
 
     .success-heading + p {
-    font-size: 1rem !important; /* Force smaller font size for the paragraph */
-    text-align: center !important; /* Center the paragraph */
-    padding: 0 20px !important; /* Add padding to prevent text from touching the sides */
+    font-size: 1rem !important; 
+    text-align: center !important; 
+    padding: 0 20px !important; 
   }
 
-    /* General mobile adjustments for the header */
     .header h1 {
         font-size: 2.5em;
     }
@@ -218,14 +214,19 @@ body {
     .about-section h2 {
         font-size: 2em;
     }
-    /* Ensure the video adjusts for mobile views */
+    .header {
+        height: 100vh; 
+    }
+
     .header video {
-        height: 100vh; /* Full height on smaller screens */
+        object-fit: cover;
+        height: 100vh;
+        width: 100%;
     }
 
     .header .content {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 0 20px; 
+        font-size: 2.5em;
     }
 }
 /* Footer Styling */
