@@ -13,7 +13,7 @@ body {
 
 header {
   position: relative; 
-  background-image: url('2-copy.jpg');
+  background-image: url('IMG-20250107-WA0016.jpg');
   background-size: cover;
   background-position: center;
   color: rgb(181, 228, 248);
@@ -21,7 +21,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
   padding: 40px;
-  height: 420px;
+  height: 440px;
 }
 
 header::before {
