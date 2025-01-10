@@ -6,7 +6,7 @@
     <title>Car Wash Appointment Booking</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.x.x/css/all.min.css" rel="stylesheet">
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap&libraries=places" async defer></script>
+    <script src="https://www.google.co.za/maps/place/Franschhoek,+7690/@-33.9020471,19.1066919,13z/data=!3m1!4b1!4m6!3m5!1s0x1dcdbd076805b2cf:0x3cb48654d356b2f9!8m2!3d-33.9127211!4d19.1212795!16zL20vMDQ2cjQ0?entry=ttu&g_ep=EgoyMDI1MDEwOC4wIKXMDSoASAFQAw%3D%3D" async defer></script>
 </head>
 <body>
     <!-- Header Section -->
@@ -61,11 +61,17 @@
     </div>
 
     <script src="scripts.js"></script>
-
+<script>
+  function initAutocomplete() {
+    const input = document.getElementById('location');
+    const autocomplete = new google.maps.places.Autocomplete(input);
+  }
+</script>
 <script>
 let map;
 let marker;
 let geocoder;
+let autocomplete;
 
 // Initialize Google Map and setup Location Selection
 function initMap() {
@@ -82,15 +88,39 @@ function initMap() {
         position: { lat: -33.8688, lng: 151.2195 },
     });
 
+    // Autocomplete initialization for location input field
+    const locationInput = document.getElementById('location-input');
+    autocomplete = new google.maps.places.Autocomplete(locationInput);
+
+    // Bind autocomplete to the map bounds
+    autocomplete.bindTo("bounds", map);
+
+    // Event listener for autocomplete selection
+    autocomplete.addListener("place_changed", function () {
+        const place = autocomplete.getPlace();
+        if (!place.geometry || !place.geometry.location) {
+            alert("No details available for the selected location.");
+            return;
+        }
+
+        // Center the map and set marker position based on the selected location
+        map.setCenter(place.geometry.location);
+        marker.setPosition(place.geometry.location);
+
+        // Optionally, update other location details if needed
+        const formattedAddress = place.formatted_address || '';
+        locationInput.value = formattedAddress;
+    });
+
     // Event listener for marker drag
-    google.maps.event.addListener(marker, 'dragend', function(event) {
+    google.maps.event.addListener(marker, "dragend", function (event) {
         const lat = event.latLng.lat();
         const lng = event.latLng.lng();
         reverseGeocode(lat, lng);
     });
 
     // Event listener for map click
-    google.maps.event.addListener(map, 'click', function(event) {
+    google.maps.event.addListener(map, "click", function (event) {
         const lat = event.latLng.lat();
         const lng = event.latLng.lng();
         marker.setPosition(event.latLng);
@@ -101,10 +131,10 @@ function initMap() {
 // Reverse Geocoding to get address from lat, lng
 function reverseGeocode(lat, lng) {
     const latlng = { lat: lat, lng: lng };
-    geocoder.geocode({ location: latlng }, function(results, status) {
+    geocoder.geocode({ location: latlng }, function (results, status) {
         if (status === "OK") {
             if (results[0]) {
-                document.getElementById('location-input').value = results[0].formatted_address;
+                document.getElementById("location-input").value = results[0].formatted_address;
             } else {
                 alert("No results found");
             }
@@ -116,26 +146,25 @@ function reverseGeocode(lat, lng) {
 
 // Function to open the popup and set the service type in the form
 function openPopup(service) {
-    document.getElementById('popup-form').style.display = 'flex';
-    document.getElementById('booking-form').reset();
-    // You can optionally set the selected service type in a hidden field or display it in the form
-    document.getElementById('selected-service').value = service;
+    document.getElementById("popup-form").style.display = "flex";
+    document.getElementById("booking-form").reset();
+    document.getElementById("selected-service").value = service;
 }
 
 // Function to close the popup
 function closePopup() {
-    document.getElementById('popup-form').style.display = 'none';
+    document.getElementById("popup-form").style.display = "none";
 }
 
 // Handle form submission
-document.getElementById('booking-form').addEventListener('submit', function(e) {
+document.getElementById("booking-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const location = document.getElementById('location-input').value;
-    const date = document.getElementById('date').value;
-    const message = document.getElementById('message').value;
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const location = document.getElementById("location-input").value;
+    const date = document.getElementById("date").value;
+    const message = document.getElementById("message").value;
 
     // Simulating form submission
     alert(`Appointment booked successfully!\n\nName: ${name}\nEmail: ${email}\nLocation: ${location}\nDate: ${date}\nMessage: ${message}`);
