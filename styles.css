@@ -762,3 +762,197 @@ footer p {
       font-size: 1.1rem;
   }
 }
+/* Header Section */
+.header-container {
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap; /* Allow the containers to stack on smaller screens */
+}
+
+.left-container {
+    flex: 1;
+    background-image: url('carwash-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    min-height: 400px; /* Ensure left container has minimum height */
+}
+
+.logo-container {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+p {
+    font-size: 18px;
+}
+
+.right-container {
+    flex: 1;
+    padding: 40px;
+    background-color: #f5f5f5;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+.service-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.service-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.service-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Popup Form Styles */
+.popup-form {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    position: relative;
+    max-width: 90%; /* Ensure the popup is not too wide on small screens */
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* Stack the left and right containers */
+        height: auto;
+    }
+
+    .left-container, .right-container {
+        flex: 1 0 100%; /* Ensure they take full width */
+        padding: 20px;
+    }
+
+    .logo-container {
+        font-size: 24px; /* Adjust logo size for small screens */
+    }
+
+    h1 {
+        font-size: 28px; /* Adjust heading size */
+    }
+
+    p {
+        font-size: 16px; /* Adjust paragraph size */
+    }
+
+    h2 {
+        font-size: 28px; /* Adjust booking heading */
+    }
+
+    .service-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .service-btn {
+        font-size: 14px; /* Smaller button text */
+        padding: 8px 16px; /* Adjust button size */
+    }
+
+    .popup-content {
+        width: 100%;
+        padding: 15px;
+    }
+
+    #map {
+        height: 200px; /* Smaller map on mobile */
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    .service-btn {
+        font-size: 12px; /* Smaller font size for service buttons */
+        padding: 8px 12px;
+    }
+
+    h1 {
+        font-size: 24px; /* Make heading smaller on very small screens */
+    }
+
+    .popup-content {
+        padding: 10px; /* Less padding for smaller screens */
+    }
+
+    form input, form select, form textarea {
+        padding: 8px;
+        font-size: 14px; /* Adjust form input size */
+    }
+
+    form button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #map {
+        height: 180px; /* Even smaller map on very small screens */
+    }
+}
