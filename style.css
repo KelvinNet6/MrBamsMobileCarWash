@@ -381,156 +381,155 @@ p {
 h2 {
     font-size: 36px;
 }
-
-/* Service Buttons with Icons */
+/* Service Buttons */
 .service-btn {
     display: flex;
     align-items: center;
-    padding: 10px 20px;
+    padding: 12px 25px; /* Increased padding for better touch on mobile */
     background-color: #007BFF;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* Slightly rounded corners */
     cursor: pointer;
     font-size: 16px;
-    gap: 10px; /* Adds space between icon and text */
+    gap: 12px; /* Slightly more space between the icon and text */
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .service-btn i {
-    font-size: 20px; /* Adjust icon size */
+    font-size: 22px; /* Increased icon size */
 }
 
 .service-btn:hover {
     background-color: #0056b3;
+    transform: scale(1.05); /* Button scale effect on hover */
 }
 
+.service-btn:active {
+    transform: scale(1); /* Button returns to original size when clicked */
+}
 
-/* Popup Form Styles */
+/* Popup Form */
 .popup-form {
-    display: none;
+    display: none; /* Hidden by default */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background */
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 .popup-content {
     background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 400px;
-    position: relative;
-    max-width: 90%; /* Ensure the popup is not too wide on small screens */
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-form input, form select, form textarea {
+    padding: 25px;
+    border-radius: 12px;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    max-width: 600px; /* Increased max width for better content display */
+    height: auto;
+    max-height: 80vh; /* Max height for the popup */
+    overflow-y: auto;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
 }
 
+/* Popup Header */
+h3 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input, form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus on input fields */
+form input:focus, form textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Submit Button */
 form button {
     background-color: #28a745;
     color: white;
-    padding: 12px;
+    padding: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 form button:hover {
     background-color: #218838;
+    transform: scale(1.05); /* Slight scale effect on hover */
 }
 
-/* Mobile responsiveness */
+form button:active {
+    transform: scale(1); /* Button returns to original size when clicked */
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #007BFF; /* Change color on hover */
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .header-container {
-        flex-direction: column; /* Stack the left and right containers */
-        height: auto;
-    }
-
-    .left-container, .right-container {
-        flex: 1 0 100%; /* Ensure they take full width */
-        padding: 20px;
-    }
-
-    .logo-container {
-        font-size: 24px; /* Adjust logo size for small screens */
-    }
-
-    h1 {
-        font-size: 28px; /* Adjust heading size */
-    }
-
-    p {
-        font-size: 16px; /* Adjust paragraph size */
-    }
-
-    h2 {
-        font-size: 28px; /* Adjust booking heading */
-    }
-
-    .service-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
+    /* Adjust service buttons for mobile */
     .service-btn {
-        font-size: 14px; /* Smaller button text */
-        padding: 8px 16px; /* Adjust button size */
-    }
-
-    .popup-content {
-        width: 100%;
-        padding: 15px;
-    }
-
-    #map {
-        height: 200px; /* Smaller map on mobile */
-    }
-}
-
-/* Further adjustments for very small screens */
-@media (max-width: 480px) {
-    .service-btn {
-        font-size: 12px; /* Smaller font size for service buttons */
-        padding: 8px 12px;
-    }
-
-    h1 {
-        font-size: 24px; /* Make heading smaller on very small screens */
-    }
-
-    .popup-content {
-        padding: 10px; /* Less padding for smaller screens */
-    }
-
-    form input, form select, form textarea {
-        padding: 8px;
-        font-size: 14px; /* Adjust form input size */
-    }
-
-    form button {
-        padding: 10px;
+        padding: 10px 20px;
         font-size: 14px;
     }
 
-    #map {
-        height: 180px; /* Even smaller map on very small screens */
+    /* Adjust the popup form for mobile */
+    .popup-content {
+        padding: 20px;
+        max-width: 90%; /* Make the popup more responsive */
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    form input, form textarea {
+        padding: 10px;
+    }
+
+    form button {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 25px;
     }
 }
