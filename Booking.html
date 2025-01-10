@@ -21,9 +21,18 @@
             <h2>Book an Appointment</h2>
             <p>Select a service below to schedule your car wash.</p>
             <div class="service-buttons">
-                <button class="service-btn" onclick="openPopup('interior')">Interior Car Wash</button>
-                <button class="service-btn" onclick="openPopup('exterior')">Exterior Car Wash</button>
-                <button class="service-btn" onclick="openPopup('full')">Full Car Wash</button>
+    <!-- Service Buttons with Font Awesome Icons -->
+    <div class="service-buttons">
+        <button class="service-btn" onclick="openPopup('interior')">
+            <i class="fas fa-car"></i> Interior Car Wash
+        </button>
+        <button class="service-btn" onclick="openPopup('exterior')">
+            <i class="fas fa-broom"></i> Exterior Car Wash
+        </button>
+        <button class="service-btn" onclick="openPopup('full')">
+            <i class="fas fa-car-wash"></i> Full Car Wash
+        </button>
+    </div>
             </div>
         </div>
     </div>
@@ -46,7 +55,9 @@
         </div>
     </div>
 
-    <script src="scripts.js">
+    <script src="scripts.js"></script>
+
+<script>
 let map;
 let marker;
 let geocoder;
@@ -127,7 +138,6 @@ document.getElementById('booking-form').addEventListener('submit', function(e) {
     // Close the popup after submitting the form
     closePopup();
 });
-
-    </script>
+</script>
 </body>
 </html>
