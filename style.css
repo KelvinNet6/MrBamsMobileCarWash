@@ -382,14 +382,10 @@ h2 {
     font-size: 36px;
 }
 
-.service-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-}
-
+/* Service Buttons with Icons */
 .service-btn {
+    display: flex;
+    align-items: center;
     padding: 10px 20px;
     background-color: #007BFF;
     color: white;
@@ -397,11 +393,17 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    gap: 10px; /* Adds space between icon and text */
+}
+
+.service-btn i {
+    font-size: 20px; /* Adjust icon size */
 }
 
 .service-btn:hover {
     background-color: #0056b3;
 }
+
 
 /* Popup Form Styles */
 .popup-form {
