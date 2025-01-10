@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Wash Appointment Booking</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap&libraries=places" async defer></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header-container">
+        <div class="left-container">
+            <div class="logo-container">
+                <span class="logo">CarWash</span>
+            </div>
+            <h1>Mobile Car Wash Services</h1>
+            <p>We bring the car wash to your doorstep. Convenient, reliable, and professional service.</p>
+        </div>
+        <div class="right-container">
+            <h2>Book an Appointment</h2>
+            <p>Select a service below to schedule your car wash.</p>
+            <div class="service-buttons">
+                <button class="service-btn" onclick="openPopup('interior')">Interior Car Wash</button>
+                <button class="service-btn" onclick="openPopup('exterior')">Exterior Car Wash</button>
+                <button class="service-btn" onclick="openPopup('full')">Full Car Wash</button>
+            </div>
+        </div>
+    </div>
 
+    <!-- Popup Form -->
+    <div id="popup-form" class="popup-form">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <h3>Book Your Car Wash Appointment</h3>
+            <form id="booking-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email Address" required>
+                <!-- Google Maps Location Input -->
+                <input type="text" id="location-input" placeholder="Select Location" required readonly>
+                <div id="map" style="height: 300px; width: 100%;"></div>
+                <input type="date" id="date" required>
+                <textarea id="message" placeholder="Additional Notes" rows="4"></textarea>
+                <button type="submit" class="btn">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js">
+let map;
+let marker;
+let geocoder;
+
+// Initialize Google Map and setup Location Selection
+function initMap() {
+    geocoder = new google.maps.Geocoder();
+
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -33.8688, lng: 151.2195 }, // Default to Sydney, Australia
+        zoom: 10,
+    });
+
+    marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        position: { lat: -33.8688, lng: 151.2195 },
+    });
+
+    // Event listener for marker drag
+    google.maps.event.addListener(marker, 'dragend', function(event) {
+        const lat = event.latLng.lat();
+        const lng = event.latLng.lng();
+        reverseGeocode(lat, lng);
+    });
+
+    // Event listener for map click
+    google.maps.event.addListener(map, 'click', function(event) {
+        const lat = event.latLng.lat();
+        const lng = event.latLng.lng();
+        marker.setPosition(event.latLng);
+        reverseGeocode(lat, lng);
+    });
+}
+
+// Reverse Geocoding to get address from lat, lng
+function reverseGeocode(lat, lng) {
+    const latlng = { lat: lat, lng: lng };
+    geocoder.geocode({ location: latlng }, function(results, status) {
+        if (status === "OK") {
+            if (results[0]) {
+                document.getElementById('location-input').value = results[0].formatted_address;
+            } else {
+                alert("No results found");
+            }
+        } else {
+            alert("Geocoder failed due to: " + status);
+        }
+    });
+}
+
+// Function to open the popup and set the service type in the form
+function openPopup(service) {
+    document.getElementById('popup-form').style.display = 'flex';
+    document.getElementById('booking-form').reset();
+    // You can optionally set the selected service type in a hidden field or display it in the form
+    // document.getElementById('selected-service').value = service;
+}
+
+// Function to close the popup
+function closePopup() {
+    document.getElementById('popup-form').style.display = 'none';
+}
+
+// Handle form submission
+document.getElementById('booking-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const location = document.getElementById('location-input').value;
+    const date = document.getElementById('date').value;
+    const message = document.getElementById('message').value;
+
+    // Simulating form submission
+    alert(`Appointment booked successfully!\n\nName: ${name}\nEmail: ${email}\nLocation: ${location}\nDate: ${date}\nMessage: ${message}`);
+
+    // Close the popup after submitting the form
+    closePopup();
+});
+
+    </script>
+</body>
+</html>
