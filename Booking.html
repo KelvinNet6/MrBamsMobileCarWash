@@ -33,24 +33,28 @@
             <i class="fas fa-car-wash"></i> Full Car Wash
         </button>
     </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Popup Form -->
     <div id="popup-form" class="popup-form">
         <div class="popup-content">
             <span class="close-btn" onclick="closePopup()">×</span>
-            <h3>Book Your Car Wash Appointment</h3>
-            <form id="booking-form">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <input type="email" id="email" placeholder="Your Email Address" required>
-                <!-- Google Maps Location Input -->
-                <input type="text" id="location-input" placeholder="Select Location" required readonly>
-                <div id="map" style="height: 300px; width: 100%;"></div>
-                <input type="date" id="date" required>
-                <textarea id="message" placeholder="Additional Notes" rows="4"></textarea>
-                <button type="submit" class="btn">Book Appointment</button>
+            <h3>Book an Appointment</h3>
+            <form id="appointment-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="location">Select Location:</label>
+                <input type="text" id="location" name="location" placeholder="Select your location" required>
+                
+                <label for="date">Schedule Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Additional requests..." rows="4"></textarea>
+
+                <button type="submit">Book Appointment</button>
             </form>
         </div>
     </div>
