@@ -190,68 +190,68 @@
 
 <section class="reviews-section" id="reviews">
     <h2>What Our Customers Say</h2>
-    <div class="reviews-container">
-        
-        <div class="review-card">
-            <div class="review-profile">
-                <img src="OIP (2).jpeg" alt="Customer 1">
+
+    <!-- Comment Container -->
+    <div class="comment-container">
+        <!-- Example comment -->
+        <div class="comment">
+            <div class="comment-header">
+                <strong>Josef Sean</strong>
             </div>
-            <div class="review-content">
-                <h3>Josef Sean</h3>
-                <p>"Excellent service! Mr. Bams' team arrived on time and did an outstanding job cleaning my car. Highly recommend!"</p>
-            </div>
+            <p class="comment-text">"Excellent service! Mr. Bams' team arrived on time and did an outstanding job cleaning my car. Highly recommend!"</p>
+            <button class="like-btn"><i class="fas fa-thumbs-up"></i> Like</button>
         </div>
 
-        <div class="review-card">
-            <div class="review-profile">
-                <img src="istockphoto-1301170212-612x612.jpg" alt="Customer 2">
-            </div>
-            <div class="review-content">
-                <h3>Michael Gibson</h3>
-                <p>"I loved the convenience of the mobile service. My car looks brand new, and I didn't even have to leave my house!"</p>
-            </div>
-        </div>
-
-        <div class="review-card">
-            <div class="review-profile">
-                <img src="closeup-portrait-handsome-young-smiling-260nw-201602522.webp" alt="Customer 3">
-            </div>
-            <div class="review-content">
-                <h3>John Brown</h3>
-                <p>"Great service and friendly staff. I will definitely be using this service again. My car was sparkling clean!"</p>
-            </div>
-        </div>
-
-        <div class="review-card">
-            <div class="review-profile">
-                <img src="istockphoto-94374356-612x612.jpg" alt="Customer 4">
-            </div>
-            <div class="review-content">
-                <h3>Emily White</h3>
-                <p>"I was impressed with the level of detail they put into my car. Very professional, will use again!"</p>
-            </div>
-        </div>
-        <div class="review-card">
-            <div class="review-profile">
-                <img src="369551.jpg" alt="Customer 4">
-            </div>
-            <div class="review-content">
-                <h3>Amanda Smith</h3>
-                <p>"The mobile car wash service was amazing! My car looks brand new, and the convenience of having it done at home was priceless. Highly recommend!"</p>
-            </div>
-        </div>
-        <div class="review-card">
-            <div class="review-profile">
-                <img src="OIP (3).jpeg" alt="Customer 4">
-            </div>
-            <div class="review-content">
-                <h3>Sophie Johnson</h3>
-                <p>"Excellent service, the team did a fantastic job on both the interior and exterior. I’ll definitely book again! My car has never looked better!"</p>
-            </div>
-        </div>
+        <!-- More comments can be dynamically added here -->
     </div>
+
+    <!-- Review Submission Form -->
+    <h3>Submit Your Review</h3>
+    <form class="review-form" action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required class="review-input">
+        <textarea name="comment" placeholder="Write your review" required class="review-textarea"></textarea>
+        <button type="submit" class="submit-btn">Submit Review</button>
+    </form>
 </section>
 
+<script>
+  document.querySelector('.review-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get form data
+    const name = event.target.name.value;
+    const commentText = event.target.comment.value;
+
+    // Create a new comment element
+    const commentContainer = document.querySelector('.comment-container');
+    const newComment = document.createElement('div');
+    newComment.classList.add('comment');
+
+    // Populate the comment with form data
+    newComment.innerHTML = `
+        <div class="comment-header">
+            <strong>${name}</strong>
+        </div>
+        <p class="comment-text">${commentText}</p>
+        <button class="like-btn"><i class="fas fa-thumbs-up"></i> Like</button>
+    `;
+
+    // Append the new comment to the comment container
+    commentContainer.appendChild(newComment);
+
+    // Clear the form
+    event.target.reset();
+});
+
+// Handle like button functionality
+document.querySelector('.comment-container').addEventListener('click', function(event) {
+    if (event.target.classList.contains('like-btn')) {
+        const button = event.target;
+        const currentLikes = parseInt(button.innerText.split(' ')[0]) || 0;
+        button.innerHTML = `<i class="fas fa-thumbs-up"></i> ${currentLikes + 1} Likes`;
+    }
+});
+</script>
 <script>
 
     let aboutSlideIndex = 0;
