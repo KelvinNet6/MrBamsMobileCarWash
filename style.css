@@ -492,7 +492,7 @@ form button:active {
     top: 15px;
     right: 15px;
     font-size: 30px;
-    color: #333;
+    color: #007BFF;
     cursor: pointer;
     transition: color 0.3s ease;
 }
