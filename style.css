@@ -545,7 +545,7 @@ form button:active {
     display: inline-block;
     margin-top: 10px; /* Space above the link */
     padding: 8px 15px;
-    background-color: #007bff; /* Blue background */
+    background-color: #add8ec;
     color: white;
     text-decoration: none; /* Removes underline */
     border-radius: 5px;
@@ -554,5 +554,5 @@ form button:active {
 }
 
 .visit-web-link:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #add8ec; /* Darker blue on hover */
 }
