@@ -198,6 +198,15 @@
 </section>
 
 <script>
+// Get elements
+const commentContainer = document.querySelector('.comment-container');
+const submitReviewBtn = document.getElementById('submit-review');
+const reviewNameInput = document.getElementById('review-name');
+const reviewTextInput = document.getElementById('review-text');
+
+// Check if there are saved reviews in localStorage
+let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
 // Display the reviews
 function displayReviews() {
     // Sort reviews by timestamp in ascending order
@@ -211,7 +220,7 @@ function displayReviews() {
     recentReviews.forEach((review, index) => {
         const reviewBox = document.createElement('div');
         reviewBox.classList.add('comment');
-        
+
         const reviewDate = new Date(review.timestamp).toLocaleString(); // Format date and time
 
         reviewBox.innerHTML = `
@@ -250,7 +259,9 @@ function handleLikeClick(event) {
 }
 
 // Submit a new review
-submitReviewBtn.addEventListener('click', () => {
+submitReviewBtn.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default form submission (if applicable)
+
     const name = reviewNameInput.value.trim();
     const text = reviewTextInput.value.trim();
 
@@ -279,6 +290,8 @@ submitReviewBtn.addEventListener('click', () => {
         // Clear input fields
         reviewNameInput.value = '';
         reviewTextInput.value = '';
+    } else {
+        alert('Please fill in both fields to submit a review.');
     }
 });
 
@@ -286,6 +299,7 @@ submitReviewBtn.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     displayReviews();
 });
+
 </script>
 <script>
 
