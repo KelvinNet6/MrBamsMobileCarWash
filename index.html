@@ -49,12 +49,7 @@
             </div>
         </li>
         <li class="dropdown">
-            <a href="#services">Services <span class="arrow">&#9660;</span></a>
-            <div class="dropdown-content">
-                <a href="#">Interior</a>
-                <a href="#">Exterior</a>
-                <a href="#">Interior + Exterior</a>
-            </div>
+            <a href="#services">Services</a>
         </li>
     </ul>
 </div>
@@ -190,67 +185,88 @@
 
 <section class="reviews-section" id="reviews">
     <h2>What Our Customers Say</h2>
-
-    <!-- Comment Container -->
     <div class="comment-container">
-        <!-- Example comment -->
-        <div class="comment">
-            <div class="comment-header">
-                <strong>Josef Sean</strong>
-            </div>
-            <p class="comment-text">"Excellent service! Mr. Bams' team arrived on time and did an outstanding job cleaning my car. Highly recommend!"</p>
-            <button class="like-btn"><i class="fas fa-thumbs-up"></i> Like</button>
-        </div>
-
-        <!-- More comments can be dynamically added here -->
+        <!-- Review Boxes will be displayed here -->
     </div>
-
-    <!-- Review Submission Form -->
-    <h2>Submit Your Review</h2>
-    <form class="review-form" action="#" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required class="review-input">
-        <textarea name="comment" placeholder="Write your review" required class="review-textarea"></textarea>
-        <button type="submit" class="submit-btn">Submit Review</button>
-    </form>
+    
+    <!-- Review Form -->
+    <div class="review-form">
+        <input type="text" id="review-name" class="review-input" placeholder="Your Name" required>
+        <textarea id="review-text" class="review-textarea" placeholder="Your Review" required></textarea>
+        <button id="submit-review" class="submit-btn">Submit Review</button>
+    </div>
 </section>
 
 <script>
-  document.querySelector('.review-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+ // Get elements
+const commentContainer = document.querySelector('.comment-container');
+const submitReviewBtn = document.getElementById('submit-review');
+const reviewNameInput = document.getElementById('review-name');
+const reviewTextInput = document.getElementById('review-text');
 
-    // Get form data
-    const name = event.target.name.value;
-    const commentText = event.target.comment.value;
+// Check if there are saved reviews in localStorage
+let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
 
-    // Create a new comment element
-    const commentContainer = document.querySelector('.comment-container');
-    const newComment = document.createElement('div');
-    newComment.classList.add('comment');
+// Display the reviews
+function displayReviews() {
+    commentContainer.innerHTML = ''; // Clear the container before displaying reviews
 
-    // Populate the comment with form data
-    newComment.innerHTML = `
-        <div class="comment-header">
-            <strong>${name}</strong>
-        </div>
-        <p class="comment-text">${commentText}</p>
-        <button class="like-btn"><i class="fas fa-thumbs-up"></i> Like</button>
-    `;
+    // Show only the latest three reviews
+    const reviewsToShow = reviews.slice(-3);
 
-    // Append the new comment to the comment container
-    commentContainer.appendChild(newComment);
+    reviewsToShow.forEach((review) => {
+        const reviewBox = document.createElement('div');
+        reviewBox.classList.add('comment');
+        
+        reviewBox.innerHTML = `
+            <div class="comment-header">${review.name}</div>
+            <div class="comment-text">${review.text}</div>
+            <div class="comment-date">${review.date}</div>
+            <button class="like-btn">
+                <i class="fas fa-thumbs-up"></i> Like
+            </button>
+        `;
 
-    // Clear the form
-    event.target.reset();
-});
+        // Append the review to the container
+        commentContainer.appendChild(reviewBox);
+    });
+}
 
-// Handle like button functionality
-document.querySelector('.comment-container').addEventListener('click', function(event) {
-    if (event.target.classList.contains('like-btn')) {
-        const button = event.target;
-        const currentLikes = parseInt(button.innerText.split(' ')[0]) || 0;
-        button.innerHTML = `<i class="fas fa-thumbs-up"></i> ${currentLikes + 1} Likes`;
+// Add a new review
+submitReviewBtn.addEventListener('click', () => {
+    const name = reviewNameInput.value.trim();
+    const text = reviewTextInput.value.trim();
+
+    // Check if both name and review text are provided
+    if (name && text) {
+        const currentDate = new Date();
+        const formattedDate = currentDate.toLocaleString(); // Get the date and time in a readable format
+
+        const newReview = { 
+            name, 
+            text, 
+            date: formattedDate 
+        };
+
+        reviews.push(newReview); // Add the new review to the array
+
+        // Save the updated reviews to localStorage
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+
+        // Clear the input fields
+        reviewNameInput.value = '';
+        reviewTextInput.value = '';
+
+        // Re-display reviews
+        displayReviews();
+    } else {
+        alert('Please provide both your name and review!');
     }
 });
+
+// Display reviews when the page loads
+window.onload = displayReviews;
+
 </script>
 <script>
 
