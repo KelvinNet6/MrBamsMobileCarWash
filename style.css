@@ -376,35 +376,35 @@ p {
     flex: 1;
     padding: 40px;
     background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 h2 {
     font-size: 36px;
 }
-.service-buttons {
-      display: flex;
-      gap: 20px; /* Space between buttons */
-      justify-content: center;
-      align-items: center;
-    }
-    .service-btn {
-      width: 60px;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f8f9fa; /* Light gray button background */
-      border: 1px solid #d6d8db;
-      border-radius: 50%; /* Makes the buttons circular */
-      cursor: pointer;
-      font-size: 24px; /* Icon size */
-      color: lightgray; /* Icon color */
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    .service-btn:hover {
-      background-color: #e2e6ea; /* Darker gray on hover */
-      color: #6c757d; /* Darker icon color on hover */
-    }
+
+/* Centering the 'Book Now' button */
+.service-btn {
+    width: auto;
+    height: 60px;
+    padding: 15px 40px; /* Adjust padding to make the button fit text */
+    background-color: #007bff; /* Blue color for the button */
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 30px; /* Adds some space from the top */
+}
+
+.service-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
 
 .service-btn:active {
     transform: scale(1); /* Button returns to original size when clicked */
@@ -521,6 +521,13 @@ form button:active {
 
     form input, form textarea {
         padding: 10px;
+    }
+
+    /* Add more space between the textarea and submit button */
+    form button {
+        font-size: 16px;
+        padding: 12px;
+        margin-top: 20px; /* Adds margin between the textarea and button */
     }
 
     form button {
