@@ -198,21 +198,17 @@
 </section>
 
 <script>
-// Get elements
-const commentContainer = document.querySelector('.comment-container');
-const submitReviewBtn = document.getElementById('submit-review');
-const reviewNameInput = document.getElementById('review-name');
-const reviewTextInput = document.getElementById('review-text');
-
-// Check if there are saved reviews in localStorage
-let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-
 // Display the reviews
 function displayReviews() {
-    commentContainer.innerHTML = ''; // Clear the container before displaying reviews
+    // Sort reviews by timestamp in ascending order
+    reviews.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
-    // Show all reviews stored in localStorage
-    reviews.forEach((review) => {
+    // Limit to the last 3 reviews
+    const recentReviews = reviews.slice(-3);
+
+    // Render the reviews
+    commentContainer.innerHTML = ''; // Clear container
+    recentReviews.forEach((review, index) => {
         const reviewBox = document.createElement('div');
         reviewBox.classList.add('comment');
         
@@ -222,47 +218,74 @@ function displayReviews() {
             <div class="comment-header">${review.name}</div>
             <div class="comment-text">${review.text}</div>
             <div class="comment-date">${reviewDate}</div>
-            <button class="like-btn">
-                <i class="fas fa-thumbs-up"></i> Like
+            <button class="like-btn" data-index="${index}">
+                <i class="fas fa-thumbs-up"></i> Like (${review.likes || 0})
             </button>
         `;
 
-        // Append the review to the container
         commentContainer.appendChild(reviewBox);
+    });
+
+    // Attach event listeners to "Like" buttons
+    const likeButtons = document.querySelectorAll('.like-btn');
+    likeButtons.forEach((button) => {
+        button.addEventListener('click', handleLikeClick);
     });
 }
 
-// Add a new review
+// Handle Like button click
+function handleLikeClick(event) {
+    const button = event.target.closest('.like-btn');
+    const index = button.dataset.index;
+
+    // Increment likes for the corresponding review
+    const review = reviews[reviews.length - 3 + parseInt(index)]; // Map index to the correct review
+    review.likes = (review.likes || 0) + 1;
+
+    // Save updated reviews back to localStorage
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+
+    // Update the display
+    displayReviews();
+}
+
+// Submit a new review
 submitReviewBtn.addEventListener('click', () => {
     const name = reviewNameInput.value.trim();
     const text = reviewTextInput.value.trim();
 
-    // Check if both name and review text are provided
     if (name && text) {
-        const newReview = { 
-            name, 
+        const newReview = {
+            name,
             text,
-            timestamp: new Date().getTime() // Save timestamp to sort later if needed
+            timestamp: new Date().toISOString(),
+            likes: 0 // Initialize with 0 likes
         };
-        reviews.push(newReview); // Add the new review to the array
 
-        // Save the updated reviews to localStorage
+        reviews.push(newReview); // Add the new review
+        reviews.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp)); // Ensure sorted by date
+
+        // Remove the oldest review if there are more than 3
+        if (reviews.length > 3) {
+            reviews.shift();
+        }
+
+        // Save updated reviews to localStorage
         localStorage.setItem('reviews', JSON.stringify(reviews));
 
-        // Clear the input fields
+        // Display updated reviews
+        displayReviews();
+
+        // Clear input fields
         reviewNameInput.value = '';
         reviewTextInput.value = '';
-
-        // Re-display reviews
-        displayReviews();
-    } else {
-        alert('Please provide both your name and review!');
     }
 });
 
-// Display reviews when the page loads
-window.onload = displayReviews;
-
+// Load and display reviews on page load
+document.addEventListener('DOMContentLoaded', () => {
+    displayReviews();
+});
 </script>
 <script>
 
