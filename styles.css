@@ -116,7 +116,7 @@ header h1 {
   width: 100%;
   margin-top: 150px; 
   position: absolute;
-  margin-left: 450px; 
+  margin-left: 430px; 
 }
 
 header p {
@@ -579,11 +579,11 @@ li.dropdown:hover .dropdown-content {
 
 /* Comment Container */
 .comment-container {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 0 20px; /* Add padding for small screens */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    gap: 20px; /* Space between items */
+    padding: 0 20px;
+    margin-bottom: 30px;
 }
 
 .comment {
@@ -591,10 +591,11 @@ li.dropdown:hover .dropdown-content {
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
-    max-width: 600px;
-    margin: 0 auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .comment-header {
@@ -634,7 +635,7 @@ li.dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 0 20px; /* Add padding for small screens */
+    padding: 0 20px;
 }
 
 .review-input, .review-textarea {
@@ -671,58 +672,36 @@ li.dropdown:hover .dropdown-content {
 }
 
 .submit-btn:active {
-    transform: scale(0.98); /* Slight scaling effect on click */
+    transform: scale(0.98);
 }
 
-/* Mobile Responsive Styles */
+/* Mobile View - Adjust for smaller screens */
 @media screen and (max-width: 768px) {
+    /* For mobile, display the items in a single column with space between them */
     .comment-container {
-        padding: 0 15px; /* Reduce padding on small screens */
+        grid-template-columns: 1fr; /* 1 item per row */
+        gap: 15px; /* Space between items */
     }
 
     .comment {
-        width: 100%; /* Full width for comments */
-        max-width: 100%; /* Remove max-width restriction on mobile */
-        margin: 10px 0; /* Add space between comments */
-        padding: 12px; /* Adjust padding for mobile */
-    }
-
-    .review-form {
-        padding: 0 15px; /* Adjust form padding */
+        width: 100%;
+        padding: 12px;
     }
 
     .review-input, .review-textarea {
-        font-size: 14px; /* Slightly smaller text */
-        padding: 10px; /* Adjust padding */
+        font-size: 14px;
+        padding: 10px;
     }
 
     .submit-btn {
-        padding: 10px; /* Adjust padding */
-        font-size: 14px; /* Adjust button text size */
+        padding: 10px;
+        font-size: 14px;
     }
 
     .like-btn {
-        font-size: 16px; /* Reduce like button size */
+        font-size: 16px;
     }
 }
-
-@media screen and (max-width: 480px) {
-    .comment {
-        width: 100%; /* Full width for comments on very small screens */
-        margin: 10px 0; /* Margin between comments */
-    }
-
-    .review-input, .review-textarea {
-        font-size: 14px; /* Smaller text */
-        padding: 10px; /* Adjust padding for small screens */
-    }
-
-    .submit-btn {
-        font-size: 14px; /* Adjust button text size */
-        padding: 10px; /* Adjust padding for mobile */
-    }
-}
-
 
 /* Footer Styling */
 footer {
