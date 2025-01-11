@@ -581,24 +581,27 @@ li.dropdown:hover .dropdown-content {
 .comment-container {
     margin-top: 30px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allow reviews to wrap to new lines */
     gap: 20px;
-    justify-content: center; /* Center the reviews */
+    justify-content: space-between;
 }
 
-/* Individual Review Box */
+/* Style for each review box */
 .comment {
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
     max-width: 600px;
-    width: 100%;
+    width: 100%; /* Make sure reviews are responsive */
+    margin: 0 auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* Comment Header (Name) */
+/* Comment Header */
 .comment-header {
     font-size: 18px;
     font-weight: bold;
@@ -609,13 +612,12 @@ li.dropdown:hover .dropdown-content {
 .comment-text {
     font-size: 16px;
     margin: 10px 0;
-    line-height: 1.5;
 }
 
-/* Date & Time */
+/* Date */
 .comment-date {
     font-size: 14px;
-    color: #888;
+    color: #777;
     margin-top: 10px;
 }
 
@@ -630,7 +632,6 @@ li.dropdown:hover .dropdown-content {
     align-items: center;
     gap: 5px;
     transition: color 0.3s ease;
-    margin-top: 10px;
 }
 
 .like-btn:hover {
@@ -641,34 +642,103 @@ li.dropdown:hover .dropdown-content {
     font-size: 20px;
 }
 
-/* Mobile Responsiveness */
-@media screen and (max-width: 768px) {
-    /* For mobile devices, reduce the size of the review boxes and space them out */
-    .comment {
-        max-width: 100%;
-        padding: 12px;
-    }
+/* Review Form */
+.review-form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px; /* Max width for the form */
+    margin: 0 auto; /* Center the form */
+}
 
+.review-input, .review-textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    width: 100%; /* Ensure input and textarea take full width */
+    margin-bottom: 15px; /* Add space below input fields and textarea */
+}
+
+/* Make the textarea resizable only vertically */
+.review-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Focus state for input and textarea */
+.review-input:focus, .review-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px; /* Add margin above the submit button */
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+.submit-btn:active {
+    transform: scale(1);
+}
+
+/* Large screen view: Review form and review container */
+@media screen and (min-width: 1024px) {
     .comment-container {
-        gap: 15px; /* Add spacing between items */
-        justify-content: space-between; /* Make the reviews space out properly */
+        flex-wrap: nowrap; /* Keep reviews in a row */
+        gap: 30px; /* Increase space between reviews */
     }
 
-    .comment-header {
-        font-size: 16px; /* Adjust font size for smaller screens */
+    /* Adjust layout for larger screens */
+    .review-form {
+        max-width: 700px; /* Allow the form to expand on larger screens */
     }
 
-    .comment-text {
-        font-size: 14px; /* Adjust font size for smaller screens */
+    /* Input fields and buttons scale well on large screens */
+    .review-input, .review-textarea {
+        font-size: 18px;
+        padding: 14px;
     }
 
-    .comment-date {
-        font-size: 12px; /* Adjust font size for smaller screens */
+    .submit-btn {
+        padding: 15px;
+        font-size: 18px;
     }
 }
 
+/* Mobile and tablet views */
+@media screen and (max-width: 768px) {
+    /* Stack the reviews in columns on smaller screens */
+    .comment-container {
+        flex-direction: column; /* Stack the reviews vertically */
+        gap: 15px;
+    }
 
+    .review-input, .review-textarea {
+        font-size: 14px; /* Make input text smaller for better fit */
+        padding: 10px;
+        margin-bottom: 10px; /* Gap below input fields and textarea */
+    }
 
+    .submit-btn {
+        padding: 10px;
+        font-size: 14px;
+        margin-top: 10px; /* Gap above submit button */
+    }
+}
 /* Footer Styling */
 footer {
   background-color: #383838;
