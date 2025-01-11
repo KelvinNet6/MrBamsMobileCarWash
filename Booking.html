@@ -7,6 +7,61 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.x.x/css/all.min.css" rel="stylesheet">
     <script src="https://www.google.co.za/maps/place/Franschhoek,+7690/@-33.9020471,19.1066919,13z/data=!3m1!4b1!4m6!3m5!1s0x1dcdbd076805b2cf:0x3cb48654d356b2f9!8m2!3d-33.9127211!4d19.1212795!16zL20vMDQ2cjQ0?entry=ttu&g_ep=EgoyMDI1MDEwOC4wIKXMDSoASAFQAw%3D%3D" async defer></script>
+<style>
+     .custom-car-icon {
+      color: lightgray;    /* Icon color */
+      font-size: 50px;     /* Icon size */
+      padding: 10px;       /* Add some padding around the icon */
+      background-color: #f8f9fa; /* Light gray background */
+      border: 2px solid #d6d8db; /* Border around the icon */
+      border-radius: 10px; /* Optional rounded corners */
+      display: inline-block; /* Keeps icon within bounds */
+      transition: all 0.3s ease; /* Smooth hover effect */
+    }
+
+    /* Hover Effect */
+    .custom-car-icon:hover {
+      color: #6c757d;       /* Darker gray on hover */
+      background-color: #e2e6ea; /* Slightly darker background on hover */
+      border-color: #6c757d; /* Darker border on hover */
+    }
+    /* Custom Broom Icon Styling */
+    .custom-broom-icon {
+      color: #ff9800;       /* Orange color for the icon */
+      font-size: 40px;      /* Icon size */
+      padding: 15px;        /* Padding around the icon */
+      background-color: #f8f9fa; /* Light gray background */
+      border: 2px solid #e0e0e0; /* Subtle border */
+      border-radius: 50%;   /* Circular icon */
+      display: inline-block; /* Ensures proper alignment */
+      transition: all 0.3s ease; /* Smooth hover effect */
+    }
+
+    /* Hover Effects */
+    .custom-broom-icon:hover {
+      color: #ff5722;       /* Darker orange on hover */
+      background-color: #e0e6f1; /* Light blue-gray background on hover */
+      border-color: #ff5722; /* Border color changes to match icon */
+    }
+    /* Custom Water Icon Styling */
+    .custom-water-icon {
+      color: #2196f3;       /* Blue color for the icon */
+      font-size: 40px;      /* Icon size */
+      padding: 15px;        /* Padding around the icon */
+      background-color: #e3f2fd; /* Light blue background */
+      border: 2px solid #90caf9; /* Subtle blue border */
+      border-radius: 50%;   /* Circular icon */
+      display: inline-block; /* Keeps the icon block-like */
+      transition: all 0.3s ease; /* Smooth hover effects */
+    }
+
+    /* Hover Effect */
+    .custom-water-icon:hover {
+      color: #1976d2;       /* Darker blue on hover */
+      background-color: #bbdefb; /* Slightly darker blue background on hover */
+      border-color: #1976d2; /* Border changes to match hover color */
+    }
+</style>
 </head>
 <body>
     <!-- Header Section -->
@@ -26,13 +81,13 @@
     <div class="service-buttons">
     <!-- Icon buttons -->
     <button class="service-btn" onclick="openPopup('interior')">
-      <i class="fas fa-car"></i>
+      <i class="fas fa-car custom-car-icon"></i>
     </button>
     <button class="service-btn" onclick="openPopup('exterior')">
-      <i class="fas fa-broom"></i>
+      <i class="fas fa-broom custom-broom-icon"></i>
     </button>
     <button class="service-btn" onclick="openPopup('full')">
-      <i class="fas fa-water"></i>
+      <i class="fas fa-water custom-water-icon"></i>
     </button>
   </div>
     <!-- Popup Form -->
