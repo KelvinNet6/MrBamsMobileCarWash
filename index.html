@@ -198,7 +198,7 @@
 </section>
 
 <script>
- // Get elements
+// Get elements
 const commentContainer = document.querySelector('.comment-container');
 const submitReviewBtn = document.getElementById('submit-review');
 const reviewNameInput = document.getElementById('review-name');
@@ -211,17 +211,17 @@ let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
 function displayReviews() {
     commentContainer.innerHTML = ''; // Clear the container before displaying reviews
 
-    // Show only the latest three reviews
-    const reviewsToShow = reviews.slice(-3);
-
-    reviewsToShow.forEach((review) => {
+    // Show all reviews stored in localStorage
+    reviews.forEach((review) => {
         const reviewBox = document.createElement('div');
         reviewBox.classList.add('comment');
         
+        const reviewDate = new Date(review.timestamp).toLocaleString(); // Format date and time
+
         reviewBox.innerHTML = `
             <div class="comment-header">${review.name}</div>
             <div class="comment-text">${review.text}</div>
-            <div class="comment-date">${review.date}</div>
+            <div class="comment-date">${reviewDate}</div>
             <button class="like-btn">
                 <i class="fas fa-thumbs-up"></i> Like
             </button>
@@ -239,15 +239,11 @@ submitReviewBtn.addEventListener('click', () => {
 
     // Check if both name and review text are provided
     if (name && text) {
-        const currentDate = new Date();
-        const formattedDate = currentDate.toLocaleString(); // Get the date and time in a readable format
-
         const newReview = { 
             name, 
-            text, 
-            date: formattedDate 
+            text,
+            timestamp: new Date().getTime() // Save timestamp to sort later if needed
         };
-
         reviews.push(newReview); // Add the new review to the array
 
         // Save the updated reviews to localStorage
