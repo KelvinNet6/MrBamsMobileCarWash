@@ -326,7 +326,7 @@ footer p {
   }
 
   .container-right {
-    background-color: lightgrey;
+    background-color: rgb(211, 211, 211);;
     padding: 15px; /* Adjusted padding */
     border-radius: 10px;
   }
@@ -425,7 +425,7 @@ h2 {
 }
 
 .popup-content {
-    background-color: white;
+    background-color: rgb(211, 211, 211);
     padding: 25px;
     border-radius: 12px;
     width: 100%;
