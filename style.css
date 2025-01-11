@@ -326,7 +326,7 @@ footer p {
   }
 
   .container-right {
-    background-color: #98adb1;
+    background-color: lightgrey;
     padding: 15px; /* Adjusted padding */
     border-radius: 10px;
   }
