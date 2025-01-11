@@ -577,84 +577,152 @@ li.dropdown:hover .dropdown-content {
   }
 }
 
-.reviews-section {
-  padding: 50px 20px;
-  background-color: #333;
-  text-align: center;
-  position: relative;
-  overflow: hidden; 
+/* Comment Container */
+.comment-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px; /* Add padding for small screens */
 }
 
-.reviews-section h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #ddd;
+.comment {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-.reviews-container {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 20px;
-  padding: 20px 0;
-  justify-content: flex-start;
-  animation: scrollReviews 30s linear infinite; 
+.comment-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-@keyframes scrollReviews {
-  0% {
-      transform: translateX(0); 
-  }
-  100% {
-      transform: translateX(-100%); 
-  }
+.comment-text {
+    font-size: 16px;
+    margin: 10px 0;
 }
 
-.review-card {
-  background-color: #e3f3f4;
-  border-radius: 10px;
-  width: 300px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 300px;
-  transition: transform 0.3s ease;
+.like-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #007bff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
 }
 
-.review-profile img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ccc;
+.like-btn:hover {
+    color: #0056b3;
 }
 
-.review-content h3 {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #333;
+.like-btn i {
+    font-size: 20px;
 }
 
-.review-content p {
-  font-size: 1rem;
-  color: #666;
-  margin: 0;
+/* Review Form */
+.review-form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 20px; /* Add padding for small screens */
 }
 
+.review-input, .review-textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.review-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.review-input:focus, .review-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+.submit-btn:active {
+    transform: scale(0.98); /* Slight scaling effect on click */
+}
+
+/* Mobile Responsive Styles */
 @media screen and (max-width: 768px) {
-  .reviews-container {
-      animation: none; 
-      flex-wrap: wrap;
-      justify-content: space-around;
-  }
+    .comment-container {
+        padding: 0 15px; /* Reduce padding on small screens */
+    }
 
-  .review-card {
-      width: 250px;
-      min-height: 280px;
-  }
+    .comment {
+        width: 100%; /* Full width for comments */
+        max-width: 100%; /* Remove max-width restriction on mobile */
+        margin: 10px 0; /* Add space between comments */
+        padding: 12px; /* Adjust padding for mobile */
+    }
+
+    .review-form {
+        padding: 0 15px; /* Adjust form padding */
+    }
+
+    .review-input, .review-textarea {
+        font-size: 14px; /* Slightly smaller text */
+        padding: 10px; /* Adjust padding */
+    }
+
+    .submit-btn {
+        padding: 10px; /* Adjust padding */
+        font-size: 14px; /* Adjust button text size */
+    }
+
+    .like-btn {
+        font-size: 16px; /* Reduce like button size */
+    }
 }
+
+@media screen and (max-width: 480px) {
+    .comment {
+        width: 100%; /* Full width for comments on very small screens */
+        margin: 10px 0; /* Margin between comments */
+    }
+
+    .review-input, .review-textarea {
+        font-size: 14px; /* Smaller text */
+        padding: 10px; /* Adjust padding for small screens */
+    }
+
+    .submit-btn {
+        font-size: 14px; /* Adjust button text size */
+        padding: 10px; /* Adjust padding for mobile */
+    }
+}
+
 
 /* Footer Styling */
 footer {
