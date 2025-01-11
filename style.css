@@ -381,31 +381,30 @@ p {
 h2 {
     font-size: 36px;
 }
-/* Service Buttons */
-.service-btn {
-    display: flex;
-    align-items: center;
-    padding: 12px 25px; /* Increased padding for better touch on mobile */
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 8px; /* Slightly rounded corners */
-    cursor: pointer;
-    font-size: 16px;
-    gap: 12px; /* Slightly more space between the icon and text */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 30px;
-    margin-left: 100px;
-}
-
-.service-btn i {
-    font-size: 30px; /* Increased icon size */
-}
-
-.service-btn:hover {
-    background-color: #0056b3;
-    transform: scale(1.05); /* Button scale effect on hover */
-}
+.service-buttons {
+      display: flex;
+      gap: 20px; /* Space between buttons */
+      justify-content: center;
+      align-items: center;
+    }
+    .service-btn {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f9fa; /* Light gray button background */
+      border: 1px solid #d6d8db;
+      border-radius: 50%; /* Makes the buttons circular */
+      cursor: pointer;
+      font-size: 24px; /* Icon size */
+      color: lightgray; /* Icon color */
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .service-btn:hover {
+      background-color: #e2e6ea; /* Darker gray on hover */
+      color: #6c757d; /* Darker icon color on hover */
+    }
 
 .service-btn:active {
     transform: scale(1); /* Button returns to original size when clicked */
