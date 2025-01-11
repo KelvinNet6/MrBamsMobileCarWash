@@ -188,12 +188,19 @@
     <div class="comment-container">
         <!-- Review Boxes will be displayed here -->
     </div>
-    
-    <!-- Review Form -->
-    <div class="review-form">
-        <input type="text" id="review-name" class="review-input" placeholder="Your Name" required>
-        <textarea id="review-text" class="review-textarea" placeholder="Your Review" required></textarea>
-        <button id="submit-review" class="submit-btn">Submit Review</button>
+
+    <!-- "Review Us" Button -->
+    <button id="open-review-popup" class="open-popup-btn">Review Us</button>
+
+    <!-- Review Form Popup -->
+    <div class="review-popup" id="review-popup">
+        <div class="popup-content">
+            <span id="close-popup" class="close-btn">&times;</span>
+            <h3>Write a Review</h3>
+            <input type="text" id="review-name" class="review-input" placeholder="Your Name" required>
+            <textarea id="review-text" class="review-textarea" placeholder="Your Review" required></textarea>
+            <button id="submit-review" class="submit-btn">Submit Review</button>
+        </div>
     </div>
 </section>
 
@@ -203,9 +210,27 @@ const commentContainer = document.querySelector('.comment-container');
 const submitReviewBtn = document.getElementById('submit-review');
 const reviewNameInput = document.getElementById('review-name');
 const reviewTextInput = document.getElementById('review-text');
+const reviewPopup = document.getElementById('review-popup'); // Popup element
+const openPopupBtn = document.getElementById('open-review-popup'); // Button to open popup
+const closePopupBtn = document.getElementById('close-popup'); // Button to close popup
+
+// Define the maximum lifetime for a review in milliseconds (e.g., 24 hours)
+const REVIEW_LIFETIME = 24 * 60 * 60 * 1000;
 
 // Check if there are saved reviews in localStorage
 let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+// Remove expired reviews
+function removeExpiredReviews() {
+    const now = new Date();
+    reviews = reviews.filter((review) => {
+        const reviewDate = new Date(review.timestamp);
+        return now - reviewDate < REVIEW_LIFETIME;
+    });
+
+    // Save the updated reviews back to localStorage
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+}
 
 // Display the reviews
 function displayReviews() {
@@ -258,6 +283,16 @@ function handleLikeClick(event) {
     displayReviews();
 }
 
+// Open the popup
+openPopupBtn.addEventListener('click', () => {
+    reviewPopup.style.display = 'flex'; // Show popup
+});
+
+// Close the popup
+closePopupBtn.addEventListener('click', () => {
+    reviewPopup.style.display = 'none'; // Hide popup
+});
+
 // Submit a new review
 submitReviewBtn.addEventListener('click', (e) => {
     e.preventDefault(); // Prevent default form submission (if applicable)
@@ -287,9 +322,10 @@ submitReviewBtn.addEventListener('click', (e) => {
         // Display updated reviews
         displayReviews();
 
-        // Clear input fields
+        // Clear input fields and close popup
         reviewNameInput.value = '';
         reviewTextInput.value = '';
+        reviewPopup.style.display = 'none';
     } else {
         alert('Please fill in both fields to submit a review.');
     }
@@ -297,6 +333,10 @@ submitReviewBtn.addEventListener('click', (e) => {
 
 // Load and display reviews on page load
 document.addEventListener('DOMContentLoaded', () => {
+    // Remove expired reviews
+    removeExpiredReviews();
+
+    // Display the remaining reviews
     displayReviews();
 });
 
