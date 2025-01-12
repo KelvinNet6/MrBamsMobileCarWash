@@ -27,33 +27,6 @@ body {
     font-weight: bold;
     text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.958);
 }
-
-/* Mobile responsiveness: when screen width is less than or equal to 768px */
-@media (max-width: 768px) {
-    /* Adjust video styling to ensure it covers the screen on smaller devices */
-    .header video {
-        object-fit: cover; /* Ensures the video stays responsive */
-    }
-
-    /* Reduce the heading size in mobile view */
-    .header h1 {
-        font-size: 2em; /* Smaller font size for mobile */
-    }
-
-    /* Adjust padding for mobile view */
-    .header {
-        padding-left: 20px; /* Reduced padding for mobile */
-        padding-right: 20px; /* Reduced padding for mobile */
-    }
-}
-
-/* For smaller devices like phones */
-@media (max-width: 480px) {
-    .header h1 {
-        font-size: 1.5em; /* Even smaller font for very small screens */
-    }
-}
-
 .about-section {
     padding: 50px 20px;
     text-align: left; /* Align text to the left */
