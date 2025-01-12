@@ -88,26 +88,6 @@
             const time = document.getElementById("time").value;
             const message = document.getElementById("message").value;
 
-            // Simulate sending an email using mailto link
-            const emailSubject = encodeURIComponent("Booking Confirmation - Mr.Bams Mobile Car Wash");
-            const emailBody = encodeURIComponent(`
-                Dear ${name},\n\n
-                Your appointment for a ${service} car wash has been confirmed!\n\n
-                Service: ${service}\n
-                Location: ${location}\n
-                Date: ${date}\n
-                Time: ${time}\n
-                Additional Request: ${message}\n\n
-                Thank you for booking with us!\n
-                Mr.Bams Mobile Car Wash
-            `);
-
-            // Open the email client (simulating sending email)
-            window.location.href = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`;
-
-            // Simulate sending a confirmation email to the admin (again, just for simulation)
-            window.location.href = `mailto:mrbamsmobilecarwash1@gmail.com?subject=New Booking&body=New booking confirmed for ${name}. Service: ${service}, Location: ${location}, Date: ${date}, Time: ${time}`;
-
             // Generate the invoice PDF using jsPDF
             generateInvoice(name, service, location, date, time, message);
             closePopup();
@@ -118,7 +98,7 @@
             const doc = new jsPDF();
 
             // Load the company logo image as base64 or use a URL
-            const logo = 'https://github.com/KelvinNet6/MobileCarWash/blob/main/me.jpg';  // Replace this with your actual logo image base64 string
+            const logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA...';  // Replace this with your actual logo image base64 string
 
             // Add company logo to the top of the invoice
             doc.addImage(logo, 'PNG', 20, 10, 50, 20); // Adjust width and height to fit the logo properly
@@ -149,7 +129,7 @@
             // Save the invoice as a PDF and offer it for download
             doc.save("invoice.pdf");
 
-            // Simulate sending the PDF invoice (client needs to download it)
+            // Notify the user that the invoice is ready for download
             alert("Booking confirmed! The invoice PDF will be downloaded.");
         }
     </script>
