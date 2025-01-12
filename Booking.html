@@ -6,9 +6,9 @@
     <title>Car Wash Appointment Booking</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.x.x/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <body>
     <!-- Header Section -->
     <div class="header-container">
         <div class="left-container">
@@ -42,7 +42,7 @@
 
                 <label for="service">Select Service:</label>
                 <select id="service" name="service" required>
-                     <option value="interior">None</option>
+                    <option value="none">None</option>
                     <option value="interior">Interior Car Wash</option>
                     <option value="exterior">Exterior Car Wash</option>
                     <option value="full">Full Car Wash</option>
@@ -84,12 +84,59 @@
             const date = document.getElementById("date").value;
             const message = document.getElementById("message").value;
 
-            // Simulating form submission
-            alert(`Appointment booked successfully!\n\nName: ${name}\nEmail: ${email}\nService: ${service}\nLocation: ${location}\nDate: ${date}\nMessage: ${message}`);
+            // Simulate sending an email using mailto link
+            const emailSubject = encodeURIComponent("Booking Confirmation - Mr.Bams Mobile Car Wash");
+            const emailBody = encodeURIComponent(`
+                Dear ${name},\n\n
+                Your appointment for a ${service} car wash has been confirmed!\n\n
+                Service: ${service}\n
+                Location: ${location}\n
+                Date: ${date}\n
+                Additional Request: ${message}\n\n
+                Thank you for booking with us!\n
+                Mr.Bams Mobile Car Wash
+            `);
 
-            // Close the popup after submitting the form
+            // Open the email client
+            window.location.href = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`;
+
+            // Simulate sending a confirmation email to the admin (again, just for simulation)
+            window.location.href = `mailto:mrbamsmobilecarwash1@gmail.com?subject=New Booking&body=New booking confirmed for ${name}. Service: ${service}, Location: ${location}, Date: ${date}`;
+
+            // Generate the invoice PDF using jsPDF
+            generateInvoice(name, service, location, date, message);
             closePopup();
         });
+
+        function generateInvoice(name, service, location, date, message) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFontSize(16);
+            doc.text("Invoice - Mr.Bams Mobile Car Wash", 20, 20);
+
+            doc.setFontSize(12);
+            doc.text(`Name: ${name}`, 20, 30);
+            doc.text(`Service: ${service}`, 20, 40);
+            doc.text(`Location: ${location}`, 20, 50);
+            doc.text(`Date: ${date}`, 20, 60);
+            doc.text(`Message: ${message}`, 20, 70);
+
+            // Service pricing logic
+            let price = 0;
+            if (service === "interior") price = 200;
+            else if (service === "exterior") price = 250;
+            else if (service === "full") price = 400;
+
+            doc.text(`Price: $${price}`, 20, 80);
+            doc.text(`Total: $${price}`, 20, 90);
+
+            // Save the invoice as a PDF and offer it for download
+            doc.save("invoice.pdf");
+
+            // Simulate sending the PDF invoice (client needs to download it)
+            alert("Booking confirmed! The invoice PDF will be downloaded.");
+        }
     </script>
 </body>
 </html>
