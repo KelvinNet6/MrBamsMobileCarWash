@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Wash Appointment Booking</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Assuming your CSS is linked here -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.x.x/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -29,7 +29,7 @@
     </div>
 
     <!-- Popup Form -->
-    <div id="popup-form" class="popup-form">
+    <div id="popup-form" class="popup-form" style="display: none;">
         <div class="popup-content">
             <span class="close-btn" onclick="closePopup()">×</span>
             <h3>Book an Appointment</h3>
@@ -97,22 +97,20 @@
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            // Load the company logo image as base64 or use a URL
-            const logo = 'https://github.com/KelvinNet6/MobileCarWash/blob/main/me.png';  // Replace this with your actual logo image base64 string
+            // Add invoice title and format the layout
+            doc.setFontSize(18);
+            doc.text("Invoice - Mr.Bams Mobile Car Wash", 105, 30, null, null, "center");
 
-            // Add company logo to the top of the invoice
-            doc.addImage(logo, 'PNG', 20, 10, 50, 20); // Adjust width and height to fit the logo properly
-
-            doc.setFontSize(16);
-            doc.text("Invoice - Mr.Bams Mobile Car Wash", 20, 40);
-
+            // Set smaller font size for details
             doc.setFontSize(12);
-            doc.text(`Name: ${name}`, 20, 50);
-            doc.text(`Service: ${service}`, 20, 60);
-            doc.text(`Location: ${location}`, 20, 70);
-            doc.text(`Date: ${date}`, 20, 80);
-            doc.text(`Time: ${time}`, 20, 90);
-            doc.text(`Message: ${message}`, 20, 100);
+
+            // Add details centered
+            doc.text(`Name: ${name}`, 105, 50, null, null, "center");
+            doc.text(`Service: ${service}`, 105, 60, null, null, "center");
+            doc.text(`Location: ${location}`, 105, 70, null, null, "center");
+            doc.text(`Date: ${date}`, 105, 80, null, null, "center");
+            doc.text(`Time: ${time}`, 105, 90, null, null, "center");
+            doc.text(`Message: ${message}`, 105, 100, null, null, "center");
 
             // Service pricing logic
             let price = 0;
@@ -120,11 +118,11 @@
             else if (service === "exterior") price = 250;
             else if (service === "full") price = 500;
 
-            doc.text(`Price: $${price}`, 20, 110);
-            doc.text(`Total: $${price}`, 20, 120);
+            doc.text(`Price: $${price}`, 105, 120, null, null, "center");
+            doc.text(`Total: $${price}`, 105, 130, null, null, "center");
 
             // Add account number for payment instructions
-            doc.text("Account Number for Payment: +27815130009", 20, 130);
+            doc.text("Account Number for Payment: +27815130009", 105, 140, null, null, "center");
 
             // Save the invoice as a PDF and offer it for download
             doc.save("invoice.pdf");
