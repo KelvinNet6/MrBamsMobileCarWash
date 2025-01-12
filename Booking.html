@@ -89,11 +89,11 @@
             const message = document.getElementById("message").value;
 
             // Generate the invoice PDF using jsPDF
-            generateInvoice(name, service, location, date, time, message);
+            generateInvoice(name, service, location, date, time);
             closePopup();
         });
 
-        function generateInvoice(name, service, location, date, time, message) {
+        function generateInvoice(name, service, location, date, time) {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
@@ -110,7 +110,6 @@
             doc.text(`Location: ${location}`, 105, 70, null, null, "center");
             doc.text(`Date: ${date}`, 105, 80, null, null, "center");
             doc.text(`Time: ${time}`, 105, 90, null, null, "center");
-            doc.text(`Message: ${message}`, 105, 100, null, null, "center");
 
             // Service pricing logic
             let price = 0;
