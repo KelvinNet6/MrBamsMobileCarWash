@@ -94,46 +94,45 @@
             closePopup();
         });
 
-        function generateInvoice(name, service, location, date, time) {
+       function generateInvoice(name, service, location, date, time) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Add invoice title (heading)
+    // Generate a random invoice number (You can modify this to a sequential system if desired)
+    const invoiceNumber = `INV-${Math.floor(Math.random() * 1000000)}`;
+
+    // Add invoice title (heading) and invoice number
     doc.setFontSize(18);
     doc.text("Invoice - Mr.Bams Mobile Car Wash", 105, 30, null, null, "center");
+    doc.setFontSize(12);
+    doc.text(`Invoice No: ${invoiceNumber}`, 20, 40); // Display invoice number
 
     // Set smaller font size for details
     doc.setFontSize(12);
 
     // Create table for Invoice Header Data (client details)
     const tableStartY = 50;
-    const tableColumnWidths = [40, 80, 40, 80]; // Column widths for the header section
+    const tableColumnWidths = [60, 80]; // Column widths for the header section
     const tableHeaders = ["Client Name", "Service Type"];
     
     // Draw table header background
     doc.setFillColor(240, 240, 240); // Light gray header background
-    doc.rect(20, tableStartY, tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3], 10, 'F'); // Header background
+    doc.rect(20, tableStartY, tableColumnWidths[0] + tableColumnWidths[1], 10, 'F'); // Header background
     doc.text(tableHeaders[0], 20, tableStartY + 7);
     doc.text(tableHeaders[1], 100, tableStartY + 7);
-    doc.text(tableHeaders[2], 180, tableStartY + 7);
-    doc.text(tableHeaders[3], 260, tableStartY + 7);
 
     // Draw data row for client details
     let currentY = tableStartY + 15;
     const headerData = [
-        [name, service, date, time]
+        [name, service]
     ];
 
     headerData.forEach(row => {
         doc.setFillColor(255, 255, 255); // White row background
         doc.rect(20, currentY, tableColumnWidths[0], 10, 'F');
         doc.rect(100, currentY, tableColumnWidths[1], 10, 'F');
-        doc.rect(180, currentY, tableColumnWidths[2], 10, 'F');
-        doc.rect(260, currentY, tableColumnWidths[3], 10, 'F');
         doc.text(row[0], 20, currentY + 7);
         doc.text(row[1], 100, currentY + 7);
-        doc.text(row[2], 180, currentY + 7);
-        doc.text(row[3], 260, currentY + 7);
         currentY += 10;
     });
 
@@ -156,7 +155,7 @@
     let serviceCurrentY = serviceTableStartY + 15;
     const serviceTableData = [
         ["Service", `R${getPrice(service)}`, `R${getPrice(service)}`],
-        ["Location", location, ""], // Empty cells for location, date, and time
+        ["Location", location, ""], // Empty cells for location
         ["Scheduled Date", date, ""],
         ["Scheduled Time", time, ""]
     ];
@@ -199,7 +198,6 @@ function getPrice(service) {
     else if (service === "full") price = 500;
     return price;
 }
-
     </script>
 </body>
 </html>
