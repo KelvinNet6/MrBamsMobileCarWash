@@ -199,12 +199,12 @@
     // Add account number for payment instructions
     doc.setFontSize(12);
     doc.text("Account Number for Payment: +27815130009", 20, serviceCurrentY + 20);
-
+    doc.text("Mr.Bam", 20, serviceCurrentY + 20);
     // Save the invoice as a PDF and offer it for download
     doc.save("invoice.pdf");
 
     // Notify the user that the invoice is ready for download
-    alert("Booking confirmed! The invoice PDF will be downloaded.");
+    alert("Booking confirmed! Check Your Invoice!");
 }
 
 function getPrice(service) {
