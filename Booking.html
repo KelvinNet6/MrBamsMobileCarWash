@@ -94,14 +94,18 @@
             closePopup();
         });
 
-       function generateInvoice(name, service, location, date, time) {
+    function generateInvoice(name, service, location, date, time) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Generate a random invoice number (You can modify this to a sequential system if desired)
+    // Generate a random invoice number
     const invoiceNumber = `INV-${Math.floor(Math.random() * 1000000)}`;
 
-    // Add invoice title (heading) and invoice number
+    // Add logo at the top (Make sure the image path is correct)
+    const logoUrl = 'logo.jpg'; // Path to your logo JPG file (local or hosted image)
+    doc.addImage(logoUrl, 'JPEG', 20, 20, 40, 20); // Positioning the logo (X, Y, Width, Height)
+
+    // Add invoice title and invoice number
     doc.setFontSize(18);
     doc.text("Invoice - Mr.Bams Mobile Car Wash", 105, 30, null, null, "center");
     doc.setFontSize(12);
@@ -198,6 +202,6 @@ function getPrice(service) {
     else if (service === "full") price = 500;
     return price;
 }
-    </script>
+</script>
 </body>
 </html>
