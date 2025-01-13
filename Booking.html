@@ -95,41 +95,111 @@
         });
 
         function generateInvoice(name, service, location, date, time) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-            // Add invoice title and format the layout
-            doc.setFontSize(18);
-            doc.text("Invoice - Mr.Bams Mobile Car Wash", 105, 30, null, null, "center");
+    // Add invoice title (heading)
+    doc.setFontSize(18);
+    doc.text("Invoice - Mr.Bams Mobile Car Wash", 105, 30, null, null, "center");
 
-            // Set smaller font size for details
-            doc.setFontSize(12);
+    // Set smaller font size for details
+    doc.setFontSize(12);
 
-            // Add details centered
-            doc.text(`Client Name: ${name}`, 105, 50, null, null, "center");
-            doc.text(`Service Type: ${service}`, 105, 60, null, null, "center");
-            doc.text(`Location Address: ${location}`, 105, 70, null, null, "center");
-            doc.text(`Scheduled Date: ${date}`, 105, 80, null, null, "center");
-            doc.text(`Time Schedule: ${time}`, 105, 90, null, null, "center");
+    // Create table for Invoice Header Data (client details)
+    const tableStartY = 50;
+    const tableColumnWidths = [40, 80, 40, 80]; // Column widths for the header section
+    const tableHeaders = ["Client Name", "Service Type", "Scheduled Date", "Scheduled Time"];
+    
+    // Draw table header background
+    doc.setFillColor(240, 240, 240); // Light gray header background
+    doc.rect(20, tableStartY, tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3], 10, 'F'); // Header background
+    doc.text(tableHeaders[0], 20, tableStartY + 7);
+    doc.text(tableHeaders[1], 100, tableStartY + 7);
+    doc.text(tableHeaders[2], 180, tableStartY + 7);
+    doc.text(tableHeaders[3], 260, tableStartY + 7);
 
-            // Service pricing logic
-            let price = 0;
-            if (service === "interior") price = 300;
-            else if (service === "exterior") price = 250;
-            else if (service === "full") price = 500;
+    // Draw data row for client details
+    let currentY = tableStartY + 15;
+    const headerData = [
+        [name, service, date, time]
+    ];
 
-            doc.text(`Price: $${price}`, 105, 120, null, null, "center");
-            doc.text(`Total: $${price}`, 105, 130, null, null, "center");
+    headerData.forEach(row => {
+        doc.setFillColor(255, 255, 255); // White row background
+        doc.rect(20, currentY, tableColumnWidths[0], 10, 'F');
+        doc.rect(100, currentY, tableColumnWidths[1], 10, 'F');
+        doc.rect(180, currentY, tableColumnWidths[2], 10, 'F');
+        doc.rect(260, currentY, tableColumnWidths[3], 10, 'F');
+        doc.text(row[0], 20, currentY + 7);
+        doc.text(row[1], 100, currentY + 7);
+        doc.text(row[2], 180, currentY + 7);
+        doc.text(row[3], 260, currentY + 7);
+        currentY += 10;
+    });
 
-            // Add account number for payment instructions
-            doc.text("Account Number for Payment: +27815130009", 105, 140, null, null, "center");
+    // Add another space before starting the service breakdown table
+    currentY += 10;
 
-            // Save the invoice as a PDF and offer it for download
-            doc.save("invoice.pdf");
+    // Create a table for service breakdown
+    const serviceTableStartY = currentY;
+    const serviceTableColumnWidths = [80, 40, 40]; // Column widths for the service breakdown table
+    const serviceTableHeaders = ["Description", "Amount (ZAR)", "Total (ZAR)"];
 
-            // Notify the user that the invoice is ready for download
-            alert("Booking confirmed! The invoice PDF will be downloaded.");
-        }
+    // Draw service table header
+    doc.setFillColor(240, 240, 240); // Light gray background for service table header
+    doc.rect(20, serviceTableStartY, serviceTableColumnWidths[0] + serviceTableColumnWidths[1] + serviceTableColumnWidths[2], 10, 'F');
+    doc.text(serviceTableHeaders[0], 20, serviceTableStartY + 7);
+    doc.text(serviceTableHeaders[1], 100, serviceTableStartY + 7);
+    doc.text(serviceTableHeaders[2], 140, serviceTableStartY + 7);
+
+    // Add service breakdown details
+    let serviceCurrentY = serviceTableStartY + 15;
+    const serviceTableData = [
+        ["Service", `R${getPrice(service)}`, `R${getPrice(service)}`],
+        ["Location", location, ""], // Empty cells for location, date, and time
+        ["Scheduled Date", date, ""],
+        ["Scheduled Time", time, ""]
+    ];
+
+    // Draw rows for service breakdown
+    serviceTableData.forEach(row => {
+        doc.setFillColor(255, 255, 255); // White row background
+        doc.rect(20, serviceCurrentY, serviceTableColumnWidths[0], 10, 'F');
+        doc.rect(100, serviceCurrentY, serviceTableColumnWidths[1], 10, 'F');
+        doc.rect(140, serviceCurrentY, serviceTableColumnWidths[2], 10, 'F');
+        doc.text(row[0], 20, serviceCurrentY + 7);
+        doc.text(row[1], 100, serviceCurrentY + 7);
+        doc.text(row[2], 140, serviceCurrentY + 7);
+        serviceCurrentY += 10;
+    });
+
+    // Add a row for the total price
+    const totalAmount = getPrice(service);
+    doc.setFillColor(240, 240, 240); // Light gray background for total row
+    doc.rect(20, serviceCurrentY, serviceTableColumnWidths[0] + serviceTableColumnWidths[1] + serviceTableColumnWidths[2], 10, 'F'); // Total background
+    doc.text("Total", 20, serviceCurrentY + 7);
+    doc.text(`R${totalAmount}`, 100, serviceCurrentY + 7);
+    doc.text(`R${totalAmount}`, 140, serviceCurrentY + 7);
+
+    // Add account number for payment instructions
+    doc.setFontSize(12);
+    doc.text("Account Number for Payment: +27815130009", 20, serviceCurrentY + 20);
+
+    // Save the invoice as a PDF and offer it for download
+    doc.save("invoice.pdf");
+
+    // Notify the user that the invoice is ready for download
+    alert("Booking confirmed! The invoice PDF will be downloaded.");
+}
+
+function getPrice(service) {
+    let price = 0;
+    if (service === "interior") price = 300;
+    else if (service === "exterior") price = 250;
+    else if (service === "full") price = 500;
+    return price;
+}
+
     </script>
 </body>
 </html>
