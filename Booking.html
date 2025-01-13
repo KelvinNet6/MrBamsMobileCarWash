@@ -94,7 +94,7 @@
             closePopup();
         });
 
-    function generateInvoice(name, service, location, date, time) {
+   function generateInvoice(name, service, location, date, time) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
@@ -102,30 +102,31 @@
     const invoiceNumber = `INV-${Math.floor(Math.random() * 1000000)}`;
 
     // Add rounded logo at the top (Make sure the image path is correct)
-    const logoUrl = 'me.jpg'; // Path to your logo JPG file (local or hosted image)
+    const logoUrl = 'logo.jpg'; // Path to your logo JPG file (local or hosted image)
     
     // Define logo position and size (X, Y, Width, Height)
     const logoX = 20;
     const logoY = 20;
     const logoWidth = 30;
     const logoHeight = 30;
+    const logoBorderRadius = 15; // Border radius for rounded corners (half of width/height)
 
-    // Draw rounded logo (using arc to mask it into a circle)
+    // Draw the rounded logo background
     doc.setFillColor(255, 255, 255); // White fill for the logo circle
-    doc.ellipse(logoX + logoWidth / 2, logoY + logoHeight / 2, logoWidth / 2, logoHeight / 2, 'F'); // Create circle mask
-    doc.addImage(logoUrl, 'JPEG', logoX, logoY, logoWidth, logoHeight); // Add logo inside the circle
+    doc.roundedRect(logoX, logoY, logoWidth, logoHeight, logoBorderRadius, logoBorderRadius, 'F'); // Create rounded rectangle mask
+    doc.addImage(logoUrl, 'JPEG', logoX, logoY, logoWidth, logoHeight); // Add logo inside the rounded rectangle
 
-    // Add invoice title and invoice number
+    // Adjust invoice title and invoice number positions to avoid overlap
     doc.setFontSize(18);
-    doc.text("Invoice - Mr.Bams Mobile Car Wash", 105, 30, null, null, "center");
+    doc.text("Invoice - Mr.Bams Mobile Car Wash", 105, 50, null, null, "center"); // Move title further down
     doc.setFontSize(12);
-    doc.text(`Invoice No: ${invoiceNumber}`, 20, 40); // Display invoice number
+    doc.text(`Invoice No: ${invoiceNumber}`, 105, 60); // Move invoice number below the title
 
     // Set smaller font size for details
     doc.setFontSize(12);
 
     // Create table for Invoice Header Data (client details)
-    const tableStartY = 50;
+    const tableStartY = 70; // Adjust table start Y position to avoid overlap
     const tableColumnWidths = [60, 80]; // Column widths for the header section
     const tableHeaders = ["Client Name", "Service Type"];
 
@@ -213,7 +214,6 @@ function getPrice(service) {
     else if (service === "full") price = 500;
     return price;
 }
-
 </script>
 </body>
 </html>
