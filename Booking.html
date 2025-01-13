@@ -101,9 +101,19 @@
     // Generate a random invoice number
     const invoiceNumber = `INV-${Math.floor(Math.random() * 1000000)}`;
 
-    // Add logo at the top (Make sure the image path is correct)
+    // Add rounded logo at the top (Make sure the image path is correct)
     const logoUrl = 'me.jpg'; // Path to your logo JPG file (local or hosted image)
-    doc.addImage(logoUrl, 'JPEG', 20, 20, 30, 15); // Positioning the logo (X, Y, Width, Height)
+    
+    // Define logo position and size (X, Y, Width, Height)
+    const logoX = 20;
+    const logoY = 20;
+    const logoWidth = 30;
+    const logoHeight = 30;
+
+    // Draw rounded logo (using arc to mask it into a circle)
+    doc.setFillColor(255, 255, 255); // White fill for the logo circle
+    doc.ellipse(logoX + logoWidth / 2, logoY + logoHeight / 2, logoWidth / 2, logoHeight / 2, 'F'); // Create circle mask
+    doc.addImage(logoUrl, 'JPEG', logoX, logoY, logoWidth, logoHeight); // Add logo inside the circle
 
     // Add invoice title and invoice number
     doc.setFontSize(18);
@@ -118,7 +128,7 @@
     const tableStartY = 50;
     const tableColumnWidths = [60, 80]; // Column widths for the header section
     const tableHeaders = ["Client Name", "Service Type"];
-    
+
     // Draw table header background
     doc.setFillColor(240, 240, 240); // Light gray header background
     doc.rect(20, tableStartY, tableColumnWidths[0] + tableColumnWidths[1], 10, 'F'); // Header background
@@ -148,9 +158,10 @@
     const serviceTableColumnWidths = [80, 40, 40]; // Column widths for the service breakdown table
     const serviceTableHeaders = ["Description", "Amount (ZAR)", "Total (ZAR)"];
 
-    // Draw service table header
+    // Draw service table header (match the width with the header)
+    const serviceTableHeaderWidth = serviceTableColumnWidths[0] + serviceTableColumnWidths[1] + serviceTableColumnWidths[2]; // Total width of the service table header
     doc.setFillColor(240, 240, 240); // Light gray background for service table header
-    doc.rect(20, serviceTableStartY, serviceTableColumnWidths[0] + serviceTableColumnWidths[1] + serviceTableColumnWidths[2], 10, 'F');
+    doc.rect(20, serviceTableStartY, serviceTableHeaderWidth, 10, 'F');
     doc.text(serviceTableHeaders[0], 20, serviceTableStartY + 7);
     doc.text(serviceTableHeaders[1], 100, serviceTableStartY + 7);
     doc.text(serviceTableHeaders[2], 140, serviceTableStartY + 7);
@@ -202,6 +213,7 @@ function getPrice(service) {
     else if (service === "full") price = 500;
     return price;
 }
+
 </script>
 </body>
 </html>
