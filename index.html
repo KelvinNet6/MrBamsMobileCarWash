@@ -204,43 +204,37 @@ const commentContainer = document.querySelector('.comment-container');
 const submitReviewBtn = document.getElementById('submit-review');
 const reviewNameInput = document.getElementById('review-name');
 const reviewTextInput = document.getElementById('review-text');
-const reviewPopup = document.getElementById('review-popup'); // Popup element
-const openPopupBtn = document.getElementById('open-review-popup'); // Button to open popup
-const closePopupBtn = document.getElementById('close-popup'); // Button to close popup
+const reviewPopup = document.getElementById('review-popup'); 
+const openPopupBtn = document.getElementById('open-review-popup'); 
+const closePopupBtn = document.getElementById('close-popup'); 
 
-// Define the maximum lifetime for a review in milliseconds (e.g., 24 hours)
 const REVIEW_LIFETIME = 24 * 60 * 60 * 1000;
 
-// Check if there are saved reviews in localStorage
 let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
 
-// Remove expired reviews
 function removeExpiredReviews() {
     const now = new Date();
     reviews = reviews.filter((review) => {
         const reviewDate = new Date(review.timestamp);
         return now - reviewDate < REVIEW_LIFETIME;
     });
-
-    // Save the updated reviews back to localStorage
+    
     localStorage.setItem('reviews', JSON.stringify(reviews));
 }
 
 // Display the reviews
 function displayReviews() {
-    // Sort reviews by timestamp in ascending order
+    
     reviews.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
-    // Limit to the last 3 reviews
     const recentReviews = reviews.slice(-3);
 
-    // Render the reviews
-    commentContainer.innerHTML = ''; // Clear container
+    commentContainer.innerHTML = ''; 
     recentReviews.forEach((review, index) => {
         const reviewBox = document.createElement('div');
         reviewBox.classList.add('comment');
 
-        const reviewDate = new Date(review.timestamp).toLocaleString(); // Format date and time
+        const reviewDate = new Date(review.timestamp).toLocaleString(); 
 
         reviewBox.innerHTML = `
             <div class="comment-header">${review.name}</div>
@@ -253,43 +247,35 @@ function displayReviews() {
 
         commentContainer.appendChild(reviewBox);
     });
-
-    // Attach event listeners to "Like" buttons
+    
     const likeButtons = document.querySelectorAll('.like-btn');
     likeButtons.forEach((button) => {
         button.addEventListener('click', handleLikeClick);
     });
 }
 
-// Handle Like button click
 function handleLikeClick(event) {
     const button = event.target.closest('.like-btn');
     const index = button.dataset.index;
 
-    // Increment likes for the corresponding review
-    const review = reviews[reviews.length - 3 + parseInt(index)]; // Map index to the correct review
+    const review = reviews[reviews.length - 3 + parseInt(index)]; 
     review.likes = (review.likes || 0) + 1;
 
-    // Save updated reviews back to localStorage
     localStorage.setItem('reviews', JSON.stringify(reviews));
 
-    // Update the display
     displayReviews();
 }
 
-// Open the popup
 openPopupBtn.addEventListener('click', () => {
-    reviewPopup.style.display = 'flex'; // Show popup
+    reviewPopup.style.display = 'flex'; 
 });
 
-// Close the popup
 closePopupBtn.addEventListener('click', () => {
-    reviewPopup.style.display = 'none'; // Hide popup
+    reviewPopup.style.display = 'none'; 
 });
 
-// Submit a new review
 submitReviewBtn.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent default form submission (if applicable)
+    e.preventDefault();
 
     const name = reviewNameInput.value.trim();
     const text = reviewTextInput.value.trim();
@@ -299,24 +285,20 @@ submitReviewBtn.addEventListener('click', (e) => {
             name,
             text,
             timestamp: new Date().toISOString(),
-            likes: 0 // Initialize with 0 likes
+            likes: 0 
         };
 
-        reviews.push(newReview); // Add the new review
-        reviews.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp)); // Ensure sorted by date
+        reviews.push(newReview);
+        reviews.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp)); 
 
-        // Remove the oldest review if there are more than 3
         if (reviews.length > 3) {
             reviews.shift();
         }
-
-        // Save updated reviews to localStorage
+        
         localStorage.setItem('reviews', JSON.stringify(reviews));
 
-        // Display updated reviews
         displayReviews();
 
-        // Clear input fields and close popup
         reviewNameInput.value = '';
         reviewTextInput.value = '';
         reviewPopup.style.display = 'none';
@@ -325,12 +307,10 @@ submitReviewBtn.addEventListener('click', (e) => {
     }
 });
 
-// Load and display reviews on page load
 document.addEventListener('DOMContentLoaded', () => {
-    // Remove expired reviews
+    
     removeExpiredReviews();
 
-    // Display the remaining reviews
     displayReviews();
 });
 
