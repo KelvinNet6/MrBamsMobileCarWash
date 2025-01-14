@@ -212,16 +212,11 @@ const BASE_URL = 'https://script.google.com/macros/s/AKfycbz9DFjwagBN0suWL4xhI7f
 
 // Display the reviews
 function displayReviews(reviews) {
-    // Sort reviews by timestamp
     reviews.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
-    // Get the last 3 reviews
     const recentReviews = reviews.slice(0, 3);
-
-    // Clear existing reviews
     commentContainer.innerHTML = '';
 
-    // Render the reviews
     recentReviews.forEach((review, index) => {
         const reviewBox = document.createElement('div');
         reviewBox.classList.add('comment');
@@ -236,11 +231,9 @@ function displayReviews(reviews) {
                 <i class="fas fa-thumbs-up"></i> Like (${review.likes || 0})
             </button>
         `;
-
         commentContainer.appendChild(reviewBox);
     });
 
-    // Add event listeners to like buttons
     const likeButtons = document.querySelectorAll('.like-btn');
     likeButtons.forEach((button, index) => {
         button.addEventListener('click', () => handleLikeClick(index, recentReviews[index]));
@@ -327,8 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     submitReviewBtn.addEventListener('click', submitReview);
 });
-
-    </script>
+</script>
 <script>
 
     let aboutSlideIndex = 0;
