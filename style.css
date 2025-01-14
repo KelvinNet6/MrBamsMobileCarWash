@@ -46,7 +46,7 @@ body {
 
 .about-section {
     padding: 30px;
-    background-color: #fff;
+    background-color: #383838;
 }
 
 .success-paragraph {
@@ -55,7 +55,7 @@ body {
 
 .success-heading {
     font-size: 1.8rem;
-    color: #fff
+    color: #fff;
     margin-bottom: 10px;
 }
 
