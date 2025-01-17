@@ -185,6 +185,7 @@ header p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* Vertically centers the links */
 }
 
 /* Sidebar open class to bring the sidebar into view */
@@ -211,12 +212,14 @@ header p {
 @media (max-width: 768px) {
     .sidebar {
         display: flex;  /* Make sidebar visible on small screens */
+        flex-direction: column; /* Align links vertically */
+        justify-content: center; /* Vertically center the links */
     }
     /* Sidebar links display */
     .sidebar-links {
         display: flex;
         flex-direction: column; /* Align links vertically */
-        justify-content: flex-start; /* Start at the top of the sidebar */
+        justify-content: center; /* Vertically center the links */
         width: 100%;
         padding: 0;
         margin: 0;
