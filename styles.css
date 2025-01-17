@@ -171,7 +171,7 @@ header p {
         z-index: 1001;
     }
 
-    /* Sidebar styling */
+/* Sidebar styling */
 .sidebar {
     left: -100%; /* Initially off-screen */
     position: fixed;
@@ -192,57 +192,69 @@ header p {
     left: 0; /* Move sidebar to the left 0 position (fully visible) */
 }
 
-/* Remove bullets and set padding/margin to zero */
+/* Remove list styling for the links */
 .sidebar ul {
     list-style-type: none;  /* Removes bullet points */
     margin: 0;  /* Removes default margin */
     padding: 0;  /* Removes default padding */
-    width: 100%;  /* Ensure full width for the links */
+    width: 100%;  /* Full width for the sidebar */
 }
 
-/* Sidebar links in the same row (centered) */
-.sidebar-links {
-    display: flex;
-    flex-direction: column; /* Align links vertically in mobile view */
-    justify-content: flex-start; /* Start at the top of the sidebar */
-    width: 100%;  /* Full width */
-    padding: 0;
-    margin: 0;
+/* Hide sidebar by default on larger screens */
+@media (min-width: 769px) {
+    .sidebar {
+        display: none; /* Hide sidebar on large screens */
+    }
 }
 
-/* Style for each sidebar link */
-.sidebar-links li {
-    padding: 15px 20px; /* Add padding around links */
-    text-align: center;
-    width: 100%; /* Full width of the sidebar */
-}
+/* Display the sidebar links only in mobile view (max-width: 768px) */
+@media (max-width: 768px) {
+    .sidebar {
+        display: flex;  /* Make sidebar visible on small screens */
+    }
+    /* Sidebar links display */
+    .sidebar-links {
+        display: flex;
+        flex-direction: column; /* Align links vertically */
+        justify-content: flex-start; /* Start at the top of the sidebar */
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
 
-/* Link styling */
-.sidebar-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    display: block;
-    padding: 10px; /* Add padding for better clickable area */
-    width: 100%; /* Ensures that each link spans full width */
-}
+    /* Style for each sidebar link */
+    .sidebar-links li {
+        padding: 15px 20px; /* Add padding around links */
+        text-align: center;
+        width: 100%; /* Full width of the sidebar */
+    }
 
-/* Hover effect for sidebar links */
-.sidebar-links li a:hover {
-    background-color: #575757; /* Darken background on hover */
-}
+    /* Link styling */
+    .sidebar-links li a {
+        color: white; /* White color for links */
+        text-decoration: none;
+        font-size: 1.2rem;
+        display: block;
+        padding: 10px; /* Add padding for better clickable area */
+        width: 100%; /* Ensures that each link spans full width */
+    }
 
-/* Sidebar title (centered) */
-.sidebar-title {
-    text-align: center;
-    color: white;
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-top: 20px;
-    padding: 10px;
-    width: 100%; /* Ensure title spans the full width */
-}
+    /* Hover effect for sidebar links */
+    .sidebar-links li a:hover {
+        background-color: #575757; /* Darken background on hover */
+    }
 
+    /* Sidebar title (centered) */
+    .sidebar-title {
+        text-align: center;
+        color: white;
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-top: 20px;
+        padding: 10px;
+        width: 100%; /* Ensure title spans the full width */
+    }
+}
 
     .about-section {
         flex-direction: column;
