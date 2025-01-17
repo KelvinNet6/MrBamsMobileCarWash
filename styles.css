@@ -172,59 +172,77 @@ header p {
     }
 
     /* Sidebar styling */
-    .sidebar {
-        left: -100%; /* Initially off-screen */
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        padding-top: 60px;
-        transition: left 0.3s ease-in-out;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.sidebar {
+    left: -100%; /* Initially off-screen */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark transparent background */
+    padding-top: 60px;
+    transition: left 0.3s ease-in-out; /* Smooth transition for opening/closing */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    .sidebar.open {
-        left: 0;
-    }
+/* Sidebar open class to bring the sidebar into view */
+.sidebar.open {
+    left: 0; /* Move sidebar to the left 0 position (fully visible) */
+}
 
-    /* Sidebar links in the same row */
-    .sidebar-links {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-    }
+/* Remove bullets and set padding/margin to zero */
+.sidebar ul {
+    list-style-type: none;  /* Removes bullet points */
+    margin: 0;  /* Removes default margin */
+    padding: 0;  /* Removes default padding */
+    width: 100%;  /* Ensure full width for the links */
+}
 
-    .sidebar-links li {
-        padding: 15px 20px;
-        text-align: center;
-    }
+/* Sidebar links in the same row (centered) */
+.sidebar-links {
+    display: flex;
+    flex-direction: column; /* Align links vertically in mobile view */
+    justify-content: flex-start; /* Start at the top of the sidebar */
+    width: 100%;  /* Full width */
+    padding: 0;
+    margin: 0;
+}
 
-    .sidebar-links li a {
-        color: white;
-        text-decoration: none;
-        font-size: 1.2rem;
-        display: block;
-    }
+/* Style for each sidebar link */
+.sidebar-links li {
+    padding: 15px 20px; /* Add padding around links */
+    text-align: center;
+    width: 100%; /* Full width of the sidebar */
+}
 
-    .sidebar-links li a:hover {
-        background-color: #575757;
-    }
+/* Link styling */
+.sidebar-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: block;
+    padding: 10px; /* Add padding for better clickable area */
+    width: 100%; /* Ensures that each link spans full width */
+}
 
-    /* Sidebar title (centered) */
-    .sidebar-title {
-        text-align: center;
-        color: white;
-        font-size: 1.8rem;
-        font-weight: bold;
-        margin-top: 20px;
-        padding: 10px;
-    }
+/* Hover effect for sidebar links */
+.sidebar-links li a:hover {
+    background-color: #575757; /* Darken background on hover */
+}
+
+/* Sidebar title (centered) */
+.sidebar-title {
+    text-align: center;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%; /* Ensure title spans the full width */
+}
+
 
     .about-section {
         flex-direction: column;
