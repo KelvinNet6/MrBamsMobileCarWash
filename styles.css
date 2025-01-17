@@ -230,12 +230,16 @@ header p {
 
 /* Hide sidebar and links by default on larger screens (min-width: 769px) */
 @media (min-width: 769px) {
-    .sidebar {
-        display: none; /* Hide sidebar on large screens */
+    .sidebar, 
+    .menu-toggle, 
+    .sidebar ul, 
+    .sidebar-title, 
+    .sidebar hr {
+        display: none; /* Hide everything */
     }
 
-    .menu-toggle {
-        display: none; /* Hide the toggle button on large screens */
+    header nav ul {
+        display: flex; /* Show the default horizontal menu on larger screens */
     }
 }
 
