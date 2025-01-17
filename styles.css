@@ -201,10 +201,38 @@ header p {
     width: 100%;  /* Full width for the sidebar */
 }
 
-/* Hide sidebar by default on larger screens */
+/* Ensure that links are not underlined and are centered */
+.sidebar-links li a {
+    color: #fff; /* White color for links */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.2rem;
+    display: block;
+    padding: 10px; /* Add padding for better clickable area */
+    width: 100%; /* Ensure that each link spans full width */
+    text-align: center; /* Center the text in the link */
+}
+
+/* Hover effect for sidebar links */
+.sidebar-links li a:hover {
+    background-color: #575757; /* Darken background on hover */
+}
+
+/* Sidebar title (centered) */
+.sidebar-title {
+    text-align: center;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%; /* Ensure title spans the full width */
+}
+
+/* Hide sidebar and links by default on larger screens (min-width: 769px) */
 @media (min-width: 769px) {
-    .sidebar {
-        display: none; /* Hide sidebar on large screens */
+    .sidebar,
+    .sidebar-links {
+        display: none; /* Hide sidebar and links on larger screens */
     }
 }
 
@@ -215,7 +243,7 @@ header p {
         flex-direction: column; /* Align links vertically */
         justify-content: center; /* Vertically center the links */
     }
-    /* Sidebar links display */
+
     .sidebar-links {
         display: flex;
         flex-direction: column; /* Align links vertically */
@@ -231,35 +259,9 @@ header p {
         text-align: center;
         width: 100%; /* Full width of the sidebar */
     }
-
-    /* Link styling */
-    .sidebar-links li a {
-        color: white; /* White color for links */
-        text-decoration: none;
-        font-size: 1.2rem;
-        display: block;
-        padding: 10px; /* Add padding for better clickable area */
-        width: 100%; /* Ensures that each link spans full width */
-    }
-
-    /* Hover effect for sidebar links */
-    .sidebar-links li a:hover {
-        background-color: #575757; /* Darken background on hover */
-    }
-
-    /* Sidebar title (centered) */
-    .sidebar-title {
-        text-align: center;
-        color: white;
-        font-size: 1.8rem;
-        font-weight: bold;
-        margin-top: 20px;
-        padding: 10px;
-        width: 100%; /* Ensure title spans the full width */
-    }
 }
 
-    .about-section {
+  .about-section {
         flex-direction: column;
         align-items: center;
         padding: 20px;
