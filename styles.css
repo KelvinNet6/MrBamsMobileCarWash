@@ -202,18 +202,18 @@ header p {
 }
 
 /* Ensure that links are not underlined and are centered */
-.sidebar-links li a {
+.sidebar ul li a {
     color: #fff; /* White color for links */
     text-decoration: none; /* Remove underline */
     font-size: 1.2rem;
     display: block;
-    padding: 10px; /* Add padding for better clickable area */
+    padding: 15px 20px; /* Add padding for better clickable area */
     width: 100%; /* Ensure that each link spans full width */
     text-align: center; /* Center the text in the link */
 }
 
 /* Hover effect for sidebar links */
-.sidebar-links li a:hover {
+.sidebar ul li a:hover {
     background-color: #575757; /* Darken background on hover */
 }
 
@@ -230,9 +230,12 @@ header p {
 
 /* Hide sidebar and links by default on larger screens (min-width: 769px) */
 @media (min-width: 769px) {
-    .sidebar,
-    .sidebar-links {
-        display: none; /* Hide sidebar and links on larger screens */
+    .sidebar {
+        display: none; /* Hide sidebar on large screens */
+    }
+
+    .menu-toggle {
+        display: none; /* Hide the toggle button on large screens */
     }
 }
 
@@ -244,22 +247,45 @@ header p {
         justify-content: center; /* Vertically center the links */
     }
 
-    .sidebar-links {
-        display: flex;
-        flex-direction: column; /* Align links vertically */
-        justify-content: center; /* Vertically center the links */
+    .sidebar ul {
         width: 100%;
-        padding: 0;
-        margin: 0;
+        text-align: center; /* Center the links inside the sidebar */
     }
 
     /* Style for each sidebar link */
-    .sidebar-links li {
-        padding: 15px 20px; /* Add padding around links */
-        text-align: center;
+    .sidebar ul li {
+        padding: 15px 0; /* Add padding around links */
         width: 100%; /* Full width of the sidebar */
     }
+
+    /* Styling for horizontal line (if used) */
+    .sidebar hr {
+        border: 1px solid #fff;
+        width: 80%;
+        margin: 20px 0;
+    }
+
+    /* Mobile menu (nav links hidden and replaced with menu toggle) */
+    header nav ul {
+        display: none;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1001;
+    }
 }
+
 
   .about-section {
         flex-direction: column;
