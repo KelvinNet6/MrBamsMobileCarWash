@@ -258,7 +258,7 @@ header p {
 
     /* Style for each sidebar link */
     .sidebar ul li {
-        padding: 15px 0; /* Add padding around links */
+        padding: 10px 0; /* Add padding around links */
         width: 100%; /* Full width of the sidebar */
     }
 
