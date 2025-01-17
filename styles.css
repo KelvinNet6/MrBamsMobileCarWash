@@ -171,52 +171,59 @@ header p {
         z-index: 1001;
     }
 
+    /* Sidebar styling */
     .sidebar {
-        left: -250px;
+        left: -100%; /* Initially off-screen */
         position: fixed;
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        color: white;
+        background-color: rgba(0, 0, 0, 0.9);
         padding-top: 60px;
         transition: left 0.3s ease-in-out;
         z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .sidebar ul {
-        list-style-type: none;
+    .sidebar.open {
+        left: 0;
+    }
+
+    /* Sidebar links in the same row */
+    .sidebar-links {
+        display: flex;
+        justify-content: center;
+        width: 100%;
         padding: 0;
+        margin: 0;
     }
 
-    .sidebar ul li {
-        padding: 15px;
+    .sidebar-links li {
+        padding: 15px 20px;
         text-align: center;
     }
 
-    .sidebar ul li a {
+    .sidebar-links li a {
         color: white;
         text-decoration: none;
-        font-size: 1rem;
+        font-size: 1.2rem;
         display: block;
     }
 
-    .sidebar ul li a:hover {
+    .sidebar-links li a:hover {
         background-color: #575757;
     }
 
-    /* Sidebar Title Styling */
+    /* Sidebar title (centered) */
     .sidebar-title {
         text-align: center;
         color: white;
-        font-size: 1.5rem;
-        margin-top: 30px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-top: 20px;
         padding: 10px;
-    }
-
-    /* Adjustments for Sidebar visibility */
-    .sidebar.open {
-        left: 0;
     }
 
     .about-section {
@@ -242,7 +249,6 @@ header p {
         font-size: 1.2rem !important;
     }
 }
-
 
 .slideshow-container {
   position: relative;
