@@ -596,14 +596,17 @@ header p {
 .reviews-section {
     padding: 20px;
     text-align: center;
-    background-color: #f9f9f9;
+    background-image: url('path/to/your/image.jpg'); /* Add your image path here */
+    background-size: cover; /* Cover the entire section */
+    background-position: center center; /* Center the background image */
+    background-repeat: no-repeat; /* Ensure the image doesn't repeat */
+    color: #ffffff; /* Text color for contrast against the background */
 }
 
 .reviews-section h2 {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #ffffff;
-    background-color: #333333;
+    background-color: rgba(0, 0, 0, 0.6); /* Add a semi-transparent background for the header */
     padding: 10px;
     border-radius: 5px;
     display: inline-block;
@@ -614,7 +617,7 @@ header p {
 .review-row {
     display: flex;
     justify-content: space-around;
-    gap: 20px;
+    gap: 20px;  /* Add space between review containers */
     flex-wrap: wrap;
 }
 
@@ -627,6 +630,7 @@ header p {
     width: 30%;
     text-align: center;
     position: relative;
+    margin-bottom: 20px;  /* Space below each review container */
 }
 
 /* Customer Name Styling */
@@ -643,6 +647,13 @@ header p {
     color: #555;
 }
 
+/* Star Rating Styling */
+.stars {
+    font-size: 1.5rem; /* Adjust star size */
+    color: #ffcc00; /* Gold color for stars */
+    margin-bottom: 10px;
+}
+
 /* Country Flag Styling */
 .country-flag {
     font-size: 2rem; /* Adjust flag size */
@@ -652,12 +663,18 @@ header p {
     color: #333; /* Set flag icon color */
 }
 
-/* Responsive Design */
+/* Responsive Design for Mobile */
 @media (max-width: 768px) {
     .review-container {
-        width: 80%; /* Adjust the container width for smaller screens */
+        width: 100%; /* Make each review container take full width on smaller screens */
+        margin-bottom: 20px; /* Add space between reviews on mobile */
+    }
+
+    .review-row {
+        gap: 20px;  /* Ensure there's space between reviews */
     }
 }
+
 
 /* Footer Styling */
 footer {
