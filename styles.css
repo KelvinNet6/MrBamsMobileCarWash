@@ -636,6 +636,13 @@ header p {
     margin-bottom: 10px;
 }
 
+/* Customer Comment Styling */
+.customer-comment {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #555;
+}
+
 /* Country Flag Styling */
 .country-flag {
     font-size: 2rem; /* Adjust flag size */
