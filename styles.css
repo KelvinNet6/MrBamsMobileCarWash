@@ -596,7 +596,7 @@ header p {
 .reviews-section {
     padding: 20px;
     text-align: center;
-    background-image: url('review-us-user-rating-concept-260nw-1435894859.webp');
+    background-image: url('review-the-results-of-your-a-b-split-test.jpg');
     background-size: cover; 
     background-position: center center; 
     background-repeat: no-repeat; /* Ensure the image doesn't repeat */
@@ -638,6 +638,7 @@ header p {
     font-weight: bold;
     font-size: 1.2rem;
     margin-bottom: 10px;
+    color: Black;
 }
 
 /* Customer Comment Styling */
