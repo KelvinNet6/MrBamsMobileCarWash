@@ -227,6 +227,18 @@ header p {
     padding: 10px;
     width: 100%; /* Ensure title spans the full width */
 }
+.sidebar, 
+.menu-toggle, 
+.sidebar ul, 
+.sidebar-title, 
+.sidebar hr {
+    display: none; /* Hide everything */
+}
+
+/* Show the default horizontal menu on larger screens */
+header nav ul {
+    display: flex; /* Show the horizontal menu on larger screens */
+}
 
 /* Hide sidebar and links by default on larger screens (min-width: 769px) */
 @media (min-width: 769px) {
