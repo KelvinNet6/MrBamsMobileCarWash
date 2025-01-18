@@ -610,134 +610,48 @@ header p {
     margin-bottom: 20px;
 }
 
-/* Comment Container */
-.comment-container {
+/* Review Row (to display reviews in a row) */
+.review-row {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-.comment {
+/* Individual Review Container */
+.review-container {
     background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 15px;
     border-radius: 8px;
-    max-width: 90%;
-    text-align: left;
+    width: 30%;
+    text-align: center;
+    position: relative;
 }
 
-.comment-header {
+/* Customer Name Styling */
+.customer-name {
     font-weight: bold;
-    margin-bottom: 5px;
     font-size: 1.2rem;
-}
-
-.comment-text {
     margin-bottom: 10px;
 }
 
-.comment-date {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-/* Buttons */
-.open-popup-btn,
-.submit-btn,
-.like-btn {
-    background-color: #333333;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.open-popup-btn {
-    margin-top: 20px;
-}
-
-.like-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-/* Popup Form */
-.popup {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.popup-content {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-}
-
-.popup-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-}
-
-.review-input,
-.review-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-/* Close Button */
-.close-popup {
+/* Country Flag Styling */
+.country-flag {
+    font-size: 2rem; /* Adjust flag size */
     position: absolute;
-    top: 10px;
+    bottom: 10px;
     right: 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #333;
+    color: #333; /* Set flag icon color */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .reviews-section h2 {
-        font-size: 1.5rem;
-    }
-
-    .comment {
-        max-width: 100%;
-        padding: 10px;
-    }
-
-    .like-btn {
-        font-size: 0.9rem;
-    }
-
-    .popup-content {
-        width: 90%;
-        padding: 15px;
-    }
-
-    .review-input,
-    .review-textarea {
-        font-size: 0.9rem;
+    .review-container {
+        width: 80%; /* Adjust the container width for smaller screens */
     }
 }
+
 /* Footer Styling */
 footer {
   background-color: #383838;
