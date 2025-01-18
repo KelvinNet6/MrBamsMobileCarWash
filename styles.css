@@ -596,9 +596,9 @@ header p {
 .reviews-section {
     padding: 20px;
     text-align: center;
-    background-image: url('path/to/your/image.jpg'); /* Add your image path here */
-    background-size: cover; /* Cover the entire section */
-    background-position: center center; /* Center the background image */
+    background-image: url('review-the-results-of-your-a-b-split-test.jpg');
+    background-size: cover; 
+    background-position: center center; 
     background-repeat: no-repeat; /* Ensure the image doesn't repeat */
     color: #ffffff; /* Text color for contrast against the background */
 }
