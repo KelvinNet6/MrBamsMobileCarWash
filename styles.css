@@ -230,12 +230,8 @@ header p {
 
 /* Hide sidebar and links by default on larger screens (min-width: 769px) */
 @media (min-width: 769px) {
-    .sidebar, 
-    .menu-toggle, 
-    .sidebar ul, 
-    .sidebar-title, 
-    .sidebar hr {
-        display: none; /* Hide everything */
+    .sidebar {
+        display: none; /* Sidebar hidden on large screens by default */
     }
 
     header nav ul {
