@@ -46,59 +46,37 @@ body {
 
 /* About Section */
 .about-section {
-    padding: 30px;
-    background-color: #333;
+    padding: 50px;
+    background-color: #f4f4f4;
 }
 
-.success-paragraph {
-    margin-bottom: 20px;
-}
-
-.success-heading {
-    font-size: 1.8rem;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.about-section p {
-    font-size: 1rem;
-    color: #fff;
-    line-height: 1.6;
-}
-
-/* Team Section - Flexbox to align cards in row */
 .team-container {
     display: flex;
-    justify-content: space-around; /* Space out cards evenly */
-    flex-wrap: nowrap; /* Prevent cards from wrapping */
-    gap: 20px; /* Space between cards */
-    padding: 10px; /* Optional: padding for container */
-    overflow-x: auto; /* Allows horizontal scrolling if needed */
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .team-member {
-    width: 200px; /* Set width for each card */
-    height: 300px; /* Set height for each card */
-    perspective: 1000px; /* Depth for the flip effect */
+    width: 30%;
+    perspective: 1000px;
 }
 
-/* Flip Card Styles */
 .flip-card {
     width: 100%;
-    height: 100%;
+    height: 350px;
     position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
 }
 
 .flip-card-inner {
     position: absolute;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
     transform-style: preserve-3d;
-}
-
-.flip-card.is-flipped .flip-card-inner {
-    transform: rotateY(180deg);
+    transition: transform 0.6s;
 }
 
 .flip-card-front,
@@ -109,76 +87,46 @@ body {
     backface-visibility: hidden;
 }
 
-/* Front side of the card */
 .flip-card-front {
+    background-color: #fff;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #444;
-    color: white;
-    z-index: 2;
-}
-
-.flip-card-front img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 0;
-}
-
-.flip-card-front h3 {
-    font-size: 1.2rem;
-    margin-top: 10px;
-}
-
-.flip-card-front p {
-    font-size: 1rem;
-    margin-top: 5px;
-}
-
-/* Back side of the card */
-.flip-card-back {
-    background-color: #555;
-    color: white;
     text-align: center;
-    padding: 20px;
+    background-image: url(''); /* Image will be added via CSS */
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.flip-card-back {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     transform: rotateY(180deg);
-    z-index: 1;
 }
 
-.flip-card-back p {
-    margin: 10px 0;
+.card-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
 }
 
-/* Mobile View */
+.team-member .flip-card.is-flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     .team-member {
-        width: 150px; /* Adjust width for mobile */
-        height: 250px; /* Adjust height for mobile */
-    }
-
-    .flip-card-inner {
-        transition: transform 0.4s; /* Slightly faster flip on mobile */
-    }
-
-    .team-container {
-        justify-content: center; /* Center align on mobile */
-    }
-}
-
-@media (max-width: 480px) {
-    .team-container {
-        flex-direction: column; /* Stack cards vertically on very small screens */
-        align-items: center;
-    }
-
-    .team-member {
         width: 100%;
-        margin: 10px 0;
     }
 }
-
 /* Footer Styling */
 footer {
   background-color: #383838;
