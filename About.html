@@ -89,7 +89,19 @@
         </div>
     </div>
 </div>
+<script>
+    // Get all team member cards
+const flipCards = document.querySelectorAll('.flip-card');
 
+// Add event listener to each card to flip on tap (click)
+flipCards.forEach(card => {
+    card.addEventListener('click', () => {
+        // Toggle the 'is-flipped' class to trigger the flip effect
+        card.classList.toggle('is-flipped');
+    });
+});
+
+</script>
 </body>
     <br><br><br>
 <footer>
