@@ -78,7 +78,7 @@ body {
 /* Each team member card */
 .team-member {
     margin: 20px;
-    width: 200px; /* Default width for larger screens */
+    width: 250px; /* Increased width for larger screens */
     perspective: 1000px;
 }
 
@@ -161,8 +161,8 @@ body {
     }
 
     .team-member {
-        width: 200px; /* Maintain card width for large screens */
-        height: 300px; /* Maintain card height for large screens */
+        width: 300px; /* Increased width for large screens */
+        height: 350px; /* Adjust height for large screens */
     }
 }
 
@@ -174,7 +174,7 @@ body {
     }
 
     .team-member {
-        width: 100%;
+        width: 90%; /* Adjust width for smaller screens */
         margin: 10px 0;
         height: auto; /* Let the height adjust to content */
     }
@@ -182,8 +182,8 @@ body {
 
 @media (max-width: 768px) {
     .team-member {
-        width: 150px; /* Adjust card width for mobile view */
-        height: 250px; /* Adjust height for mobile view */
+        width: 80%; /* Adjust card width for tablet view */
+        height: 300px; /* Adjust height for tablet view */
     }
 
     .flip-card-inner {
@@ -199,7 +199,6 @@ body {
         font-size: 0.9rem;
     }
 }
-
 
 /* Footer Styling */
 footer {
