@@ -44,6 +44,7 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
+/* About Section */
 .about-section {
     padding: 30px;
     background-color: #333;
@@ -65,20 +66,23 @@ body {
     line-height: 1.6;
 }
 
+/* Team container to display cards in a row only on large screens */
 .team-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly; /* Ensures even spacing between cards */
     gap: 20px; /* Space between cards */
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
     margin-top: 20px; /* Add some spacing from the previous content */
 }
 
+/* Each team member card */
 .team-member {
     margin: 20px;
     width: 200px; /* Default width for larger screens */
     perspective: 1000px;
 }
 
+/* Flip card styling */
 .flip-card {
     width: 100%;
     height: 300px; /* Set height for the card */
@@ -86,6 +90,7 @@ body {
     cursor: pointer;
 }
 
+/* Card flipping effect */
 .flip-card-inner {
     position: absolute;
     width: 100%;
@@ -149,7 +154,32 @@ body {
     margin: 10px 0;
 }
 
-/* Mobile View - Enable flip effect on tap */
+/* Large Screen View - Keep cards in a row */
+@media (min-width: 1024px) {
+    .team-container {
+        flex-wrap: nowrap; /* Prevent wrapping on large screens */
+    }
+
+    .team-member {
+        width: 200px; /* Maintain card width for large screens */
+        height: 300px; /* Maintain card height for large screens */
+    }
+}
+
+/* Mobile View - Stack cards vertically on smaller screens */
+@media (max-width: 1023px) {
+    .team-container {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+        align-items: center;
+    }
+
+    .team-member {
+        width: 100%;
+        margin: 10px 0;
+        height: auto; /* Let the height adjust to content */
+    }
+}
+
 @media (max-width: 768px) {
     .team-member {
         width: 150px; /* Adjust card width for mobile view */
@@ -170,17 +200,6 @@ body {
     }
 }
 
-@media (max-width: 480px) {
-    .team-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .team-member {
-        width: 100%;
-        margin: 10px 0;
-    }
-}
 
 /* Footer Styling */
 footer {
