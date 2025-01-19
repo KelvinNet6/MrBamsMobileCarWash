@@ -69,13 +69,13 @@ body {
 /* Team Section - Flexbox to align cards in row */
 .team-container {
     display: flex;
-    justify-content: space-around; /* Space out cards evenly */
-    flex-wrap: nowrap; /* Prevent cards from wrapping */
+    justify-content: space-around; /* Distribute cards evenly */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
     gap: 20px; /* Space between cards */
-    padding: 10px; /* Optional: padding for container */
-    overflow-x: auto; /* Allows horizontal scrolling if needed */
+    padding: 10px;
 }
 
+/* Team member card styles */
 .team-member {
     width: 200px; /* Set width for each card */
     height: 300px; /* Set height for each card */
@@ -196,6 +196,7 @@ body {
         margin: 10px 0;
     }
 }
+
 
 /* Footer Styling */
 footer {
