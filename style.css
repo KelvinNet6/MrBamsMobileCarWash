@@ -46,50 +46,49 @@ body {
 
 /* About Section */
 .about-section {
-    padding: 50px 0;
+    padding: 30px;
     background-color: #333;
-    text-align: center;
 }
 
-.about-section h2 {
-    font-size: 2em;
+.success-paragraph {
     margin-bottom: 20px;
-    color: #ddd;
 }
 
-/* Flex container for team members */
+.success-heading {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Team Section - Flexbox to align cards in row */
 .team-container {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin: 0 auto;
-    max-width: 1200px; /* Optional: Limits the width on large screens */
+    justify-content: space-around; /* Space out cards evenly */
+    flex-wrap: nowrap; /* Prevent cards from wrapping */
+    gap: 20px; /* Space between cards */
+    padding: 10px; /* Optional: padding for container */
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
 }
 
-/* Team Member (Flip Card) */
 .team-member {
-    width: 30%; /* Adjust the width of each card */
-    height: 350px; /* Height of the card */
-    margin-bottom: 20px;
-    perspective: 1000px; /* Enables 3D effect */
+    width: 200px; /* Set width for each card */
+    height: 300px; /* Set height for each card */
+    perspective: 1000px; /* Depth for the flip effect */
 }
 
-/* Flip Card */
+/* Flip Card Styles */
 .flip-card {
     width: 100%;
     height: 100%;
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
 }
 
-/* When the card is flipped */
-.flip-card.is-flipped .flip-card-inner {
-    transform: rotateY(180deg); /* Flip the card */
-}
-
-/* Flip Card Inner */
 .flip-card-inner {
     position: absolute;
     width: 100%;
@@ -98,112 +97,87 @@ body {
     transform-style: preserve-3d;
 }
 
-/* Flip Card Front */
-.flip-card-front {
+.flip-card.is-flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Hide back side when flipped */
+    backface-visibility: hidden;
+}
+
+/* Front side of the card */
+.flip-card-front {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #444;
     color: white;
-    border-radius: 8px;
+    z-index: 2;
 }
 
-/* Image in the flip card */
 .flip-card-front img {
     width: 100px;
     height: 100px;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 0;
 }
 
-/* Name in the flip card */
 .flip-card-front h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-top: 10px;
 }
 
-/* Description in the flip card */
 .flip-card-front p {
     font-size: 1rem;
     margin-top: 5px;
 }
 
-/* Flip Card Back */
+/* Back side of the card */
 .flip-card-back {
     background-color: #555;
     color: white;
     text-align: center;
     padding: 20px;
-    transform: rotateY(180deg); /* Hide the back initially */
-    backface-visibility: hidden;
-    border-radius: 8px;
+    transform: rotateY(180deg);
+    z-index: 1;
 }
 
-/* Card hover effect for the back side */
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg); /* Flip the card on hover */
+.flip-card-back p {
+    margin: 10px 0;
 }
 
-/* Mobile view adjustments */
+/* Mobile View */
 @media (max-width: 768px) {
     .team-member {
-        width: 100%; /* Make each flip card take up the full width on mobile */
+        width: 150px; /* Adjust width for mobile */
         height: 250px; /* Adjust height for mobile */
     }
 
-    /* Card flip transition for mobile */
     .flip-card-inner {
-        transition: transform 0.4s; /* Slightly faster flip transition on mobile */
+        transition: transform 0.4s; /* Slightly faster flip on mobile */
     }
 
-    /* Ensure the front side hides properly on flip for mobile */
-    .flip-card.is-flipped .flip-card-front {
-        display: none;
-    }
-
-    /* The back content is displayed when flipped */
-    .flip-card.is-flipped .flip-card-back {
-        display: block;
-    }
-
-    /* Card back content is hidden by default */
-    .flip-card-back {
-        display: none;
-    }
-
-    .flip-card-front img {
-        width: 80px; /* Adjust image size for mobile */
-        height: 80px;
+    .team-container {
+        justify-content: center; /* Center align on mobile */
     }
 }
 
 @media (max-width: 480px) {
     .team-container {
-        flex-direction: column;
+        flex-direction: column; /* Stack cards vertically on very small screens */
         align-items: center;
     }
 
     .team-member {
-        width: 90%; /* Adjust the width of flip cards */
+        width: 100%;
         margin: 10px 0;
     }
-
-    .flip-card-front img {
-        width: 60px; /* Adjust image size for very small screens */
-        height: 60px;
-    }
-
-    .flip-card-front h3 {
-        font-size: 1.2rem; /* Adjust font size for small screens */
-    }
 }
-
-
 
 /* Footer Styling */
 footer {
