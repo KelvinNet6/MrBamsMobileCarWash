@@ -744,6 +744,7 @@ footer p {
   .email-input {
       width: 80%;
       font-size: 1.1rem;
+      margin-bottom: 10px;
   }
 
   .subscribe-btn {
