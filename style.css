@@ -79,28 +79,30 @@ body {
 .flip-card {
     width: 100%;
     height: 300px; /* Height of the card */
+    position: relative;
 }
 
 .flip-card-inner {
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 100%;
     transition: transform 0.6s;
     transform-style: preserve-3d;
 }
 
-/* Flip effect on tap (click) */
 .flip-card.is-flipped .flip-card-inner {
     transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden; /* Prevent back content from showing when flipped */
 }
 
+/* Front side styles */
 .flip-card-front {
     display: flex;
     flex-direction: column;
@@ -108,14 +110,14 @@ body {
     justify-content: center;
     background-color: #444;
     color: white;
-    z-index: 2; /* Ensure the front content appears in front */
+    z-index: 2; /* Ensure front content appears in front */
 }
 
 .flip-card-front img {
     width: 100px;
     height: 100px;
     object-fit: cover; /* Ensures the image covers the area without distortion */
-    /* No border-radius */
+    border-radius: 0; /* No border-radius */
 }
 
 .flip-card-front h3 {
@@ -128,13 +130,14 @@ body {
     margin-top: 5px;
 }
 
+/* Back side styles */
 .flip-card-back {
     background-color: #555;
     color: white;
     text-align: center;
     padding: 20px;
-    transform: rotateY(180deg);
-    z-index: 1; /* Ensure the back content appears behind the front */
+    transform: rotateY(180deg); /* Ensure back is hidden by default */
+    z-index: 1; /* Ensure back content stays behind front content */
 }
 
 .flip-card-back p {
@@ -147,11 +150,9 @@ body {
         width: 150px; /* Adjust card width for mobile view */
         height: 250px; /* Adjust height for mobile view */
     }
+
     .flip-card-inner {
         transition: transform 0.4s; /* Slightly faster flip on mobile */
-    }
-    .flip-card.is-flipped .flip-card-inner {
-        transform: rotateY(180deg);
     }
 }
 
@@ -160,6 +161,7 @@ body {
         flex-direction: column;
         align-items: center;
     }
+
     .team-member {
         width: 100%;
         margin: 10px 0;
