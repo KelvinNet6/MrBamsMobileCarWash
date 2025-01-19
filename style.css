@@ -44,39 +44,58 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* About Section */
 .about-section {
-    padding: 50px;
-    background-color: #f4f4f4;
+    padding: 30px;
+    background-color: #333;
+}
+
+.success-paragraph {
+    margin-bottom: 20px;
+}
+
+.success-heading {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.6;
 }
 
 .team-container {
     display: flex;
-    justify-content: space-around;
-    gap: 20px;
+    justify-content: center;
+    gap: 20px; /* Space between cards */
     flex-wrap: wrap;
+    margin-top: 20px; /* Add some spacing from the previous content */
 }
 
 .team-member {
-    width: 30%;
+    margin: 20px;
+    width: 200px; /* Default width for larger screens */
     perspective: 1000px;
 }
 
 .flip-card {
     width: 100%;
-    height: 350px;
+    height: 300px; /* Set height for the card */
     position: relative;
     cursor: pointer;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
 }
 
 .flip-card-inner {
     position: absolute;
     width: 100%;
     height: 100%;
-    transform-style: preserve-3d;
     transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.is-flipped .flip-card-inner {
+    transform: rotateY(180deg);
 }
 
 .flip-card-front,
@@ -84,49 +103,85 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
+    backface-visibility: hidden; /* Prevent back content from showing when flipped */
 }
 
+/* Front side styles */
 .flip-card-front {
-    background-color: #fff;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    background-image: url(''); /* Image will be added via CSS */
-    background-size: cover;
-    background-position: center;
+    background-color: #444;
     color: white;
+    z-index: 2; /* Ensure front content appears in front */
 }
 
+.flip-card-front img {
+    width: 120px; /* Slightly larger image */
+    height: 120px;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 50%; /* Make image round */
+    margin-bottom: 10px; /* Add some space between image and text */
+}
+
+.flip-card-front h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.flip-card-front p {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+/* Back side styles */
 .flip-card-back {
-    background-color: #333;
+    background-color: #555;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-    transform: rotateY(180deg);
+    padding: 20px;
+    transform: rotateY(180deg); /* Ensure back is hidden by default */
+    z-index: 1; /* Ensure back content stays behind front content */
 }
 
-.card-info {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
+.flip-card-back p {
+    margin: 10px 0;
 }
 
-.team-member .flip-card.is-flipped .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-/* Mobile responsiveness */
+/* Mobile View - Enable flip effect on tap */
 @media (max-width: 768px) {
     .team-member {
-        width: 100%;
+        width: 150px; /* Adjust card width for mobile view */
+        height: 250px; /* Adjust height for mobile view */
+    }
+
+    .flip-card-inner {
+        transition: transform 0.4s; /* Slightly faster flip on mobile */
+    }
+
+    /* Make the text larger for mobile screens */
+    .flip-card-front h3 {
+        font-size: 1rem;
+    }
+
+    .flip-card-front p {
+        font-size: 0.9rem;
     }
 }
+
+@media (max-width: 480px) {
+    .team-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-member {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
 /* Footer Styling */
 footer {
   background-color: #383838;
