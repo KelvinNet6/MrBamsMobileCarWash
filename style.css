@@ -90,7 +90,8 @@ body {
     transform-style: preserve-3d;
 }
 
-.flip-card:hover .flip-card-inner {
+/* Flip effect on tap (click) */
+.flip-card.is-flipped .flip-card-inner {
     transform: rotateY(180deg);
 }
 
@@ -113,8 +114,8 @@ body {
 .flip-card-front img {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    /* Removed border-radius to ensure no rounded corners */
 }
 
 .flip-card-front h3 {
@@ -139,14 +140,14 @@ body {
     margin: 10px 0;
 }
 
-/* Mobile View */
+/* Mobile View - Enable flip effect on tap */
 @media (max-width: 768px) {
     .team-member {
         width: 150px; /* Adjust card width for mobile view */
         height: 250px; /* Adjust height for mobile view */
     }
     .flip-card-inner {
-        transition: transform 0.4s;
+        transition: transform 0.4s; /* Slightly faster flip on mobile */
     }
 }
 
@@ -160,7 +161,6 @@ body {
         margin: 10px 0;
     }
 }
-
 
 /* Footer Styling */
 footer {
