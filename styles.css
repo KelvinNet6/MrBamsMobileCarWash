@@ -383,166 +383,182 @@ header p {
   }
 }
 
-/* About Section */
-.about-section {
-    padding: 50px 0;
-    background-color: #333;
-    text-align: center;
+/* Services Section */
+.services-section {
+  padding: 50px 0;
+  background-color: #333;
+  text-align: center;
 }
 
-.about-section h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #ddd;
+.services-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #ddd;
 }
 
-/* Flex container for team members */
-.team-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin: 0 auto;
-    max-width: 1200px; /* Optional: Limits the width on large screens */
+/* Flex container for services */
+.services-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 0 auto;
+  max-width: 1200px; /* Optional: Limits the width on large screens */
 }
 
-/* Team Member (Flip Card) */
-.team-member {
-    width: 30%; /* Adjust the width of each card */
-    height: 350px; /* Height of the card */
-    margin-bottom: 20px;
-    perspective: 1000px; /* Enables 3D effect */
+/* Service Card */
+.service-card {
+  background-color: #98adb1;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 20px; /* Add margin to space cards out */
 }
 
-/* Flip Card */
-.flip-card {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
+/* Service Card Image */
+.service-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
-/* When the card is flipped */
-.flip-card.is-flipped .flip-card-inner {
-    transform: rotateY(180deg); /* Flip the card */
+.service-card .service-content {
+  padding: 20px;
 }
 
-/* Flip Card Inner */
-.flip-card-inner {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
+.service-card h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 
-/* Flip Card Front */
-.flip-card-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* Hide back side when flipped */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #444;
-    color: white;
-    border-radius: 8px;
+.service-card p {
+  font-size: 1em;
+  margin-bottom: 15px;
 }
 
-/* Image in the flip card */
-.flip-card-front img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
+.service-card .btn {
+  text-decoration: none;
+  padding: 10px 30px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
-/* Name in the flip card */
-.flip-card-front h3 {
-    font-size: 1.4rem;
-    margin-top: 10px;
+.service-card .btn:hover {
+  background-color: #0056b3;
 }
 
-/* Description in the flip card */
-.flip-card-front p {
-    font-size: 1rem;
-    margin-top: 5px;
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Flip Card Back */
-.flip-card-back {
-    background-color: #555;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    transform: rotateY(180deg); /* Hide the back initially */
-    backface-visibility: hidden;
-    border-radius: 8px;
-}
-
-/* Card hover effect for the back side */
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg); /* Flip the card on hover */
-}
-
-/* Mobile view adjustments */
+/* Mobile view adjustments for service cards */
 @media (max-width: 768px) {
-    .team-member {
-        width: 100%; /* Make each flip card take up the full width on mobile */
-        height: 250px; /* Adjust height for mobile */
-    }
+  .services-container {
+    justify-content: center;
+  }
 
-    /* Card flip transition for mobile */
-    .flip-card-inner {
-        transition: transform 0.4s; /* Slightly faster flip transition on mobile */
-    }
-
-    /* Ensure the front side hides properly on flip for mobile */
-    .flip-card.is-flipped .flip-card-front {
-        display: none;
-    }
-
-    /* The back content is displayed when flipped */
-    .flip-card.is-flipped .flip-card-back {
-        display: block;
-    }
-
-    /* Card back content is hidden by default */
-    .flip-card-back {
-        display: none;
-    }
-
-    .flip-card-front img {
-        width: 80px; /* Adjust image size for mobile */
-        height: 80px;
-    }
-}
-
-@media (max-width: 480px) {
-    .team-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .team-member {
-        width: 90%; /* Adjust the width of flip cards */
-        margin: 10px 0;
-    }
-
-    .flip-card-front img {
-        width: 60px; /* Adjust image size for very small screens */
-        height: 60px;
-    }
-
-    .flip-card-front h3 {
-        font-size: 1.2rem; /* Adjust font size for small screens */
-    }
+  .service-card {
+    width: 100%; /* Service cards take up the full width on mobile */
+  }
 }
 
 
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.mySlides {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+
+.mySlides img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.service-content {
+  padding: 20px;
+}
+
+.social-media-section {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+}
+
+#background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.social-media-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  max-width: 400px;
+  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.social-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.social-icon i {
+  display: inline-block;
+  line-height: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .social-media-container {
+      width: 90%;
+      max-width: 350px;
+  }
+
+  .social-icon {
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+  }
+} 
 /* General Styles */
 .reviews-section {
     padding: 20px;
