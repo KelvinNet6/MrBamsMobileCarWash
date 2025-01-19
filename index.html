@@ -285,14 +285,16 @@ window.addEventListener('load', () => {
   sidebar.style.left = '-100%';  // Sidebar off-screen
 });
 
-// Toggle the sidebar visibility on menu toggle click
 menuToggle.addEventListener('click', () => {
-  if (sidebar.style.left === '-100%' || sidebar.style.left === '') {
-    sidebar.style.left = '0';  // Show the sidebar
-  } else {
-    sidebar.style.left = '-100%';  // Hide the sidebar
-  }
+    if (sidebar.style.left === '-100%' || sidebar.style.left === '') {
+        sidebar.style.left = '0';  // Show the sidebar
+        sidebar.classList.add('open'); // Add 'open' class to display it
+    } else {
+        sidebar.style.left = '-100%';  // Hide the sidebar
+        sidebar.classList.remove('open'); // Remove 'open' class to hide it
+    }
 });
+
 
 // Close sidebar when a link is clicked
 sidebarLinks.forEach(link => {
