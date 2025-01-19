@@ -23,80 +23,88 @@
     </div>
 
     <!-- About Section -->
-    <div class="about-section">
-        <div class="team-container">
-            <!-- CEO Section -->
-            <div class="team-member flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="OIP (2).jpeg" alt="Mr. Bams">
-                        <div class="card-info">
-                            <h3>Mr. Bam</h3>
-                            <p>Owner & CEO</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Mr. Bam</h3>
-                        <p>Owner & CEO</p>
-                        <p>Contact: 123-456-7890</p>
-                        <p>Email: bam@example.com</p>
-                    </div>
+<div class="about-section">
+    <!-- Success Paragraph with Heading Behind -->
+    <div class="success-paragraph">
+        <h3 class="success-heading">Our Success Story</h3>
+        <p>Mr. Bams Mobile Car Wash has grown over the years due to our commitment to customer satisfaction, professional service, and reliable car cleaning solutions. We are proud to serve the community with exceptional car care services, making your vehicle shine every time. <br><br> Meet Our Mobile Company Heading Team.</p>
+    </div>
+
+    <!-- Team Section -->
+    <div class="team-container">
+        <!-- CEO Section -->
+        <div class="team-member flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="OIP (2).jpeg" alt="Mr. Bams">
+                    <h3>Mr. Bam</h3>
+                    <p>Owner & CEO</p>
+                     <br>
+                    <p>Tap To View More</p>
+                </div>
+                <div class="flip-card-back">
+                    <h3>Mr. Bam</h3>
+                    <p>Owner & CEO</p>
+                    <p>Contact: 123-456-7890</p>
+                    <p>Email: bam@example.com</p>
                 </div>
             </div>
+        </div>
 
-            <!-- Team Member 2 -->
-            <div class="team-member flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="cn18376589.avif" alt="Jayk Bahat">
-                        <div class="card-info">
-                            <h3>JayB</h3>
-                            <p>Social Media Manager</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>JayB</h3>
-                        <p>Social Media Manager</p>
-                        <p>Contact: 987-654-3210</p>
-                        <p>Email: jayb@example.com</p>
-                    </div>
+        <!-- Team Member 2 -->
+        <div class="team-member flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="cn18376589.avif" alt="Jayk Bahat">
+                    <h3>JayB</h3>
+                    <p>Social Media Manager</p>
+                     <br>
+                    <p>Tap To View More</p>
+                </div>
+                <div class="flip-card-back">
+                    <h3>JayB</h3>
+                    <p>Social Media Manager</p>
+                    <p>Contact: 987-654-3210</p>
+                    <p>Email: jayb@example.com</p>
                 </div>
             </div>
+        </div>
 
-            <!-- Team Member 3 -->
-            <div class="team-member flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="OIP.jpg" alt="Khan'ya">
-                        <div class="card-info">
-                            <h3>Khan'ya</h3>
-                            <p>Associate Manager</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back">
-                        <h3>Khan'ya</h3>
-                        <p>Associate Manager</p>
-                        <p>Contact: 555-123-4567</p>
-                        <p>Email: khanya@example.com</p>
-                    </div>
+        <!-- Team Member 3 -->
+        <div class="team-member flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="OIP.jpg" alt="Khan'ya">
+                    <h3>Khan'ya</h3>
+                    <p>Associate Manager</p>
+                    <br>
+                    <p>Tap To View More</p>
+                </div>
+                <div class="flip-card-back">
+                    <h3>Khan'ya</h3>
+                    <p>Associate Manager</p>
+                    <p>Contact: 555-123-4567</p>
+                    <p>Email: khanya@example.com</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<script>
+    // Get all team member cards
+const flipCards = document.querySelectorAll('.flip-card');
 
-    <script>
-        // Get all team member cards
-        const flipCards = document.querySelectorAll('.flip-card');
+// Add event listener to each card to flip on tap (click)
+flipCards.forEach(card => {
+    card.addEventListener('click', () => {
+        // Toggle the 'is-flipped' class to trigger the flip effect
+        card.classList.toggle('is-flipped');
+    });
+});
 
-        // Add event listener to each card to flip on tap (click)
-        flipCards.forEach(card => {
-            card.addEventListener('click', () => {
-                // Toggle the 'is-flipped' class to trigger the flip effect
-                card.classList.toggle('is-flipped');
-            });
-        });
-    </script>
+</script>
 </body>
+    <br><br><br>
 <footer>
     <div class="footer-container">
         <p>&copy; 2024 Mr.Bams Mobile Car Wash. All Rights Reserved.</p>
