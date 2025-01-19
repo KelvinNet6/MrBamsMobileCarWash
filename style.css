@@ -65,45 +65,102 @@ body {
     line-height: 1.6;
 }
 
-.ceo-section {
+.team-container {
     display: flex;
     justify-content: center;
-    margin: 30px 0;
+    flex-wrap: wrap;
 }
 
 .team-member {
-    text-align: center;
-    margin: 10px;
-    max-width: 150px;
+    margin: 20px;
+    width: 200px; /* Default width for larger screens */
+    perspective: 1000px;
 }
 
-.team-member img {
+.flip-card {
     width: 100%;
-    height: auto;
+    height: 300px; /* Height of the card */
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #444;
+    color: white;
+}
+
+.flip-card-front img {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.team-member h3 {
+.flip-card-front h3 {
     font-size: 1.2rem;
-    color: #fff;
+    margin-top: 10px;
 }
 
-.team-member p {
+.flip-card-front p {
     font-size: 1rem;
-    color: #fff;
+    margin-top: 5px;
 }
 
-.team-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.flip-card-back {
+    background-color: #555;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    transform: rotateY(180deg);
 }
 
-.team-member {
-    flex: 1 1 calc(33.33% - 40px); /* Three team members in a row, with space */
-    margin: 20px;
+.flip-card-back p {
+    margin: 10px 0;
 }
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .team-member {
+        width: 150px; /* Adjust card width for mobile view */
+        height: 250px; /* Adjust height for mobile view */
+    }
+    .flip-card-inner {
+        transition: transform 0.4s;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .team-member {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
 
 /* Footer Styling */
 footer {
