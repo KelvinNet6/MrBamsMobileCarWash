@@ -40,7 +40,7 @@ body {
 
 .content h1 {
     font-size: 4vw; /* Responsive font size for mobile */
-    line-height: 1.2;
+    line-height: 1.5;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
