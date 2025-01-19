@@ -178,9 +178,9 @@ header p {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Dark transparent background */
+    background-color: rgba(0, 0, 0, 0.9);
     padding-top: 60px;
-    transition: left 0.3s ease-in-out; /* Smooth transition for opening/closing */
+    transition: left 0.3s ease-in-out;
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -188,33 +188,32 @@ header p {
     justify-content: center; /* Vertically centers the links */
 }
 
-/* Sidebar open class to bring the sidebar into view */
 .sidebar.open {
-    left: 0; /* Move sidebar to the left 0 position (fully visible) */
+    left: 0; /* Move sidebar into view when opened */
 }
 
 /* Remove list styling for the links */
 .sidebar ul {
-    list-style-type: none;  /* Removes bullet points */
-    margin: 0;  /* Removes default margin */
-    padding: 0;  /* Removes default padding */
-    width: 100%;  /* Full width for the sidebar */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 /* Ensure that links are not underlined and are centered */
 .sidebar ul li a {
-    color: #fff; /* White color for links */
-    text-decoration: none; /* Remove underline */
+    color: #fff;
+    text-decoration: none;
     font-size: 1.2rem;
     display: block;
-    padding: 15px 20px; /* Add padding for better clickable area */
-    width: 100%; /* Ensure that each link spans full width */
-    text-align: center; /* Center the text in the link */
+    padding: 15px 20px;
+    width: 100%;
+    text-align: center;
 }
 
 /* Hover effect for sidebar links */
 .sidebar ul li a:hover {
-    background-color: #575757; /* Darken background on hover */
+    background-color: #575757;
 }
 
 /* Sidebar title (centered) */
@@ -225,37 +224,13 @@ header p {
     font-weight: bold;
     margin-top: 20px;
     padding: 10px;
-    width: 100%; /* Ensure title spans the full width */
+    width: 100%;
 }
-.sidebar, 
-.menu-toggle, 
-.sidebar ul, 
-.sidebar-title, 
-.sidebar hr {
-    display: none; /* Hide everything */
-}
-
-/* Show the default horizontal menu on larger screens */
-header nav ul {
-    display: flex; /* Show the horizontal menu on larger screens */
-}
-
-/* Hide sidebar and links by default on larger screens (min-width: 769px) */
-@media (min-width: 769px) {
-    .sidebar {
-        display: none; /* Sidebar hidden on large screens by default */
-    }
-
-    header nav ul {
-        display: flex; /* Show the default horizontal menu on larger screens */
-    }
-}
-
-/* Display the sidebar links only in mobile view (max-width: 768px) */
+/* Mobile view adjustments */
 @media (max-width: 768px) {
     .sidebar {
-        display: flex;  /* Make sidebar visible on small screens */
-        flex-direction: column; /* Align links vertically */
+        display: flex;  /* Show sidebar on mobile */
+        flex-direction: column;
         justify-content: center; /* Vertically center the links */
     }
 
@@ -264,40 +239,25 @@ header nav ul {
         text-align: center; /* Center the links inside the sidebar */
     }
 
-    /* Style for each sidebar link */
     .sidebar ul li {
-        padding: 10px 0; /* Add padding around links */
-        width: 100%; /* Full width of the sidebar */
+        padding: 10px 0;
+        width: 100%;
     }
 
-    /* Styling for horizontal line (if used) */
     .sidebar hr {
         border: 1px solid #fff;
         width: 80%;
         margin: 15px 0;
     }
 
-    /* Mobile menu (nav links hidden and replaced with menu toggle) */
     header nav ul {
-        display: none;
-    }
-
-    header nav ul li {
-        display: block;
-        margin: 10px 0;
+        display: none; /* Hide default horizontal nav on small screens */
     }
 
     .menu-toggle {
-        display: block;
-        font-size: 30px;
-        cursor: pointer;
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        z-index: 1001;
+        display: block; /* Show the menu toggle button on mobile */
     }
 }
-
 
   .about-section {
         flex-direction: column;
