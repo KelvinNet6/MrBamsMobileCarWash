@@ -577,6 +577,6 @@ form button:active {
     justify-content: center; /* Center align icons */
     align-items: center;
 }
-.TapContact{
+.flip-card-front .TapContact{
     color: blue;
 }
