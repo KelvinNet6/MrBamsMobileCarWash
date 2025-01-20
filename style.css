@@ -555,3 +555,25 @@ form button:active {
     height: 70vh; /* Slightly smaller height for mobile devices */
   }
 }
+/* Social Icons Styling */
+.social-icons a {
+    color: #fff; /* White color for icons */
+    font-size: 1.5rem; /* Adjust the size of icons */
+    margin: 0 10px; /* Spacing between icons */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Ensure proper spacing */
+    transition: transform 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+.social-icons a:hover {
+    color: #ffd700; /* Change icon color on hover */
+    transform: scale(1.2); /* Slightly enlarge on hover */
+}
+
+/* Optional: Style the container for alignment */
+.social-icons {
+    margin-top: 15px; /* Add some space from other elements */
+    display: flex;
+    justify-content: center; /* Center align icons */
+    align-items: center;
+}
