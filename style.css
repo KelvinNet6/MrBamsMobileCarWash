@@ -133,6 +133,7 @@ body {
 .flip-card-front h3 {
     font-size: 1.2rem;
     margin-top: 10px;
+    color: white;
 }
 
 .flip-card-front p {
