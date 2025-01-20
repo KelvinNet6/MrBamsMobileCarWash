@@ -557,16 +557,16 @@ form button:active {
 }
 /* Social Icons Styling */
 .social-icons a {
-    color: #fff; /* White color for icons */
-    font-size: 1.5rem; /* Adjust the size of icons */
-    margin: 0 10px; /* Spacing between icons */
-    text-decoration: none; /* Remove underline */
-    display: inline-block; /* Ensure proper spacing */
-    transition: transform 0.3s, color 0.3s; /* Smooth hover effect */
+    color: #fff; 
+    font-size: 1.5rem;
+    margin: 0 10px; 
+    text-decoration: none; 
+    display: inline-block; 
+    transition: transform 0.3s, color 0.3s; 
 }
 
 .social-icons a:hover {
-    color: #ffd700; /* Change icon color on hover */
+    color: #25d366; /* Green hover color for icons */
     transform: scale(1.2); /* Slightly enlarge on hover */
 }
 
@@ -577,3 +577,4 @@ form button:active {
     justify-content: center; /* Center align icons */
     align-items: center;
 }
+
