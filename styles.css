@@ -280,13 +280,11 @@ header p {
 .container-left{
   width: 48%; 
   padding: 20px;
+  border-radius: 10px;
 }
 .container-right {
   width: 48%; 
   padding: 10px;
-}
-.container-left{
-  border-radius: 10px; /* Add border-radius */
 }
 
 .container-right {
