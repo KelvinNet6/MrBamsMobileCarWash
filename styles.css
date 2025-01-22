@@ -133,10 +133,13 @@ header p {
 
 /* Media Queries */
 @media (max-width: 768px) {
+  header .logo {
+    font-size: 1.2rem; /* Adjust logo font size for mobile */
+  }
     header h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
         position: relative;
-        margin-top: 0;
+        margin-top: 40px;
         margin-left: 0;
         text-align: center;
     }
@@ -144,7 +147,7 @@ header p {
     header p {
         font-size: 1rem;
         position: relative;
-        margin-top: 10px;
+        margin-top: 40px
         margin-left: 0;
         text-align: center;
         width: 100%;
@@ -169,6 +172,7 @@ header p {
         left: 20px;
         z-index: 1001;
     }
+}
 
     /* Sidebar visible only on mobile */
     .sidebar {
