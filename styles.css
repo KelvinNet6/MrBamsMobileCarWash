@@ -228,7 +228,7 @@ header p {
     }
 
     .sidebar {
-        display: none; /* Hide the sidebar entirely on desktop */
+        display: none !important; /* Completely hide the sidebar on larger screens */
     }
 }
 /* Mobile links style */
@@ -271,6 +271,12 @@ header p {
 .container-right {
   width: 48%; 
   padding: 20px;
+}
+.container-left {
+  width: 48%;
+  padding: 20px;
+  border-radius: 15px; /* Add border-radius */
+  overflow: hidden; /* Ensure the content respects the rounded corners */
 }
 
 .container-right {
@@ -328,7 +334,10 @@ header p {
     padding: 20px;
     border-radius: 10px;
   }
-
+  
+ .container-left {
+    border-radius: 15px;
+  }
   /* Fix any potential issue with the slideshow container */
   .slideshow-container {
     height: 200px;
