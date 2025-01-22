@@ -585,3 +585,11 @@ form button:active {
 .flip-card-front .TapContact{
     color: blue;
 } 
+.footer-link {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.footer-link:hover {
+    color: #007bff; /* Optional: Change color on hover */
+}
