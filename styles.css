@@ -243,7 +243,11 @@ header p {
         width: 100%;
         text-align: center;
     }
-
+.sidebar hr {
+    width: 80%; /* Adjust the width as needed */
+    margin: 20px auto; /* Center it horizontally with auto margins */
+    border: 1px solid #fff; /* White border for the <hr> */
+  }
     /* Sidebar hover effect */
     .sidebar ul li a:hover {
         background-color: #575757;
