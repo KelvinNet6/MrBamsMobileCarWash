@@ -181,19 +181,19 @@ header p {
     background-color: rgba(0, 0, 0, 0.9);
     padding-top: 60px;
     transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    visibility: hidden; /* Hide sidebar completely */
+    opacity: 0; /* Invisible by default */
     z-index: 1000;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; /* Vertically centers the links */
-    visibility: hidden; /* Completely hide sidebar by default */
-    opacity: 0; /* Fully transparent */
 }
 
 .sidebar.open {
     left: 0; /* Move sidebar into view when opened */
-    visibility: visible; /* Make visible */
-    opacity: 1; /* Fully opaque */
+    visibility: visible; /* Show sidebar */
+    opacity: 1; /* Fully visible */
 }
 
 /* Remove list styling for the links */
@@ -231,10 +231,23 @@ header p {
     width: 100%;
 }
 
+/* Desktop-specific styles */
+@media (min-width: 769px) {
+    .sidebar {
+        display: none; /* Completely hide sidebar in desktop view */
+    }
+
+    .menu-toggle {
+        display: none; /* Hide menu toggle button in desktop view */
+    }
+}
+
 /* Mobile view adjustments */
 @media (max-width: 768px) {
     .sidebar {
-        display: flex; /* Show sidebar on mobile */
+        display: flex; /* Show sidebar on mobile when toggled */
+        flex-direction: column;
+        justify-content: center; /* Vertically center the links */
     }
 
     header nav ul {
@@ -246,22 +259,6 @@ header p {
     }
 }
 
-/* Desktop view adjustments */
-@media (min-width: 769px) {
-    .sidebar {
-        display: none; /* Ensure sidebar is hidden on large screens */
-    }
-
-    header nav ul {
-        display: flex; /* Ensure the default nav bar is shown on large screens */
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .menu-toggle {
-        display: none; /* Hide the menu toggle button on large screens */
-    }
-}
 
   /*About Section */
   .about-section {
