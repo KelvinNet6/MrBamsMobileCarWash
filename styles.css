@@ -180,16 +180,20 @@ header p {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     padding-top: 60px;
-    transition: left 0.3s ease-in-out;
+    transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
     z-index: 1000;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; /* Vertically centers the links */
+    visibility: hidden; /* Completely hide sidebar by default */
+    opacity: 0; /* Fully transparent */
 }
 
 .sidebar.open {
     left: 0; /* Move sidebar into view when opened */
+    visibility: visible; /* Make visible */
+    opacity: 1; /* Fully opaque */
 }
 
 /* Remove list styling for the links */
@@ -226,28 +230,11 @@ header p {
     padding: 10px;
     width: 100%;
 }
+
 /* Mobile view adjustments */
 @media (max-width: 768px) {
     .sidebar {
-        display: flex;  /* Show sidebar on mobile */
-        flex-direction: column;
-        justify-content: center; /* Vertically center the links */
-    }
-
-    .sidebar ul {
-        width: 100%;
-        text-align: center; /* Center the links inside the sidebar */
-    }
-
-    .sidebar ul li {
-        padding: 10px 0;
-        width: 100%;
-    }
-
-    .sidebar hr {
-        border: 1px solid #fff;
-        width: 80%;
-        margin: 15px 0;
+        display: flex; /* Show sidebar on mobile */
     }
 
     header nav ul {
@@ -259,6 +246,24 @@ header p {
     }
 }
 
+/* Desktop view adjustments */
+@media (min-width: 769px) {
+    .sidebar {
+        display: none; /* Ensure sidebar is hidden on large screens */
+    }
+
+    header nav ul {
+        display: flex; /* Ensure the default nav bar is shown on large screens */
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .menu-toggle {
+        display: none; /* Hide the menu toggle button on large screens */
+    }
+}
+
+  /*About Section */
   .about-section {
         flex-direction: column;
         align-items: center;
