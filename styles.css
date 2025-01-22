@@ -147,7 +147,7 @@ header p {
     header p {
         font-size: 1rem;
         position: relative;
-        margin-top: 10px
+        margin-top: 20px
         margin-left: 0;
         text-align: center;
         width: 100%;
@@ -225,7 +225,7 @@ header p {
 /* Desktop-specific styles */
 @media (min-width: 769px) {
     .menu-toggle {
-        display: none; /* Hide the toggle button on desktop */
+        display: none !important; /* Hide the toggle button on desktop */
     }
 
     .sidebar {
