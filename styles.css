@@ -172,7 +172,16 @@ header p {
         z-index: 1001;
     }
 }
-
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none !important; /* Explicitly hide toggle menu for desktop */
+        visibility: hidden; /* Extra measure for browsers */
+    }
+    
+    header nav ul {
+        display: flex; /* Ensure navigation menu is visible on desktop */
+    }
+}
     /* Sidebar visible only on mobile */
     .sidebar {
         left: -100%; /* Initially off-screen */
