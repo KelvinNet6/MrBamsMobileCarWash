@@ -223,8 +223,9 @@ header p {
 
 /* Desktop-specific styles */
 @media (min-width: 769px) {
-    .menu-toggle {
-        display: none !important; /* Hide the toggle button on desktop */
+      .menu-toggle {
+        display: none !important; /* Ensure toggle button is hidden on desktop */
+        visibility: hidden; 
     }
 
     .sidebar {
@@ -273,10 +274,7 @@ header p {
   padding: 20px;
 }
 .container-left {
-  width: 48%;
-  padding: 20px;
-  border-radius: 15px; /* Add border-radius */
-  overflow: hidden; /* Ensure the content respects the rounded corners */
+  border-radius: 10px; /* Add border-radius */
 }
 
 .container-right {
