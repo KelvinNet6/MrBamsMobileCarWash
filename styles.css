@@ -283,6 +283,7 @@ header p {
   width: 48%; 
   padding: 20px;
   border-radius: 10px !important;
+  overflow: hidden;
 }
 .container-right {
   width: 48%; 
@@ -347,6 +348,7 @@ header p {
   
  .container-left {
     border-radius: 15px;
+   overflow: hidden;
   }
   /* Fix any potential issue with the slideshow container */
   .slideshow-container {
