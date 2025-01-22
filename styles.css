@@ -11,7 +11,7 @@ body {
   background-color: #333;
 }
 
-/* Main header styles */
+header styles */
 header {
     position: relative;
     background-image: url('2-copy.jpg');
@@ -133,8 +133,6 @@ header p {
 }
 
 /* Media Queries */
-
-/* Mobile-specific styling */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
@@ -155,7 +153,7 @@ header p {
 
     /* Mobile menu */
     header nav ul {
-        display: none; /* Hide the desktop navigation */
+        display: none;
     }
 
     header nav ul li {
@@ -164,7 +162,7 @@ header p {
     }
 
     .menu-toggle {
-        display: block; /* Show the menu toggle button on mobile */
+        display: block;
         font-size: 30px;
         cursor: pointer;
         position: fixed;
