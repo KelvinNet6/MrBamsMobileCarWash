@@ -736,3 +736,11 @@ footer p {
       font-size: 1.1rem;
   }
 }
+.footer-link {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.footer-link:hover {
+    color: #007bff; /* Optional: Change color on hover */
+}
