@@ -132,6 +132,8 @@ header p {
     margin-left: 450px;
 }
 
+/* Media Queries */
+
 /* Mobile-specific styling */
 @media (max-width: 768px) {
     header h1 {
@@ -170,31 +172,26 @@ header p {
         left: 20px;
         z-index: 1001;
     }
-}
 
-/* Sidebar */
-.sidebar {
-    left: -100%; /* Initially off-screen */
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding-top: 60px;
-    transition: left 0.3s ease-in-out;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Vertically centers the links */
-}
-
-/* Sidebar content only visible on mobile */
-@media (max-width: 768px) {
+    /* Sidebar visible only on mobile */
     .sidebar {
-        display: flex;  /* Show sidebar on mobile */
+        left: -100%; /* Initially off-screen */
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding-top: 60px;
+        transition: left 0.3s ease-in-out;
+        z-index: 1000;
+        display: flex;
         flex-direction: column;
-        justify-content: center; /* Vertically center the links */
+        align-items: center;
+        justify-content: center; /* Vertically centers the links */
+    }
+
+    .sidebar.open {
+        left: 0; /* Move sidebar into view when opened */
     }
 
     .sidebar ul {
@@ -231,37 +228,9 @@ header p {
     }
 
     .sidebar {
-        position: static; /* Reset sidebar positioning */
-        left: 0; /* Keep sidebar in normal flow */
-        display: block; /* Ensure the sidebar content is visible */
-        background-color: transparent; /* Make background transparent */
-    }
-
-    .sidebar ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.2rem;
-        display: block;
-        padding: 15px 20px;
-        text-align: center;
-    }
-
-    .sidebar hr {
-        border: 1px solid #fff;
-        width: 80%;
-        margin: 15px 0;
-    }
-
-    .sidebar-title {
-        text-align: center;
-        color: white;
-        font-size: 1.8rem;
-        font-weight: bold;
-        margin-top: 20px;
-        padding: 10px;
+        display: none; /* Hide the sidebar entirely on desktop */
     }
 }
-
 
   /*About Section */
   .about-section {
