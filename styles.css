@@ -738,7 +738,7 @@ footer p {
 }
 .footer-link {
     text-decoration: underline;
-    color: inherit;
+    color: rgb(233, 239, 238);
 }
 
 .footer-link:hover {
