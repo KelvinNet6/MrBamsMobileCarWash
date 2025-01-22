@@ -277,10 +277,13 @@ header p {
   gap: 20px; 
 }
 
-.container-left,
-.container-right {
+.container-left{
   width: 48%; 
   padding: 20px;
+}
+.container-right {
+  width: 48%; 
+  padding: 10px;
 }
 .container-left{
   border-radius: 10px; /* Add border-radius */
