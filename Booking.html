@@ -68,6 +68,9 @@
     </div>
 
 <script>
+    
+    emailjs.init('Ox1rs2Hhv7Q2i99r1);
+    
     // Function to open the popup form
     function openPopup() {
         document.getElementById("popup-form").style.display = "flex";
@@ -91,7 +94,7 @@
         const message = document.getElementById("message").value;
 
         // Generate the invoice PDF using jsPDF
-        generateInvoice(name, service, location, date, time);
+        generateInvoice(name, service, location, date, time;
 
         // Send email with the invoice PDF to the client
         sendInvoiceByEmail(email, name, service, location, date, time);
@@ -214,20 +217,16 @@
 
     function sendInvoiceByEmail(clientEmail, clientName, service, location, date, time) {
     const emailParams = {
-        to_email: clientEmail,  // This will send the email to the email entered in the form
-        client_name: clientName,
+        client_name: name,
         service: service,
         location: location,
         date: date,
         time: time,
-        reply_to: clientEmail,  
-        from_name: "Mr Bam's MobileCarWash",  
-        from_email: "mrbamsmobilecarwash1@gmail.com", 
-        bcc_email: "mrbamsmobilecarwash1@gmail.com" 
+        to_email: email 
     };
 
     // Send email using EmailJS service
-    emailjs.send("service_g25v4ha", "Booking_Confirmation", emailParams)
+    emailjs.send("service_bc3utsg", "Booking_Confirmation", emailParams)
         .then(function(response) {
             console.log("Client email sent successfully", response);
         }, function(error) {
