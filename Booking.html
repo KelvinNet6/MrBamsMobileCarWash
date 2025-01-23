@@ -207,7 +207,7 @@
         doc.setFontSize(12);
         doc.text("Acc Number - Standard Bank: 91000648837", 20, serviceCurrentY + 20);
         doc.text("Contact: +27815130009", 20, serviceCurrentY + 30);
-        doc.text("Mr.Bam's Mobile Car Wash.", 50, serviceCurrentY + 50);
+        doc.text("Mr.Bam's Mobile Car Wash.", 150, serviceCurrentY + 50);
 
         // Save the invoice as a PDF and offer it for download
         doc.save("invoice.pdf");
@@ -238,9 +238,9 @@
 
     function getPrice(service) {
         let price = 0;
-        if (service === "Interior") price = 300;
-        else if (service === "Exterior") price = 250;
-        else if (service === "Full Car Wash") price = 500;
+        if (service === "interior") price = 300;
+        else if (service === "exterior") price = 250;
+        else if (service === "full") price = 500;
         return price;
     }
     
