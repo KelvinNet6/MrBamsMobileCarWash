@@ -211,25 +211,22 @@
         // Notify the user that the invoice is ready for download
         alert("Booking confirmed! Check Your Invoice!");
     }
-function sendInvoiceByEmail(clientEmail, clientName, service, location, date, time, pdfBase64) {
+
+    function sendInvoiceByEmail(clientEmail, clientName, service, location, date, time) {
     const emailParams = {
-        to_email: clientEmail,
+        to_email: clientEmail,  // This will send the email to the email entered in the form
         client_name: clientName,
         service: service,
         location: location,
         date: date,
         time: time,
-        attachments: [
-            {
-                content: pdfBase64.split(',')[1],  // Extract the base64 content
-                filename: "invoice.pdf",
-                type: "application/pdf",
-                disposition: "attachment"
-            }
-        ]
+        reply_to: clientEmail,  // Set reply-to to the client's email
+        from_name: "Mr Bam's MobileCarWash",  // Sender's name
+        from_email: "mrbamsmobilecarwash1@gmail.com,  // This is optional. You can leave it empty if using default
+        bcc_email: "mrbamsmobilecarwash1@gmail.com"  // Optional: BCC to another email address
     };
 
-    // Send the email with the PDF attachment
+    // Send email using EmailJS service
     emailjs.send("service_g25v4ha", "Booking_Confirmation", emailParams)
         .then(function(response) {
             console.log("Client email sent successfully", response);
@@ -237,6 +234,7 @@ function sendInvoiceByEmail(clientEmail, clientName, service, location, date, ti
             console.error("Error sending client email", error);
         });
 }
+
 
     function getPrice(service) {
         let price = 0;
