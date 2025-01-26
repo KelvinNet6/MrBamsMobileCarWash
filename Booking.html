@@ -177,7 +177,7 @@ function generateInvoice(name, service, location, date, time) {
     // Add service breakdown details
     let serviceCurrentY = serviceTableStartY + 15;
     const serviceTableData = [
-        ["Service Charge", `R${getPrice(service)}`, `R${getPrice(service)}`],
+        ["Charged Fee", `R${getPrice(service)}`, `R${getPrice(service)}`],
         ["Location", location, ""], // Empty cells for location
         ["Scheduled Date", date, ""],
         ["Scheduled Time", time, ""]
