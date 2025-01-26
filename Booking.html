@@ -221,7 +221,6 @@ function generateInvoice(name, service, location, date, time) {
 
 // Function to send data to Google Apps Script (including the invoice number)
 function sendDataToGoogleScript(email, name, service, location, date, time, totalAmount, invoiceNumber) {
-    // Create a payload object
     const payload = {
         email: email,
         name: name,
@@ -230,18 +229,16 @@ function sendDataToGoogleScript(email, name, service, location, date, time, tota
         date: date,
         time: time,
         totalAmount: totalAmount,
-        invoiceNumber: invoiceNumber // Send invoice number here
+        invoiceNumber: invoiceNumber
     };
 
-    // Create the URLSearchParams from the payload
     const params = new URLSearchParams(payload);
 
-    // Send data to Google Apps Script using fetch
     fetch('https://script.google.com/macros/s/AKfycbzo6zw9FfxPbSSGSReNKvWlO1Xbz83NPCGLz5UscbCcKssLyvfEWhvSX8fYT6nUbq2s/exec', {
         method: 'POST',
         body: params,
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'  // Specifies the form data format
+            'Content-Type': 'application/x-www-form-urlencoded'  // Sending data as form URL encoded
         }
     })
     .then(response => {
