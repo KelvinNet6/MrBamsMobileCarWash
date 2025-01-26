@@ -79,144 +79,147 @@
     }
     
     // Handle form submission
-    document.getElementById("appointment-form").addEventListener("submit", function (e) {
-        e.preventDefault();
+document.getElementById("appointment-form").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const service = document.getElementById("service").value;
-        const location = document.getElementById("location").value;
-        const date = document.getElementById("date").value;
-        const time = document.getElementById("time").value;
-        const message = document.getElementById("message").value;
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const service = document.getElementById("service").value;
+    const location = document.getElementById("location").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const message = document.getElementById("message").value;
 
-        // Generate the invoice PDF using jsPDF
-        generateInvoice(name, service, location, date, time);
+    // Generate the invoice number and the PDF
+    const invoiceNumber = generateInvoice(name, service, location, date, time); // Returns invoiceNumber
 
-       // Get the price based on the selected service
-       const totalAmount = getPrice(service);
+    // Get the price based on the selected service
+    const totalAmount = getPrice(service);
 
-       // Send data to Google Apps Script to handle invoice generation, email, and Google Sheets
-       sendDataToGoogleScript(email, name, service, location, date, time,totalAmount);
+    // Send data to Google Apps Script to handle invoice generation, email, and Google Sheets
+    sendDataToGoogleScript(email, name, service, location, date, time, totalAmount, invoiceNumber);
 
-       closePopup();
+    // Close the popup (if applicable)
+    closePopup();
+});
+
+// Function to generate invoice PDF and return invoice number
+function generateInvoice(name, service, location, date, time) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Generate a random invoice number
+    const invoiceNumber = `INV-${Math.floor(Math.random() * 1000000)}`;
+
+    const logoUrl = 'me.jpg'; // Path to your logo JPG file (local or hosted image)
+    const logoX = 20;
+    const logoY = 34;
+    const logoWidth = 30;
+    const logoHeight = 30;
+    const logoBorderRadius = 30; // Border radius for rounded corners (half of width/height)
+
+    // Draw the rounded logo background
+    doc.setFillColor(255, 255, 255); // White fill for the logo circle
+    doc.roundedRect(logoX, logoY, logoWidth, logoHeight, logoBorderRadius, logoBorderRadius, 'F'); // Create rounded rectangle mask
+    doc.addImage(logoUrl, 'JPEG', logoX, logoY, logoWidth, logoHeight); // Add logo inside the rounded rectangle
+
+    // Adjust invoice title and invoice number positions to avoid overlap
+    doc.setFontSize(18);
+    doc.text("Invoice - Mr.Bams Mobile Car Wash", 105, 50, null, null, "center"); // Move title further down
+    doc.setFontSize(12);
+    doc.text(`Invoice No: ${invoiceNumber}`, 105, 60); // Move invoice number below the title
+
+    // Set smaller font size for details
+    doc.setFontSize(12);
+
+    // Create table for Invoice Header Data (client details)
+    const tableStartY = 70; // Adjust table start Y position to avoid overlap
+    const tableColumnWidths = [60, 80]; // Column widths for the header section
+    const tableHeaders = ["Client Name", "Service Type"];
+
+    // Draw table header background
+    doc.setFillColor(240, 240, 240); // Light gray header background
+    doc.rect(20, tableStartY, tableColumnWidths[0] + tableColumnWidths[1], 10, 'F'); // Header background
+    doc.text(tableHeaders[0], 20, tableStartY + 7);
+    doc.text(tableHeaders[1], 100, tableStartY + 7);
+
+    // Draw data row for client details
+    let currentY = tableStartY + 15;
+    const headerData = [
+        [name, service]
+    ];
+
+    headerData.forEach(row => {
+        doc.setFillColor(255, 255, 255); // White row background
+        doc.rect(20, currentY, tableColumnWidths[0], 10, 'F');
+        doc.rect(100, currentY, tableColumnWidths[1], 10, 'F');
+        doc.text(row[0], 20, currentY + 7);
+        doc.text(row[1], 100, currentY + 7);
+        currentY += 10;
     });
 
-    function generateInvoice(name, service, location, date, time) {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
+    // Add another space before starting the service breakdown table
+    currentY += 10;
 
-        // Generate a random invoice number
-        const invoiceNumber = `INV-${Math.floor(Math.random() * 1000000)}`;
+    // Create a table for service breakdown
+    const serviceTableStartY = currentY;
+    const serviceTableColumnWidths = [80, 40, 40]; // Column widths for the service breakdown table
+    const serviceTableHeaders = ["Description", "Amount (ZAR)", "Total (ZAR)"];
 
-        const logoUrl = 'me.jpg'; // Path to your logo JPG file (local or hosted image)
+    // Draw service table header (match the width with the header)
+    const serviceTableHeaderWidth = serviceTableColumnWidths[0] + serviceTableColumnWidths[1] + serviceTableColumnWidths[2]; // Total width of the service table header
+    doc.setFillColor(240, 240, 240); // Light gray background for service table header
+    doc.rect(20, serviceTableStartY, serviceTableHeaderWidth, 10, 'F');
+    doc.text(serviceTableHeaders[0], 20, serviceTableStartY + 7);
+    doc.text(serviceTableHeaders[1], 100, serviceTableStartY + 7);
+    doc.text(serviceTableHeaders[2], 140, serviceTableStartY + 7);
 
-        // Define logo position and size (X, Y, Width, Height)
-        const logoX = 20;
-        const logoY = 34;
-        const logoWidth = 30;
-        const logoHeight = 30;
-        const logoBorderRadius = 30; // Border radius for rounded corners (half of width/height)
+    // Add service breakdown details
+    let serviceCurrentY = serviceTableStartY + 15;
+    const serviceTableData = [
+        ["Service Charge", `R${getPrice(service)}`, `R${getPrice(service)}`],
+        ["Location", location, ""], // Empty cells for location
+        ["Scheduled Date", date, ""],
+        ["Scheduled Time", time, ""]
+    ];
 
-        // Draw the rounded logo background
-        doc.setFillColor(255, 255, 255); // White fill for the logo circle
-        doc.roundedRect(logoX, logoY, logoWidth, logoHeight, logoBorderRadius, logoBorderRadius, 'F'); // Create rounded rectangle mask
-        doc.addImage(logoUrl, 'JPEG', logoX, logoY, logoWidth, logoHeight); // Add logo inside the rounded rectangle
+    // Draw rows for service breakdown
+    serviceTableData.forEach(row => {
+        doc.setFillColor(255, 255, 255); // White row background
+        doc.rect(20, serviceCurrentY, serviceTableColumnWidths[0], 10, 'F');
+        doc.rect(100, serviceCurrentY, serviceTableColumnWidths[1], 10, 'F');
+        doc.rect(140, serviceCurrentY, serviceTableColumnWidths[2], 10, 'F');
+        doc.text(row[0], 20, serviceCurrentY + 7);
+        doc.text(row[1], 100, serviceCurrentY + 7);
+        doc.text(row[2], 140, serviceCurrentY + 7);
+        serviceCurrentY += 10;
+    });
 
-        // Adjust invoice title and invoice number positions to avoid overlap
-        doc.setFontSize(18);
-        doc.text("Invoice - Mr.Bams Mobile Car Wash", 105, 50, null, null, "center"); // Move title further down
-        doc.setFontSize(12);
-        doc.text(`Invoice No: ${invoiceNumber}`, 105, 60); // Move invoice number below the title
+    // Add a row for the total price
+    const totalAmount = getPrice(service);
+    doc.setFillColor(240, 240, 240); // Light gray background for total row
+    doc.rect(20, serviceCurrentY, serviceTableColumnWidths[0] + serviceTableColumnWidths[1] + serviceTableColumnWidths[2], 10, 'F'); // Total background
+    doc.text("Total", 20, serviceCurrentY + 7);
+    doc.text(`R${totalAmount}`, 100, serviceCurrentY + 7);
+    doc.text(`R${totalAmount}`, 140, serviceCurrentY + 7);
 
-        // Set smaller font size for details
-        doc.setFontSize(12);
+    // Add account number for payment instructions
+    doc.setFontSize(12);
+    doc.text("Acc Number - Standard Bank: 91000648837", 20, serviceCurrentY + 20);
+    doc.text("Contact: +27815130009", 20, serviceCurrentY + 30);
+    doc.text("Mr.Bam's Mobile Car Wash.", 80, serviceCurrentY + 50);
 
-        // Create table for Invoice Header Data (client details)
-        const tableStartY = 70; // Adjust table start Y position to avoid overlap
-        const tableColumnWidths = [60, 80]; // Column widths for the header section
-        const tableHeaders = ["Client Name", "Service Type"];
+    // Save the invoice as a PDF and offer it for download
+    doc.save("invoice.pdf");
 
-        // Draw table header background
-        doc.setFillColor(240, 240, 240); // Light gray header background
-        doc.rect(20, tableStartY, tableColumnWidths[0] + tableColumnWidths[1], 10, 'F'); // Header background
-        doc.text(tableHeaders[0], 20, tableStartY + 7);
-        doc.text(tableHeaders[1], 100, tableStartY + 7);
+    // Notify the user that the invoice is ready for download
+    alert("Booking confirmed! Check Your Invoice!");
 
-        // Draw data row for client details
-        let currentY = tableStartY + 15;
-        const headerData = [
-            [name, service]
-        ];
+    // Return the invoice number for sending to the server
+    return invoiceNumber;
+}
 
-        headerData.forEach(row => {
-            doc.setFillColor(255, 255, 255); // White row background
-            doc.rect(20, currentY, tableColumnWidths[0], 10, 'F');
-            doc.rect(100, currentY, tableColumnWidths[1], 10, 'F');
-            doc.text(row[0], 20, currentY + 7);
-            doc.text(row[1], 100, currentY + 7);
-            currentY += 10;
-        });
-
-        // Add another space before starting the service breakdown table
-        currentY += 10;
-
-        // Create a table for service breakdown
-        const serviceTableStartY = currentY;
-        const serviceTableColumnWidths = [80, 40, 40]; // Column widths for the service breakdown table
-        const serviceTableHeaders = ["Description", "Amount (ZAR)", "Total (ZAR)"];
-
-        // Draw service table header (match the width with the header)
-        const serviceTableHeaderWidth = serviceTableColumnWidths[0] + serviceTableColumnWidths[1] + serviceTableColumnWidths[2]; // Total width of the service table header
-        doc.setFillColor(240, 240, 240); // Light gray background for service table header
-        doc.rect(20, serviceTableStartY, serviceTableHeaderWidth, 10, 'F');
-        doc.text(serviceTableHeaders[0], 20, serviceTableStartY + 7);
-        doc.text(serviceTableHeaders[1], 100, serviceTableStartY + 7);
-        doc.text(serviceTableHeaders[2], 140, serviceTableStartY + 7);
-
-        // Add service breakdown details
-        let serviceCurrentY = serviceTableStartY + 15;
-        const serviceTableData = [
-            ["Service Charge", `R${getPrice(service)}`, `R${getPrice(service)}`],
-            ["Location", location, ""], // Empty cells for location
-            ["Scheduled Date", date, ""],
-            ["Scheduled Time", time, ""]
-        ];
-
-        // Draw rows for service breakdown
-        serviceTableData.forEach(row => {
-            doc.setFillColor(255, 255, 255); // White row background
-            doc.rect(20, serviceCurrentY, serviceTableColumnWidths[0], 10, 'F');
-            doc.rect(100, serviceCurrentY, serviceTableColumnWidths[1], 10, 'F');
-            doc.rect(140, serviceCurrentY, serviceTableColumnWidths[2], 10, 'F');
-            doc.text(row[0], 20, serviceCurrentY + 7);
-            doc.text(row[1], 100, serviceCurrentY + 7);
-            doc.text(row[2], 140, serviceCurrentY + 7);
-            serviceCurrentY += 10;
-        });
-
-        // Add a row for the total price
-        const totalAmount = getPrice(service);
-        doc.setFillColor(240, 240, 240); // Light gray background for total row
-        doc.rect(20, serviceCurrentY, serviceTableColumnWidths[0] + serviceTableColumnWidths[1] + serviceTableColumnWidths[2], 10, 'F'); // Total background
-        doc.text("Total", 20, serviceCurrentY + 7);
-        doc.text(`R${totalAmount}`, 100, serviceCurrentY + 7);
-        doc.text(`R${totalAmount}`, 140, serviceCurrentY + 7);
-
-        // Add account number for payment instructions
-        doc.setFontSize(12);
-        doc.text("Acc Number - Standard Bank: 91000648837", 20, serviceCurrentY + 20);
-        doc.text("Contact: +27815130009", 20, serviceCurrentY + 30);
-        doc.text("Mr.Bam's Mobile Car Wash.", 80, serviceCurrentY + 50);
-
-        // Save the invoice as a PDF and offer it for download
-        doc.save("invoice.pdf");
-
-        // Notify the user that the invoice is ready for download
-        alert("Booking confirmed! Check Your Invoice!");
-    }
-
-
+// Function to send data to Google Apps Script (including the invoice number)
 function sendDataToGoogleScript(email, name, service, location, date, time, totalAmount, invoiceNumber) {
     const payload = {
         email: email,
@@ -226,7 +229,7 @@ function sendDataToGoogleScript(email, name, service, location, date, time, tota
         date: date,
         time: time,
         totalAmount: totalAmount,
-        invoiceNumber: invoiceNumber 
+        invoiceNumber: invoiceNumber // Send invoice number here
     };
 
     fetch('https://script.google.com/macros/s/AKfycbzo6zw9FfxPbSSGSReNKvWlO1Xbz83NPCGLz5UscbCcKssLyvfEWhvSX8fYT6nUbq2s/exec', {
@@ -236,22 +239,29 @@ function sendDataToGoogleScript(email, name, service, location, date, time, tota
         },
         body: JSON.stringify(payload)
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(data => {
         alert("Booking confirmed! Invoice is generated.");
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        console.error('Error:', error);
+        alert("An error occurred while sending the request. Please try again.");
+    });
 }
 
- //price initialisation function   
-    function getPrice(service) {
-        let price = 0;
-        if (service === "interior") price = 300;
-        else if (service === "exterior") price = 250;
-        else if (service === "full") price = 500;
-        return price;
-    }
-    
+// Function to get the price based on the selected service
+function getPrice(service) {
+    let price = 0;
+    if (service === "interior") price = 300;
+    else if (service === "exterior") price = 250;
+    else if (service === "full") price = 500;
+    return price;
+}
 </script>
 </body>
 </html>
