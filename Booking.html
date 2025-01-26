@@ -216,24 +216,42 @@
         alert("Booking confirmed! Check Your Invoice!");
     }
 
-    function sendInvoiceByEmail(clientEmail, clientName, service, location, date, time) {
+   function sendInvoiceByEmail(clientEmail, clientName, service, location, date, time) {
     const emailParams = {
-        client_name: name,
+        client_name: clientName,
         service: service,
         location: location,
         date: date,
         time: time,
-        to_email: email 
+        to_email: clientEmail
     };
 
-    // Send email using EmailJS service
+    // Send email to the client
     emailjs.send("service_bc3utsg", "Booking_Confirmation", emailParams)
         .then(function(response) {
             console.log("Client email sent successfully", response);
         }, function(error) {
             console.error("Error sending client email", error);
         });
+
+       // send email to the admin 
+    const adminEmailParams = {
+        client_name: clientName,
+        service: service,
+        location: location,
+        date: date,
+        time: time,
+        to_email: "mrbamsmobilecarwash1@gmail.com"  
+    };
+
+    emailjs.send("service_bc3utsg", "Booking_Confirmation", adminEmailParams)
+        .then(function(response) {
+            console.log("Admin email sent successfully", response);
+        }, function(error) {
+            console.error("Error sending admin email", error);
+        });
 }
+
 
 
     function getPrice(service) {
