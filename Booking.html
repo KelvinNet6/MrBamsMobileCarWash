@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css"> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="me_oWV_icon.ico" type="image/x-icon">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>  
 </head>
 <body>
     <!-- Header Section -->
@@ -97,7 +97,7 @@
        const totalAmount = getPrice(service);
 
        // Send data to Google Apps Script to handle invoice generation, email, and Google Sheets
-       sendDataToGoogleScript(email, name, service, location, date, time, totalAmount);
+       sendDataToGoogleScript(email, name, service, location, date, time,totalAmount);
 
        closePopup();
     });
@@ -217,7 +217,7 @@
     }
 
 
-function sendDataToGoogleScript(email, name, service, location, date, time, totalAmount) {
+function sendDataToGoogleScript(email, name, service, location, date, time, totalAmount, invoiceNumber) {
     const payload = {
         email: email,
         name: name,
@@ -225,7 +225,8 @@ function sendDataToGoogleScript(email, name, service, location, date, time, tota
         location: location,
         date: date,
         time: time,
-        totalAmount: totalAmount
+        totalAmount: totalAmount,
+        invoiceNumber: invoiceNumber 
     };
 
     fetch('https://script.google.com/macros/s/AKfycbzo6zw9FfxPbSSGSReNKvWlO1Xbz83NPCGLz5UscbCcKssLyvfEWhvSX8fYT6nUbq2s/exec', {
@@ -241,6 +242,7 @@ function sendDataToGoogleScript(email, name, service, location, date, time, tota
     })
     .catch(error => console.error('Error:', error));
 }
+
  //price initialisation function   
     function getPrice(service) {
         let price = 0;
