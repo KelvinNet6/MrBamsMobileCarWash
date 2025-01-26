@@ -77,7 +77,7 @@
     function closePopup() {
         document.getElementById("popup-form").style.display = "none";
     }
-
+    
     // Handle form submission
     document.getElementById("appointment-form").addEventListener("submit", function (e) {
         e.preventDefault();
@@ -93,10 +93,13 @@
         // Generate the invoice PDF using jsPDF
         generateInvoice(name, service, location, date, time);
 
-        // Send email with the invoice PDF to the client
-        sendInvoiceByEmail(email, name, service, location, date, time);
+       // Get the price based on the selected service
+       const totalAmount = getPrice(service);
 
-        closePopup();
+       // Send data to Google Apps Script to handle invoice generation, email, and Google Sheets
+       sendDataToGoogleScript(email, name, service, location, date, time, totalAmount);
+
+       closePopup();
     });
 
     function generateInvoice(name, service, location, date, time) {
@@ -213,72 +216,32 @@
         alert("Booking confirmed! Check Your Invoice!");
     }
 
-const nodemailer = require('nodemailer');
 
-function sendInvoiceByEmail(clientEmail, clientName, service, location, date, time) {
-    // Configure SMTP transporter
-    const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com", 
-        port: 587, 
-        secure: false, // Set to true if using port 465
-        auth: {
-            user: "mrbamsmobilecarwash1@gmail.com", // Your email address
-            pass: "your-email-password" // Your email password or app password
-        }
-    });
-
-    // Client email details
-    const clientMailOptions = {
-        from: '"Mr Bams MobileCarWash" <mrbamsmobilecarwash1@gmail.com>', // Sender address
-        to: clientEmail, // Recipient email address
-        subject: "Booking Confirmation",
-        text: `Hi ${clientName},\n\nYour booking has been confirmed:\nService: ${service}\nLocation: ${location}\nDate: ${date}\nTime: ${time}\n\nThank you for choosing us!`,
-        html: `<p>Hi ${clientName}, Your booking has been confirmed,</p>
-               <p>Here are your booking details:</p>
-               <ul>
-                   <li>Service: ${service}</li>
-                   <li>Location: ${location}</li>
-                   <li>Date: ${date}</li>
-                   <li>Time: ${time}</li>
-               </ul>
-               <p>Thank you for choosing us!</p>`
+function sendDataToGoogleScript(email, name, service, location, date, time, totalAmount) {
+    const payload = {
+        email: email,
+        name: name,
+        service: service,
+        location: location,
+        date: date,
+        time: time,
+        totalAmount: totalAmount
     };
 
-    // Admin email details
-    const adminMailOptions = {
-        from: '"Mr Bams MobileCarWash" <mrbamsmobilecarwash1@gmail.com>',
-        to: "mrbamsmobilecarwash1@gmail.com",
-        subject: "New Booking Alert",
-        html: `<p>New booking details:</p>
-               <ul>
-                   <li>Client Name: ${clientName}</li>
-                   <li>Service: ${service}</li>
-                   <li>Location: ${location}</li>
-                   <li>Date: ${date}</li>
-                   <li>Time: ${time}</li>
-               </ul>`
-    };
-
-    // Send client email
-    transporter.sendMail(clientMailOptions, (error, info) => {
-        if (error) {
-            console.error("Error sending client email:", error);
-        } else {
-            console.log("Client email sent successfully:", info.response);
-        }
-    });
-
-    // Send admin email
-    transporter.sendMail(adminMailOptions, (error, info) => {
-        if (error) {
-            console.error("Error sending admin email:", error);
-        } else {
-            console.log("Admin email sent successfully:", info.response);
-        }
-    });
+    fetch('https://script.google.com/macros/s/AKfycbzo6zw9FfxPbSSGSReNKvWlO1Xbz83NPCGLz5UscbCcKssLyvfEWhvSX8fYT6nUbq2s/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert("Booking confirmed! Invoice is generated.");
+    })
+    .catch(error => console.error('Error:', error));
 }
-
-
+ //price initialisation function   
     function getPrice(service) {
         let price = 0;
         if (service === "interior") price = 300;
