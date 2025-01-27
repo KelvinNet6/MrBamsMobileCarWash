@@ -208,7 +208,7 @@ function sendDataToGoogleScript(email, name, service, location, date, time, tota
 
     const params = new URLSearchParams(payload);
 
-    fetch('https://script.google.com/macros/s/AKfycbzFaJH491nxOWW11v4nHXf8hHMxUph919OSLWNoN0PsG1jOHELVByelSSCX_pehp7cU/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbxVxK1Em2zObkyMwpxl74RV4R-yuPv-VYx2fj5qsdCu-hE8A9IkZefLtlbasRW16csa/exec', {
         method: 'POST',
         body: params,
         headers: {
