@@ -234,23 +234,23 @@ function sendDataToGoogleScript(email, name, service, location, date, time, tota
 
     const params = new URLSearchParams(payload);
 
-    fetch('https://script.google.com/macros/s/AKfycbzo6zw9FfxPbSSGSReNKvWlO1Xbz83NPCGLz5UscbCcKssLyvfEWhvSX8fYT6nUbq2s/exec', {
+    ffetch('https://script.google.com/macros/s/AKfycbzo6zw9FfxPbSSGSReNKvWlO1Xbz83NPCGLz5UscbCcKssLyvfEWhvSX8fYT6nUbq2s/exec', {
     method: 'POST',
     body: params,
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
     },
-    mode: 'no-cors' // This disables CORS, but might limit your ability to access the response
+    mode: 'cors',  // Update this line to allow CORS
 })
 .then(response => {
-    console.log('Response:', response); // You won't be able to read the response if using 'no-cors'
-    alert("Booking confirmed! Check Your Email!");
+    console.log('Response:', response);
+    alert("Confirmation Email Sent!");
 })
 .catch(error => {
     console.error('Error:', error);
     alert("An error occurred while sending the request. Please try again.");
 });
-}
+ }
 
 // Function to get the price based on the selected service
 function getPrice(service) {
