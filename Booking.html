@@ -206,17 +206,14 @@ function sendDataToGoogleScript(email, name, service, location, date, time, tota
         invoiceNumber: invoiceNumber
     };
 
-    const params = new URLSearchParams(payload);
-
     fetch('https://script.google.com/macros/s/AKfycbx-XivPizpW39AuhxcGE5K_AhwSmRQgh6NIIKCr-N581kg6Rm6SDYTEcOFRitK4Qr9BSA/exec', {
-        method: 'POST',
-        body: params,
+        method: "POST",
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            "Content-Type": "application/json",
         },
-        mode: 'cors' 
+        body: JSON.stringify(payload), // Convert the payload to JSON
     })
-    .then(response => response.json()) 
+    .then(response => response.json()) // Parse JSON response
     .then(data => {
         console.log('Success:', data);
         alert("Booking confirmed!");
