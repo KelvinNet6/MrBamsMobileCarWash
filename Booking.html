@@ -219,7 +219,6 @@ function generateInvoice(name, service, location, date, time) {
     return invoiceNumber;
 }
 
-// Function to send data to Google Apps Script (including the invoice number)
 function sendDataToGoogleScript(email, name, service, location, date, time, totalAmount, invoiceNumber) {
     const payload = {
         email: email,
@@ -235,22 +234,23 @@ function sendDataToGoogleScript(email, name, service, location, date, time, tota
     const params = new URLSearchParams(payload);
 
     fetch('https://script.google.com/macros/s/AKfycbzo6zw9FfxPbSSGSReNKvWlO1Xbz83NPCGLz5UscbCcKssLyvfEWhvSX8fYT6nUbq2s/exec', {
-    method: 'POST',
-    body: params,
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    mode: 'cors',  // Update this line to allow CORS
-})
-.then(response => {
-    console.log('Response:', response);
-    alert("Confirmation Email Sent!");
-})
-.catch(error => {
-    console.error('Error:', error);
-    alert("An error occurred while sending the request. Please try again.");
-});
- }
+        method: 'POST',
+        body: params,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        mode: 'cors' // Ensure CORS is enabled
+    })
+    .then(response => response.json()) // Parse the JSON response from the backend
+    .then(data => {
+        console.log('Success:', data);
+        alert("Booking confirmed!");
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("An error occurred while sending the request.");
+    });
+}
 
 // Function to get the price based on the selected service
 function getPrice(service) {
