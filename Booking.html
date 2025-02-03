@@ -183,8 +183,9 @@ function generateInvoice(name, service, location, date, time) {
     doc.text(`R${totalAmount}`, 140, serviceCurrentY + 7);
 
     doc.setFontSize(12);
-    doc.text("Acc Number - Standard Bank: 91000648837", 20, serviceCurrentY + 20);
-    doc.text("Contact: +27815130009", 20, serviceCurrentY + 30);
+    doc.text("NedBank tjeck account number: 1106056434", 20, serviceCurrentY + 20);
+    doc.text("CAccount Holder: Ashley Bam.", 20, serviceCurrentY + 30);
+    doc.text("Contact: +27815130009", 20, serviceCurrentY + 40);
     doc.text("Mr.Bam's Mobile Car Wash.", 80, serviceCurrentY + 50);
 
     doc.save("invoice.pdf");
