@@ -196,21 +196,26 @@
         return invoiceNumber;
     }
 
-    function sendBookingToWhatsApp(name, service, location, date, time, totalAmount, invoiceNumber) {
-        const message = `New Booking for Mr. Bam's Mobile Car Wash:
-        Name: ${name}
-        Service: ${service}
-        Location: ${location}
-        Date: ${date}
-        Time: ${time}
-        Total: R${totalAmount}
-        Invoice Number: ${invoiceNumber}
-        Contact: +27815130009`;
+    function sendBookingToEmail(name, service, location, date, time, totalAmount, invoiceNumber) {
+    const message = `New Booking for Mr. Bam's Mobile Car Wash:
+    Name: ${name}
+    Service: ${service}
+    Location: ${location}
+    Date: ${date}
+    Time: ${time}
+    Total: R${totalAmount}
+    Invoice Number: ${invoiceNumber}`;
 
-        const whatsappUrl = `https://wa.me/+27672911605?text=${encodeURIComponent(message)}`;
+    const subject = "New Booking for Mr. Bam's Mobile Car Wash";  // Email subject
+    const recipient = "kelvin.net6@gmail.com";  // Replace with your email address
 
-        window.open(whatsappUrl, '_blank');
-    }
+    // Create the mailto URL with the subject and body pre-filled
+    const emailUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+    // Open the email client (user will need to press 'Send')
+    window.location.href = emailUrl;
+}
+
 
     function getPrice(service) {
         let price = 0;
