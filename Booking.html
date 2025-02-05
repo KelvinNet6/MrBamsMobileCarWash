@@ -8,6 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="me_oWV_icon.ico" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>  
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 <body>
     <!-- Header Section -->
@@ -196,7 +197,7 @@
         return invoiceNumber;
     }
 
-    function sendBookingToEmail(name, service, location, date, time, totalAmount, invoiceNumber) {
+  function sendBookingToEmail(name, service, location, date, time, totalAmount, invoiceNumber) {
     const message = `New Booking for Mr. Bam's Mobile Car Wash:
     Name: ${name}
     Service: ${service}
@@ -209,13 +210,19 @@
     const subject = "New Booking for Mr. Bam's Mobile Car Wash";  // Email subject
     const recipient = "kelvin.net6@gmail.com";  // Replace with your email address
 
-    // Create the mailto URL with the subject and body pre-filled
-    const emailUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-
-    // Open the email client (user will need to press 'Send')
-    window.location.href = emailUrl;
+    // Send the email using SMTP.js
+    Email.send({
+        SecureToken: " ppysztvsprtexihg", 
+        To: recipient,
+        From: "kelvin.net6@hmail.com", 
+        Subject: subject,
+        Body: message
+    }).then(
+        message => alert("Booking sent successfully!")
+    ).catch(
+        error => alert("There was an error sending the email: " + error)
+    );
 }
-
 
     function getPrice(service) {
         let price = 0;
