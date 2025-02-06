@@ -200,12 +200,12 @@
     }
 
     function sendBookingToWhatsApp(name, service, location, date, time, invoiceNumber) {
-    const message = `Hello\n\n I would like to book a car wash appointment:\n\n
-    Name: ${name}\n\n
-    Service: ${service}\n\n
-    Location: ${location}\n\n
-    Date: ${date}\n\n
-    Time: ${time}\n\n
+    const message = `Hello%0A%0A I would like to book a car wash appointment:%0A%0A
+    Name: ${name}%0A%0A
+    Service: ${service}%0A%0A
+    Location: ${location}%0A%0A
+    Date: ${date}%0A%0A
+    Time: ${time}%0A%0A
     Invoice Number: ${invoiceNumber}`;
     
     // Encode the message to make sure it's URL safe
