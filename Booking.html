@@ -199,26 +199,25 @@
         return invoiceNumber;
     }
 
-    function sendBookingToWhatsApp(name, service, location, date, time, totalAmount, invoiceNumber) {
-        const message = `New Booking for Mr. Bam's Mobile Car Wash:
-        Name: ${name}
-        Service: ${service}
-        Location: ${location}
-        Date: ${date}
-        Time: ${time}
-        Total: R${totalAmount}
-        Invoice Number: ${invoiceNumber}`;
-        
-        // Encode the message to make sure it's URL safe
-        const encodedMessage = encodeURIComponent(message);
+    function sendBookingToWhatsApp(name, service, location, date, time, invoiceNumber) {
+    const message = `Hello\n\n I would like to book a car wash appointment:\n\n
+    Name: ${name}\n\n
+    Service: ${service}\n\n
+    Location: ${location}\n\n
+    Date: ${date}\n\n
+    Time: ${time}\n\n
+    Invoice Number: ${invoiceNumber}`;
+    
+    // Encode the message to make sure it's URL safe
+    const encodedMessage = encodeURIComponent(message);
 
-        // WhatsApp API URL (replace the phone number with the recipient's WhatsApp number)
-        const phoneNumber = '+27751101765';  
-        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    // WhatsApp API URL (replace the phone number with the recipient's WhatsApp number)
+    const phoneNumber = '+27751101765';  
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-        // Open the URL to send the message
-        window.open(whatsappURL, '_blank');
-    }
+    // Open the URL to send the message
+    window.open(whatsappURL, '_blank');
+}
 
     function getPrice(service) {
         let price = 0;
