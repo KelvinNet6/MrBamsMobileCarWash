@@ -198,15 +198,15 @@
         return invoiceNumber;  // Return the invoice number for the WhatsApp message
     }
 function sendBookingToWhatsApp(name, service, location, date, time, invoiceNumber) {
-    const message = `Hello
+    const message = `Hello\n\n
 
-I would like to book a car wash appointment:
+I would like to book a car wash appointment:\n\n
 
-Name: ${name}
-Service: ${service}
-Location: ${location}
-Date: ${date}
-Time: ${time}
+Name: ${name}\n
+Service: ${service}\n
+Location: ${location}\n
+Date: ${date}\n
+Time: ${time}\n
 Invoice Number: ${invoiceNumber}`;
     
     // WhatsApp API URL (replace the phone number with the recipient's WhatsApp number)
