@@ -192,37 +192,31 @@
 
         doc.save("invoice.pdf");
 
-        alert("Booking confirmed! Check Your Invoice!");
+        alert("Booking Invoice Genarated!, Submit your Booking To our Business WhatsApp!");
 
         return invoiceNumber;
     }
 
-  function sendBookingToEmail(name, service, location, date, time, totalAmount, invoiceNumber) {
-    const message = `New Booking for Mr. Bam's Mobile Car Wash:
+  function sendBookingToWhatsApp(name, service, location, date, time, invoiceNumber) {
+    const message = `Booking Request:
     Name: ${name}
     Service: ${service}
     Location: ${location}
     Date: ${date}
     Time: ${time}
-    Total: R${totalAmount}
     Invoice Number: ${invoiceNumber}`;
+    
+    // Encode the message to make sure it's URL safe
+    const encodedMessage = encodeURIComponent(message);
 
-    const subject = "New Booking for Mr. Bam's Mobile Car Wash";  // Email subject
-    const recipient = "kelvin.net6@gmail.com";  // Replace with your email address
+    // WhatsApp API URL (replace the phone number with the recipient's WhatsApp number)
+    const phoneNumber = '+27672911605';  // Replace with the WhatsApp phone number (e.g., '1234567890')
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    // Send the email using SMTP.js
-    Email.send({
-        SecureToken: "knvv ktvn tqgl dvnz", 
-        To: recipient,
-        From: "kelvin.net6@hmail.com", 
-        Subject: subject,
-        Body: message
-    }).then(
-        message => alert("Booking sent successfully!")
-    ).catch(
-        error => alert("There was an error sending the email: " + error)
-    );
+    // Open the URL to send the message
+    window.open(whatsappURL, '_blank');
 }
+
 
     function getPrice(service) {
         let price = 0;
