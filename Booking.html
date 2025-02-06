@@ -90,10 +90,9 @@
         const message = document.getElementById("message").value;
 
         const invoiceNumber = generateInvoice(name, service, location, date, time); 
+        // Removed totalAmount from being passed to WhatsApp as it's not needed
 
-        const totalAmount = getPrice(service);
-
-        sendBookingToWhatsApp(name, service, location, date, time, totalAmount, invoiceNumber);
+        sendBookingToWhatsApp(name, service, location, date, time, invoiceNumber);
 
         closePopup();
     });
@@ -196,28 +195,28 @@
 
         alert("Booking Invoice Generated! Submit your Booking To our Business WhatsApp!");
 
-        return invoiceNumber;
+        return invoiceNumber;  // Return the invoice number for the WhatsApp message
     }
+function sendBookingToWhatsApp(name, service, location, date, time, invoiceNumber) {
+    const message = `Hello
 
-    function sendBookingToWhatsApp(name, service, location, date, time, invoiceNumber) {
-    const message = `Hello%0A%0A I would like to book a car wash appointment:%0A%0A
-    Name: ${name}%0A%0A
-    Service: ${service}%0A%0A
-    Location: ${location}%0A%0A
-    Date: ${date}%0A%0A
-    Time: ${time}%0A%0A
-    Invoice Number: ${invoiceNumber}`;
+I would like to book a car wash appointment:
+
+Name: ${name}
+Service: ${service}
+Location: ${location}
+Date: ${date}
+Time: ${time}
+Invoice Number: ${invoiceNumber}`;
     
-    // Encode the message to make sure it's URL safe
-    const encodedMessage = encodeURIComponent(message);
-
     // WhatsApp API URL (replace the phone number with the recipient's WhatsApp number)
     const phoneNumber = '+27751101765';  
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
     // Open the URL to send the message
     window.open(whatsappURL, '_blank');
 }
+
 
     function getPrice(service) {
         let price = 0;
@@ -227,6 +226,7 @@
         return price;
     }
 </script>
+
 
 </body>
 </html>
