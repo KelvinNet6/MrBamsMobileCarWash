@@ -11,61 +11,63 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 <body>
-    <!-- Header Section -->
-    <div class="header-container">
-        <div class="left-container">
-            <div class="logo-container">
-                <span class="logo">Mr.Bams MobileCarWash</span>
-            </div>
-            <h1>Try Us Now</h1>
-            <p>We bring the car wash to your doorstep. Convenient, reliable, professional, and affordable car wash services.</p>
+   <!-- Header Section -->
+<div class="header-container">
+    <div class="left-container">
+        <div class="logo-container">
+            <span class="logo">Mr.Bams MobileCarWash</span>
         </div>
-        <div class="right-container">
-            <h2>Book a Car Wash Appointment</h2>
-            <p>Click the Button Below to make a Booking with Mr.Bam Mobile Car Wash.</p>
-            <!-- Book Now Button -->
-            <button class="service-btn" onclick="openPopup()">
-                <i class="fas fa-car custom-car-icon"></i> Book Now
-            </button>
-        </div>
+        <h1>Try Us Now</h1>
+        <p>We bring the car wash to your doorstep. Convenient, reliable, professional, and affordable car wash services.</p>
     </div>
+    <div class="right-container">
+        <h2>Book a Car Wash Appointment</h2>
+        <p>Click the Button Below to make a Booking with Mr.Bam Mobile Car Wash.</p>
+        <!-- Book Now Button -->
+        <button class="service-btn" onclick="openPopup()">
+            <i class="fas fa-car custom-car-icon"></i> Book Now
+        </button>
+    </div>
+</div>
+
 <!-- Popup Form -->
-    <div id="popup-form" class="popup-form" style="display: none;">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup()">×</span>
-            <h3>Book an Appointment</h3>
-            <form id="appointment-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+<div id="popup-form" class="popup-form" style="display: none;">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">×</span>
+        <h3>Book an Appointment</h3>
+        <form id="appointment-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-                <label for="service">Select Service:</label>
-                <select id="service" name="service" required>
-                    <option value="none">None</option>
-                    <option value="interior">Interior Car Wash</option>
-                    <option value="exterior">Exterior Car Wash</option>
-                    <option value="full">Full Car Wash</option>
-                </select>
+            <label for="service">Select Service:</label>
+            <select id="service" name="service" required>
+                <option value="none">None</option>
+                <option value="interior">Interior Car Wash</option>
+                <option value="exterior">Exterior Car Wash</option>
+                <option value="full">Full Car Wash</option>
+            </select>
 
-                <label for="location">Location:</label>
-                <input type="text" id="location" name="location" placeholder="Enter your location" required>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter your location" required>
 
-                <label for="date">Schedule Date:</label>
-                <input type="date" id="date" name="date" required>
+            <label for="date">Schedule Date:</label>
+            <input type="date" id="date" name="date" required>
 
-                <label for="time">Schedule Time:</label>
-                <input type="time" id="time" name="time" required>
+            <label for="time">Schedule Time:</label>
+            <input type="time" id="time" name="time" required>
 
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" placeholder="Additional requests..." rows="4"></textarea>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Additional requests..." rows="4"></textarea>
 
-                <button type="submit">
-                    <i class="fas fa-car custom-car-icon"></i>Book Appointment</button>
-            </form>
-        </div>
+            <button type="submit">
+                <i class="fas fa-car custom-car-icon"></i>Book Appointment
+            </button>
+        </form>
     </div>
+</div>
 
 <script>
     function openPopup() {
@@ -100,7 +102,7 @@
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
 
-        const invoiceNumber = INV-${Math.floor(Math.random() * 1000000)};
+        const invoiceNumber = `INV-${Math.floor(Math.random() * 1000000)}`;
 
         const logoUrl = 'me.jpg'; 
         const logoX = 20;
@@ -116,7 +118,7 @@
         doc.setFontSize(18);
         doc.text("Invoice - Mr.Bams Mobile Car Wash", 105, 50, null, null, "center"); 
         doc.setFontSize(12);
-        doc.text(Invoice No: ${invoiceNumber}, 105, 60); 
+        doc.text(`Invoice No: ${invoiceNumber}`, 105, 60); 
 
         doc.setFontSize(12);
 
@@ -158,7 +160,7 @@
 
         let serviceCurrentY = serviceTableStartY + 15;
         const serviceTableData = [
-            ["Charged Fee", R${getPrice(service)}, R${getPrice(service)}],
+            ["Charged Fee", `R${getPrice(service)}`, `R${getPrice(service)}`],
             ["Location", location, ""], 
             ["Scheduled Date", date, ""],
             ["Scheduled Time", time, ""]
@@ -179,8 +181,8 @@
         doc.setFillColor(240, 240, 240); 
         doc.rect(20, serviceCurrentY, serviceTableColumnWidths[0] + serviceTableColumnWidths[1] + serviceTableColumnWidths[2], 10, 'F'); 
         doc.text("Total", 20, serviceCurrentY + 7);
-        doc.text(R${totalAmount}, 100, serviceCurrentY + 7);
-        doc.text(R${totalAmount}, 140, serviceCurrentY + 7);
+        doc.text(`R${totalAmount}`, 100, serviceCurrentY + 7);
+        doc.text(`R${totalAmount}`, 140, serviceCurrentY + 7);
 
         doc.setFontSize(12);
         doc.setFont("helvetica", "bold"); 
@@ -192,32 +194,31 @@
 
         doc.save("invoice.pdf");
 
-        alert("Booking Invoice Genarated!, Submit your Booking To our Business WhatsApp!");
+        alert("Booking Invoice Generated! Submit your Booking To our Business WhatsApp!");
 
         return invoiceNumber;
     }
-    
-function sendBookingToWhatsApp(name, service, location, date, time, totalAmount, invoiceNumber) {
-    const message = `New Booking for Mr. Bam's Mobile Car Wash:
-    Name: ${name}
-    Service: ${service}
-    Location: ${location}
-    Date: ${date}
-    Time: ${time}
-    Total: R${totalAmount}
-    Invoice Number: ${invoiceNumber}`;
-    
-    // Encode the message to make sure it's URL safe
-    const encodedMessage = encodeURIComponent(message);
 
-    // WhatsApp API URL (replace the phone number with the recipient's WhatsApp number)
-    const phoneNumber = 'YOUR_PHONE_NUMBER';  // Replace with the WhatsApp phone number (e.g., '1234567890')
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    function sendBookingToWhatsApp(name, service, location, date, time, totalAmount, invoiceNumber) {
+        const message = `New Booking for Mr. Bam's Mobile Car Wash:
+        Name: ${name}
+        Service: ${service}
+        Location: ${location}
+        Date: ${date}
+        Time: ${time}
+        Total: R${totalAmount}
+        Invoice Number: ${invoiceNumber}`;
+        
+        // Encode the message to make sure it's URL safe
+        const encodedMessage = encodeURIComponent(message);
 
-    // Open the URL to send the message
-    window.open(whatsappURL, '_blank');
-}
+        // WhatsApp API URL (replace the phone number with the recipient's WhatsApp number)
+        const phoneNumber = 'YOUR_PHONE_NUMBER';  // Replace with the WhatsApp phone number (e.g., '1234567890')
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
+        // Open the URL to send the message
+        window.open(whatsappURL, '_blank');
+    }
 
     function getPrice(service) {
         let price = 0;
