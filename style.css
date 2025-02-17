@@ -150,7 +150,10 @@ body {
 
 @media (min-width: 1024px) {
     .team-container {
-        flex-wrap: nowrap; 
+        display: flex;
+        flex-wrap: nowrap;  
+        justify-content: space-between;  
+        gap: 30px;
     }
 
     .team-member {
@@ -158,11 +161,11 @@ body {
         height: 350px; 
     }
     .header-container {
-    flex-wrap: nowrap;  /* Prevent wrapping on desktop */
+    flex-wrap: nowrap;  
 }
 
 .team-container {
-   flex-wrap: nowrap;  /* Prevent wrapping on desktop */
+   flex-wrap: nowrap; 
          }
 }
 
@@ -304,6 +307,7 @@ footer p {
 }
 
 .header-container {
+ 
     display: flex;
     height: 100vh;
     flex-wrap: wrap; 
