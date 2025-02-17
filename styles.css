@@ -176,17 +176,17 @@ header p {
 }
 @media (min-width: 769px) {
     .menu-toggle {
-        display: none !important; /* Explicitly hide toggle menu for desktop */
-        visibility: hidden; /* Extra measure for browsers */
+        display: none !important; 
+        visibility: hidden;
     }
     
     header nav ul {
-        display: flex; /* Ensure navigation menu is visible on desktop */
+        display: flex; 
     }
 }
-    /* Sidebar visible only on mobile */
+    
     .sidebar {
-        left: -100%; /* Initially off-screen */
+        left: -100%; 
         position: fixed;
         top: 0;
         width: 100%;
@@ -198,16 +198,16 @@ header p {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; /* Vertically centers the links */
+        justify-content: center; 
     }
 
     .sidebar.open {
-        left: 0; /* Move sidebar into view when opened */
+        left: 0; 
     }
 
     .sidebar ul {
         width: 100%;
-        text-align: center; /* Center the links inside the sidebar */
+        text-align: center; 
     }
 
     .sidebar ul li {
@@ -235,20 +235,18 @@ header p {
 /* Desktop-specific styles */
 @media (min-width: 769px) {
       .menu-toggle {
-        display: none !important; /* Ensure toggle button is hidden on desktop */
+        display: none !important; 
         visibility: hidden; 
     }
 
     .sidebar {
-        display: none !important; /* Completely hide the sidebar on larger screens */
+        display: none !important; 
     }
 }
-/* Mobile links style */
 @media (max-width: 768px) {
-    /* Style the links in the sidebar */
     .sidebar ul li a {
-        color: #fff;  /* Ensure the text is white */
-        text-decoration: none;  /* Remove the underline */
+        color: #fff;  
+        text-decoration: none;
         font-size: 1.2rem;
         display: block;
         padding: 15px 20px;
@@ -256,18 +254,16 @@ header p {
         text-align: center;
     }
 .sidebar hr {
-    width: 80%; /* Adjust the width as needed */
-    margin: 20px auto; /* Center it horizontally with auto margins */
-    border: 1px solid #fff; /* White border for the <hr> */
+    width: 80%; 
+    margin: 20px auto; 
+    border: 1px solid #fff; 
   }
-    /* Sidebar hover effect */
     .sidebar ul li a:hover {
         background-color: #575757;
     }
 
-    /* Prevent links from being underlined on mobile */
     a {
-        text-decoration: none !important;  /* Use !important to override default browser styles */
+        text-decoration: none !important;  
     }
 }
  /* About Section */
@@ -319,8 +315,6 @@ header p {
 .btn:hover {
   background-color: #ff6347; 
 }
-
-/* Mobile View Adjustments */
 @media (max-width: 768px) {
   .about-section {
     flex-direction: column; 
@@ -350,24 +344,17 @@ header p {
     border-radius: 15px;
    overflow: hidden;
   }
-  /* Fix any potential issue with the slideshow container */
   .slideshow-container {
     height: 200px;
   }
 }
-
-/* Ensure the header and sidebar don't affect About section layout */
 header, .sidebar {
   display: block;
 }
-
-/* Additional fix to ensure layout isn't messed up by other styles */
 * {
   box-sizing: border-box;
 }
 
-
-/* Services Section */
 .services-section {
   padding: 50px 0;
   background-color: #333;
@@ -380,17 +367,15 @@ header, .sidebar {
   color: #ddd;
 }
 
-/* Flex container for services */
 .services-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 30px;
   margin: 0 auto;
-  max-width: 1200px; /* Optional: Limits the width on large screens */
+  max-width: 1200px; 
 }
 
-/* Service Card */
 .service-card {
   background-color: #98adb1;
   border-radius: 8px;
@@ -398,10 +383,9 @@ header, .sidebar {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 30%;
   transition: transform 0.3s, box-shadow 0.3s;
-  margin-bottom: 20px; /* Add margin to space cards out */
+  margin-bottom: 20px; 
 }
 
-/* Service Card Image */
 .service-card img {
   width: 100%;
   height: auto;
@@ -440,14 +424,13 @@ header, .sidebar {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile view adjustments for service cards */
 @media (max-width: 768px) {
   .services-container {
     justify-content: center;
   }
 
   .service-card {
-    width: 100%; /* Service cards take up the full width on mobile */
+    width: 100%; 
   }
 }
 
@@ -551,29 +534,27 @@ header, .sidebar {
     background-image: url('reviewsb.jpeg');
     background-size: cover; 
     background-position: center center; 
-    background-repeat: no-repeat; /* Ensure the image doesn't repeat */
-    color: #ffffff; /* Text color for contrast against the background */
+    background-repeat: no-repeat; 
+    color: #ffffff; 
 }
 
 .reviews-section h2 {
     font-size: 1.8rem;
     font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.6); /* Add a semi-transparent background for the header */
+    background-color: rgba(0, 0, 0, 0.6); 
     padding: 10px;
     border-radius: 5px;
     display: inline-block;
     margin-bottom: 20px;
 }
 
-/* Review Row (to display reviews in a row) */
 .review-row {
     display: flex;
     justify-content: space-around;
-    gap: 20px;  /* Add space between review containers */
+    gap: 20px;  
     flex-wrap: wrap;
 }
 
-/* Individual Review Container */
 .review-container {
     background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -582,10 +563,9 @@ header, .sidebar {
     width: 30%;
     text-align: center;
     position: relative;
-    margin-bottom: 20px;  /* Space below each review container */
+    margin-bottom: 20px;  
 }
 
-/* Customer Name Styling */
 .customer-name {
     font-weight: bold;
     font-size: 1.2rem;
@@ -593,43 +573,37 @@ header, .sidebar {
     color: Black;
 }
 
-/* Customer Comment Styling */
 .customer-comment {
     font-style: italic;
     margin-bottom: 10px;
     color: #555;
 }
 
-/* Star Rating Styling */
 .stars {
-    font-size: 1.5rem; /* Adjust star size */
-    color: #ffcc00; /* Gold color for stars */
+    font-size: 1.5rem; 
+    color: #ffcc00; 
     margin-bottom: 10px;
 }
 
-/* Country Flag Styling */
 .country-flag {
-    font-size: 2rem; /* Adjust flag size */
+    font-size: 2rem; 
     position: absolute;
     bottom: 10px;
     right: 10px;
-    color: #333; /* Set flag icon color */
+    color: #333; 
 }
 
-/* Responsive Design for Mobile */
 @media (max-width: 768px) {
     .review-container {
-        width: 100%; /* Make each review container take full width on smaller screens */
-        margin-bottom: 20px; /* Add space between reviews on mobile */
+        width: 100%; 
+        margin-bottom: 20px; 
     }
 
     .review-row {
-        gap: 20px;  /* Ensure there's space between reviews */
+        gap: 20px;  
     }
 }
 
-
-/* Footer Styling */
 footer {
   background-color: #383838;
   color: #fff;
@@ -644,14 +618,12 @@ footer {
   padding: 0 20px;
 }
 
-/* Footer Text */
 footer p {
   margin: 10px 0;
   font-size: 1rem;
   color: #ccc;
 }
 
-/* Subscription Section */
 .subscription-section {
   margin-top: 30px;
 }
@@ -693,7 +665,6 @@ footer p {
   background-color: #c53e1e;
 }
 
-/* Social Media Icons */
 .footer-social {
   margin-top: 20px;
 }
@@ -706,10 +677,9 @@ footer p {
 }
 
 .footer-social a:hover {
-  color: #ff5733; /* Hover color for icons */
+  color: #ff5733; 
 }
 
-/* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
   .footer-social {
       margin-top: 15px;
@@ -742,5 +712,5 @@ footer p {
 }
 
 .footer-link:hover {
-    color: #007bff; /* Optional: Change color on hover */
+    color: #007bff; 
 }
