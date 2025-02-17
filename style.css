@@ -157,6 +157,13 @@ body {
         width: 300px; 
         height: 350px; 
     }
+    .header-container {
+    flex-wrap: nowrap;  /* Prevent wrapping on desktop */
+}
+
+.team-container {
+   flex-wrap: nowrap;  /* Prevent wrapping on desktop */
+         }
 }
 
 @media (max-width: 1023px) {
@@ -198,7 +205,6 @@ footer {
   text-align: center;
   position: relative;
   width: 100%;
- clear: both;
 }
 
 .footer-container {
