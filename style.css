@@ -573,8 +573,8 @@ form button:active {
 .footer-link:hover {
     color: #007bff; 
 }
- /* Modal (Popup) Styles */
-        .modal {
+
+   .modal {
             display: none; /* Hidden by default */
             position: fixed;
             z-index: 1; /* Sit on top */
@@ -588,10 +588,11 @@ form button:active {
 
         .modal-content {
             background-color: #fff;
-            margin: 15% auto;
+            margin: 10% auto;
             padding: 20px;
-            width: 80%; /* Adjust the width */
-            max-width: 800px; /* Limit the max width */
+            width: 90%; /* Responsive width */
+            max-width: 800px; /* Max width */
+            box-sizing: border-box;
         }
 
         .close {
@@ -610,9 +611,44 @@ form button:active {
             cursor: pointer;
         }
 
-        /* Map container */
+        /* Location Map */
         #location-map iframe {
             width: 100%;
             height: 450px;
             border: 0;
+            border-radius: 10px;
+        }
+
+        /* Button to Open the Map */
+        #openMapBtn {
+            padding: 12px 25px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #openMapBtn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Mobile responsiveness for the button and modal */
+        @media only screen and (max-width: 600px) {
+            .modal-content {
+                width: 95%; /* More width on small screens */
+                margin: 20% auto; /* Adjust margin */
+            }
+
+            #location-map iframe {
+                height: 300px; /* Reduce map height on small screens */
+            }
+
+            #openMapBtn {
+                width: 100%; /* Make the button full-width on small screens */
+                font-size: 18px;
+                padding: 15px 0;
+            }
         }
