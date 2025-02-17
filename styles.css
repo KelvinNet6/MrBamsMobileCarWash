@@ -118,7 +118,7 @@ header h1 {
     width: 100%;
     margin-top: 150px;
     position: absolute;
-    margin-left: 430px;
+    margin-left: 410px;
 }
 
 header p {
@@ -128,7 +128,7 @@ header p {
     margin-top: 270px;
     position: absolute;
     color: rgb(255, 255, 255);
-    margin-left: 450px;
+    margin-left: 420px;
 }
 
 /* Media Queries */
