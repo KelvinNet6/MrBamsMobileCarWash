@@ -131,11 +131,21 @@
         </div>
     </div>
     
-<section id="location-map">
-    <div class="map-container">
-     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.0524317164204!2d19.100321975648487!3d-33.88830347321913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcdbca491550081%3A0xb30747d4203c1e49!2s66%20Boonzaaier%20Rd%2C%20Le%20Roux%2C%20Franschhoek%2C%207690!5e0!3m2!1sen!2sza!4v1737389916007!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+ <!-- Button to Open the Location Map Popup -->
+    <button id="openMapBtn" class="open-map-btn">View Location Map</button>
+
+    <!-- Popup (Modal) for Location Map -->
+    <div id="locationMapModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Our Location</h2>
+            <div id="location-map">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.0524317164204!2d19.100321975648487!3d-33.88830347321913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcdbca491550081%3A0xb30747d4203c1e49!2s66%20Boonzaaier%20Rd%2C%20Le%20Roux%2C%20Franschhoek%2C%207690!5e0!3m2!1sen!2sza!4v1737389916007!5m2!1sen!2sza" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
   
 <script>
   
@@ -150,6 +160,27 @@ flipCards.forEach(card => {
     });
 });
 
+     // Get the modal and the button that opens the modal
+        const modal = document.getElementById("locationMapModal");
+        const openMapBtn = document.getElementById("openMapBtn");
+        const closeBtn = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        openMapBtn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
 </script>
     <footer>
     <div class="footer-container">
