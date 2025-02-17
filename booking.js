@@ -18,7 +18,6 @@
         const message = document.getElementById("message").value;
 
         const invoiceNumber = generateInvoice(name, service, location, date, time); 
-        // Removed totalAmount from being passed to WhatsApp as it's not needed
 
         sendBookingToWhatsApp(name, service, location, date, time, invoiceNumber);
 
@@ -123,7 +122,7 @@
 
         alert("Booking Invoice Generated! Submit your Booking To our Business WhatsApp!");
 
-        return invoiceNumber;  // Return the invoice number for the WhatsApp message
+        return invoiceNumber; 
     }
 function sendBookingToWhatsApp(name, service, location, date, time, invoiceNumber) {
     const message = `Hello-
@@ -137,11 +136,9 @@ Date: ${date}\n--
 Time: ${time}\n--
 Invoice Number: ${invoiceNumber}`;
     
-    // WhatsApp API URL (replace the phone number with the recipient's WhatsApp number)
     const phoneNumber = '+27751101765';  
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
-    // Open the URL to send the message
     window.open(whatsappURL, '_blank');
 }
 
