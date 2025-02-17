@@ -4,30 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mr.Bams Mobile Car Wash</title>
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Mr.Bams Mobile Car Wash offers professional, convenient, and reliable mobile car wash services. We bring the shine to you!">
-    <meta name="keywords" content="mobile car wash, Interior Vacuum, dashboard cleaning, vehicle detailing, Tyre Polishing.">
-    <meta name="author" content="Mr.Bams Mobile Car Wash">
-    <link rel="canonical" href="https://mrbamsmobilecarwash.com">
     
-    <!-- Open Graph Meta Tags (For Facebook, WhatsApp, etc.) -->
-    <meta property="og:title" content="Mr.Bams Mobile Car Wash - Professional Auto Detailing">
-    <meta property="og:description" content="Professional mobile car wash services at your convenience. Book now!">
-    <meta property="og:url" content="https://mrbamsmobilecarwash.com">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mr.Bams Mobile Car Wash - Auto Detailing">
-    <meta name="twitter:description" content="We offer top-quality mobile car wash services at your location.">
-    
-
     <!-- Stylesheets (Preload + Async Load) -->
     <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+    <!------------------Favicon------------------->
     <link rel="icon" href="https://mrbamsmobilecarwash.com/me_oWV_icon.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
@@ -74,7 +59,6 @@
     <h2 class="sidebar-title">Mr.Bams <span>MobileCarWash</span></h2> 
 </div>
 
-<!-- About Section --> 
  <section class="about-section" id="about">
     
     <div class="container-left">
@@ -115,7 +99,6 @@
     </div>
 </section>
 
- <!-- Services Section -->
  <section class="services-section" id="services">
     <h2>Our Services</h2>
     <div class="services-container">
@@ -203,7 +186,7 @@
 <section class="reviews-section" id="reviews">
     <h2>What Our Customers Say</h2>
     <div class="review-row">
-        <!-- Customer Review Containers -->
+    
         <div class="review-container">
             <div class="customer-name">John Doe</div>
             <div class="customer-comment">"I was impressed with Mr. Bam's Mobile Car Wash. The team arrived on time, and my car looked spotless, both inside and out. Their attention to detail was exceptional, and the convenience of the mobile service saved me time. Highly recommend for top-quality, efficient service!"</div>
@@ -211,11 +194,11 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i> <!-- Half star -->
-                <i class="far fa-star"></i> <!-- Empty star -->
+                <i class="fas fa-star-half-alt"></i> 
+                <i class="far fa-star"></i> 
             </div>
             <div class="country-flag">
-                <i class="fas fa-flag-za"></i> <!-- South Africa Flag -->
+                <i class="fas fa-flag-za"></i> 
             </div>
         </div>
 
@@ -227,10 +210,10 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="far fa-star"></i> <!-- Empty star -->
+                <i class="far fa-star"></i>
             </div>
             <div class="country-flag">
-                <i class="fas fa-flag-mw"></i> <!-- Malawi Flag -->
+                <i class="fas fa-flag-mw"></i> 
             </div>
         </div>
 
@@ -242,10 +225,10 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i> <!-- Full stars -->
+                <i class="fas fa-star"></i> 
             </div>
             <div class="country-flag">
-                <i class="fas fa-flag-uk"></i> <!-- UK Flag -->
+                <i class="fas fa-flag-uk"></i> 
             </div>
         </div>
     </div>
@@ -305,26 +288,23 @@ const sidebar = document.querySelector('.sidebar');
 const menuToggle = document.querySelector('.menu-toggle');
 const sidebarLinks = document.querySelectorAll('.sidebar ul li a'); 
 
-// Initially hide the sidebar
 window.addEventListener('load', () => {
-  sidebar.style.left = '-100%';  // Sidebar off-screen
+  sidebar.style.left = '-100%';  
 });
 
 menuToggle.addEventListener('click', () => {
     if (sidebar.style.left === '-100%' || sidebar.style.left === '') {
-        sidebar.style.left = '0';  // Show the sidebar
-        sidebar.classList.add('open'); // Add 'open' class to display it
+        sidebar.style.left = '0';  
+        sidebar.classList.add('open'); 
     } else {
-        sidebar.style.left = '-100%';  // Hide the sidebar
-        sidebar.classList.remove('open'); // Remove 'open' class to hide it
+        sidebar.style.left = '-100%';  
+        sidebar.classList.remove('open'); 
     }
 });
 
-
-// Close sidebar when a link is clicked
 sidebarLinks.forEach(link => {
   link.addEventListener('click', () => {
-    sidebar.style.left = '-100%';  // Hide the sidebar when a link is clicked
+    sidebar.style.left = '-100%';  
   });
 });
 
