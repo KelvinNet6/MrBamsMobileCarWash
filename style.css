@@ -1,4 +1,3 @@
-/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
@@ -12,12 +11,10 @@ body {
     font-family: Arial, sans-serif;
     background-color: #383838;
 }
-
-/* Header with video background */
 .header {
     position: relative;
     width: 100%;
-    height: 60vh; /* Full screen height */
+    height: 60vh; 
     overflow: hidden;
 }
 
@@ -27,8 +24,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure the video covers the entire area */
-    z-index: -1; /* Place the video behind the text */
+    object-fit: cover; 
+    z-index: -1; 
 }
 
 .content {
@@ -42,12 +39,11 @@ body {
 }
 
 .content h1 {
-    font-size: 4vw; /* Responsive font size for mobile */
+    font-size: 4vw; 
     line-height: 1.5;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* About Section */
 .about-section {
     padding: 30px;
     background-color: #333;
@@ -69,31 +65,27 @@ body {
     line-height: 1.6;
 }
 
-/* Team container to display cards in a row only on large screens */
 .team-container {
     display: flex;
-    justify-content: space-evenly; /* Ensures even spacing between cards */
-    gap: 20px; /* Space between cards */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    margin-top: 20px; /* Add some spacing from the previous content */
+    justify-content: space-evenly; 
+    gap: 20px; 
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
-/* Each team member card */
 .team-member {
     margin: 20px;
-    width: 250px; /* Increased width for larger screens */
+    width: 250px;
     perspective: 1000px;
 }
 
-/* Flip card styling */
 .flip-card {
     width: 100%;
-    height: 300px; /* Set height for the card */
+    height: 300px; 
     position: relative;
     cursor: pointer;
 }
 
-/* Card flipping effect */
 .flip-card-inner {
     position: absolute;
     width: 100%;
@@ -111,10 +103,9 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Prevent back content from showing when flipped */
+    backface-visibility: hidden;
 }
 
-/* Front side styles */
 .flip-card-front {
     display: flex;
     flex-direction: column;
@@ -122,15 +113,15 @@ body {
     justify-content: center;
     background-color: #444;
     color: white;
-    z-index: 2; /* Ensure front content appears in front */
+    z-index: 2; 
 }
 
 .flip-card-front img {
-    width: 120px; /* Slightly larger image */
+    width: 120px; 
     height: 120px;
-    object-fit: cover; /* Ensures the image covers the area without distortion */
-    border-radius: 50%; /* Make image round */
-    margin-bottom: 10px; /* Add some space between image and text */
+    object-fit: cover; 
+    border-radius: 50%; 
+    margin-bottom: 10px; 
 }
 
 .flip-card-front h3 {
@@ -144,57 +135,53 @@ body {
     margin-top: 5px;
 }
 
-/* Back side styles */
 .flip-card-back {
     background-color: #555;
     color: white;
     text-align: center;
     padding: 20px;
-    transform: rotateY(180deg); /* Ensure back is hidden by default */
-    z-index: 1; /* Ensure back content stays behind front content */
+    transform: rotateY(180deg); 
+    z-index: 1; 
 }
 
 .flip-card-back p {
     margin: 10px 0;
 }
 
-/* Large Screen View - Keep cards in a row */
 @media (min-width: 1024px) {
     .team-container {
-        flex-wrap: nowrap; /* Prevent wrapping on large screens */
+        flex-wrap: nowrap; 
     }
 
     .team-member {
-        width: 300px; /* Increased width for large screens */
-        height: 350px; /* Adjust height for large screens */
+        width: 300px; 
+        height: 350px; 
     }
 }
 
-/* Mobile View - Stack cards vertically on smaller screens */
 @media (max-width: 1023px) {
     .team-container {
-        flex-direction: column; /* Stack cards vertically on smaller screens */
+        flex-direction: column; 
         align-items: center;
     }
 
     .team-member {
-        width: 90%; /* Adjust width for smaller screens */
+        width: 90%; 
         margin: 10px 0;
-        height: auto; /* Let the height adjust to content */
+        height: auto; 
     }
 }
 
 @media (max-width: 768px) {
     .team-member {
-        width: 80%; /* Adjust card width for tablet view */
-        height: 300px; /* Adjust height for tablet view */
+        width: 80%; 
+        height: 300px; 
     }
 
     .flip-card-inner {
-        transition: transform 0.4s; /* Slightly faster flip on mobile */
+        transition: transform 0.4s; 
     }
 
-    /* Make the text larger for mobile screens */
     .flip-card-front h3 {
         font-size: 1rem;
     }
@@ -204,7 +191,6 @@ body {
     }
 }
 
-/* Footer Styling */
 footer {
   background-color: #383838;
   color: #fff;
@@ -220,14 +206,14 @@ footer {
   padding: 0 20px;
 }
 
-/* Footer Text */
+
 footer p {
   margin: 10px 0;
   font-size: 1rem;
   color: #fff;
 }
 
-/* Subscription Section */
+
 .subscription-section {
   margin-top: 30px;
 }
@@ -269,7 +255,6 @@ footer p {
   background-color: #c53e1e;
 }
 
-/* Social Media Icons */
 .footer-social {
   margin-top: 20px;
 }
@@ -282,10 +267,9 @@ footer p {
 }
 
 .footer-social a:hover {
-  color: #ff5733; /* Hover color for icons */
+  color: #ff5733; 
 }
 
-/* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
   .footer-social {
       margin-top: 15px;
@@ -312,11 +296,10 @@ footer p {
   }
 }
 
-/* Header Section */
 .header-container {
     display: flex;
     height: 100vh;
-    flex-wrap: wrap; /* Allow the containers to stack on smaller screens */
+    flex-wrap: wrap; 
 }
 
 .left-container {
@@ -329,7 +312,7 @@ footer p {
     flex-direction: column;
     justify-content: center;
     padding: 20px;
-    min-height: 400px; /* Ensure left container has minimum height */
+    min-height: 400px; 
 }
 
 .logo-container {
@@ -364,8 +347,8 @@ h2 {
 .service-btn {
     width: auto;
     height: 60px;
-    padding: 15px 40px; /* Adjust padding to make the button fit text */
-    background-color: #007bff; /* Blue color for the button */
+    padding: 15px 40px; 
+    background-color: #007bff; 
     color: white;
     font-size: 20px;
     text-align: center;
@@ -373,26 +356,25 @@ h2 {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: 30px; /* Adds some space from the top */
+    margin-top: 30px; 
 }
 
 .service-btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; 
 }
 
 .service-btn:active {
-    transform: scale(1); /* Button returns to original size when clicked */
+    transform: scale(1); 
 }
 
-/* Popup Form */
 .popup-form {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark background */
+    background-color: rgba(0, 0, 0, 0.7); 
     justify-content: center;
     align-items: center;
     padding: 10px;
@@ -403,14 +385,13 @@ h2 {
     padding: 25px;
     border-radius: 12px;
     width: 100%;
-    max-width: 600px; /* Increased max width for better content display */
+    max-width: 600px;
     height: auto;
-    max-height: 80vh; /* Max height for the popup */
+    max-height: 80vh; 
     overflow-y: auto;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); 
 }
 
-/* Popup Header */
 h3 {
     text-align: center;
     font-size: 26px;
@@ -418,7 +399,6 @@ h3 {
     color: #333;
 }
 
-/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
@@ -428,18 +408,16 @@ form {
 form input, form textarea {
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px; 
     font-size: 16px;
     transition: border-color 0.3s ease;
 }
 
-/* Focus on input fields */
 form input:focus, form textarea:focus {
     border-color: #007BFF;
     outline: none;
 }
 
-/* Submit Button */
 form button {
     background-color: #28a745;
     color: white;
@@ -453,14 +431,13 @@ form button {
 
 form button:hover {
     background-color: #218838;
-    transform: scale(1.05); /* Slight scale effect on hover */
+    transform: scale(1.05); 
 }
 
 form button:active {
-    transform: scale(1); /* Button returns to original size when clicked */
+    transform: scale(1); 
 }
 
-/* Close Button */
 .close-btn {
     position: absolute;
     top: 15px;
@@ -472,21 +449,17 @@ form button:active {
 }
 
 .close-btn:hover {
-    color: #007BFF; /* Change color on hover */
+    color: #007BFF; 
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
-    /* Adjust service buttons for mobile */
     .service-btn {
         padding: 10px 20px;
         font-size: 14px;
     }
-
-    /* Adjust the popup form for mobile */
     .popup-content {
         padding: 20px;
-        max-width: 90%; /* Make the popup more responsive */
+        max-width: 90%; 
     }
 
     h3 {
@@ -496,12 +469,11 @@ form button:active {
     form input, form textarea {
         padding: 10px;
     }
-
-    /* Add more space between the textarea and submit button */
+    
     form button {
         font-size: 16px;
         padding: 12px;
-        margin-top: 20px; /* Adds margin between the textarea and button */
+        margin-top: 20px; 
     }
 
     form button {
@@ -517,21 +489,19 @@ form button:active {
 }
 .visit-web-link {
     display: inline-block;
-    margin-top: 10px; /* Space above the link */
+    margin-top: 10px; 
     padding: 8px 15px;
     background-color: #add8ec;
     color: white;
-    text-decoration: none; /* Removes underline */
+    text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
 .visit-web-link:hover {
-    background-color: #add8ec; /* Darker blue on hover */
-}
+    background-color: #add8ec; 
 
-/* Location Map Section */
 #location-map {
   width: 100%;
   height: 100vh; 
@@ -553,14 +523,12 @@ form button:active {
   border: none;
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
   #location-map {
-    height: 70vh; /* Slightly smaller height for mobile devices */
+    height: 70vh;
   }
 }
 
-/* Social Icons Styling */
 .social-icons a {
     color: #fff; 
     font-size: 1.5rem;
@@ -571,15 +539,14 @@ form button:active {
 }
 
 .social-icons a:hover {
-    color: #25d366; /* Green hover color for icons */
-    transform: scale(1.2); /* Slightly enlarge on hover */
+    color: #25d366; 
+    transform: scale(1.2); 
 }
 
-/* Optional: Style the container for alignment */
 .social-icons {
-    margin-top: 15px; /* Add some space from other elements */
+    margin-top: 15px;
     display: flex;
-    justify-content: center; /* Center align icons */
+    justify-content: center; 
     align-items: center;
 }
 .flip-card-front .TapContact{
@@ -591,5 +558,5 @@ form button:active {
 }
 
 .footer-link:hover {
-    color: #007bff; /* Optional: Change color on hover */
+    color: #007bff; 
 }
